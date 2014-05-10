@@ -1,45 +1,77 @@
 <?php /* Template Name: Division */ get_header(); ?>
 
-	<main role="main">
-		<!-- section -->
-		<section>
+	<?php if(get_field('show_slider')) :?>
 
-			<h1><?php the_title(); ?></h1>
+	<section id="slider">
 
-		<?php if (have_posts()): while (have_posts()) : the_post(); ?>
+		<?php while(the_repeater_field('seats')): ?>
 
-			<!-- article -->
-			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+		<div class="slide">
 
-				<?php the_content(); ?>
+			<h1 class="heading">
+				<div class="inner">
+					<h1 class="title"><?php the_sub_field('title'); ?></h1>
+					<br />
+					<span class="text">
+						<span>
+							<?php the_sub_field('sub_title'); ?>
+						</span>
+					</span>
+				</div>
+			</h1>
 
-				<?php comments_template( '', true ); // Remove if you don't want comments ?>
+			<?php
+			$thumb = wp_get_attachment_image_src( get_sub_field('image'), 'full');
+			if($thumb): ?>
 
-				<br class="clear">
+			<img src="<?php echo $thumb[0]; ?>" alt="background" class="ground">
 
-				<?php edit_post_link(); ?>
+			<?php endif; ?>
 
-			</article>
-			<!-- /article -->
+		</div>
 
 		<?php endwhile; ?>
 
-		<?php else: ?>
+	</section>
 
-			<!-- article -->
-			<article>
+	<?php endif; ?>
 
-				<h2><?php _e( 'Sorry, nothing to display.', 'html5blank' ); ?></h2>
 
-			</article>
-			<!-- /article -->
+	<section id="article">
 
-		<?php endif; ?>
+		<div class="midwrapper content headings">
 
-		</section>
-		<!-- /section -->
-	</main>
+			<?php if (have_posts()): while (have_posts()) : the_post(); ?>
 
-<?php get_sidebar(); ?>
+				<!-- article -->
+				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+
+					<?php the_content(); ?>
+
+					<br class="clear">
+
+					<?php edit_post_link(); ?>
+
+				</article>
+				<!-- /article -->
+
+			<?php endwhile; ?>
+
+			<?php else: ?>
+
+				<!-- article -->
+				<article>
+
+					<h2><?php _e( 'Sorry, nothing to display.', 'html5blank' ); ?></h2>
+
+				</article>
+				<!-- /article -->
+
+			<?php endif; ?>
+
+		</div>
+
+	</section>
+
 
 <?php get_footer(); ?>

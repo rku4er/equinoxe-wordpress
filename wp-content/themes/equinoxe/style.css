@@ -1773,7 +1773,7 @@ html.touch #mainnav >ul.menu >li.hover .sub-menu{
 	margin:0;
 	font-size:1em;
 }
-#slider .heading a{
+#slider .heading .inner{
 	display:table-cell;
 	vertical-align:middle;
 	text-align:center;
@@ -2131,7 +2131,7 @@ html.touch #divisions .technology .title a.hover span{
 	text-align:center;
 	padding-bottom:5em;
 }
-body.home #sponsors{
+#sponsors{
 	display:none;
 }
 #sponsors .title{
@@ -2804,11 +2804,11 @@ html.touch #listing li.hover{
 	font-size:1em;
 	margin:1em 0 1.5em;
 }
+#listing .title + p{
+    font-size:1em;
+}
 #listing .body{
 	overflow:hidden;
-}
-#listing .excerpt{
-	font-size:1em;
 }
 #listing .cell:first-child{
 	display:none;
@@ -3171,9 +3171,9 @@ html.touch #listing li.hover{
 		margin:0.5em 0;
 		line-height:1em;
 	}
-	#listing .excerpt{
-		font-size:1.2em;
-	}
+    #listing .title + p{
+        font-size:1.2em;
+    }
 	/* single-listing */
 	.single-listing .thumb{
 		display:block;
@@ -3210,7 +3210,7 @@ html.touch #listing li.hover{
 	}
 	/* content-holder */
 	#content-holder{
-		padding-top:7.5em;
+		padding-top:5em;
 	}
 	/* blog */
 	#blog{
@@ -3351,6 +3351,8 @@ html.touch #listing li.hover{
     }
 
     #mainnav >ul.menu >li:not(.about):not(.contact).active >a:before,
+    #mainnav >ul.menu >li:not(.about):not(.contact).current_menu_item >a:before,
+    #mainnav >ul.menu >li:not(.about):not(.contact).current_page_item >a:before,
     html.no-touch #mainnav >ul.menu >li:not(.about):not(.contact):not(.menu-item-has-children):hover >a:before,
 	html.touch #mainnav >ul.menu >li:not(.about):not(.contact):not(.menu-item-has-children).hover >a:before,
 	#mainnav >ul.menu >li:not(.about):not(.contact):not(.menu-item-has-children) >a:hover:before,
@@ -3359,6 +3361,8 @@ html.touch #listing li.hover{
 		width: 90%;
 	}
     #mainnav >ul.menu >li:not(.about):not(.contact).active >a:after,
+    #mainnav >ul.menu >li:not(.about):not(.contact).current_menu_item >a:after,
+    #mainnav >ul.menu >li:not(.about):not(.contact).current_page_item >a:after,
     html.no-touch #mainnav >ul.menu >li:not(.about):not(.contact):not(.menu-item-has-children):hover >a:after,
 	html.touch #mainnav >ul.menu >li:not(.about):not(.contact):not(.menu-item-has-children).hover >a:after,
 	#mainnav >ul.menu >li:not(.about):not(.contact):not(.menu-item-has-children) >a:hover:after,
@@ -3553,7 +3557,7 @@ html.touch #listing li.hover{
 		display:block;
 	}
 	/* sponsors */
-	body.home #sponsors{
+	#sponsors{
 		display:block;
 	}
 	#sponsors ul{

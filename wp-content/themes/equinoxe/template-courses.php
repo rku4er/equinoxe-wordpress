@@ -1,45 +1,104 @@
 <?php /* Template Name: Listings */ get_header(); ?>
 
-	<main role="main">
-		<!-- section -->
-		<section>
+	<?php if(get_field('show_slider')) :?>
 
-			<h1><?php the_title(); ?></h1>
+	<section id="slider">
 
-		<?php if (have_posts()): while (have_posts()) : the_post(); ?>
+		<?php while(the_repeater_field('seats')): ?>
 
-			<!-- article -->
-			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+		<div class="slide">
 
-				<?php the_content(); ?>
+			<h1 class="heading">
+				<div class="inner">
+					<h1 class="title"><?php the_sub_field('title'); ?></h1>
+					<br />
+					<span class="text">
+						<span>
+							<?php the_sub_field('sub_title'); ?>
+						</span>
+					</span>
+				</div>
+			</h1>
 
-				<?php comments_template( '', true ); // Remove if you don't want comments ?>
+			<?php
+			$thumb = wp_get_attachment_image_src( get_sub_field('image'), 'full');
+			if($thumb): ?>
 
-				<br class="clear">
+			<img src="<?php echo $thumb[0]; ?>" alt="background" class="ground">
 
-				<?php edit_post_link(); ?>
+			<?php endif; ?>
 
-			</article>
-			<!-- /article -->
+		</div>
 
 		<?php endwhile; ?>
 
-		<?php else: ?>
+	</section>
 
-			<!-- article -->
-			<article>
+	<?php endif; ?>
 
-				<h2><?php _e( 'Sorry, nothing to display.', 'html5blank' ); ?></h2>
 
-			</article>
-			<!-- /article -->
 
-		<?php endif; ?>
+	<section id="blog">
 
-		</section>
-		<!-- /section -->
-	</main>
+	<?php
+	$args = array(
+		'post_type' => 'courses',
+		'order' => 'DESC',
+		'orderby' => $orderby,
+		'paged' => get_query_var('page'),
+		'posts_per_page' => -1
+	);
+	$posts = get_posts( $args );
 
-<?php get_sidebar(); ?>
+	if( $posts ): ?>
+
+		<ul id="listing">
+
+	<?php foreach( $posts as $post): ?>
+	<?php setup_postdata($post); ?>
+
+			<li>
+				<div class="midwrapper">
+					<figure class="thumb">
+						<?php
+							$thumb = get_the_post_thumbnail(get_the_ID(), 'custom-size',array(
+								'title' => get_the_title()
+							));
+
+							if($thumb){
+								echo $thumb;
+							} else{
+								echo '<img src="'.get_bloginfo('template_url').'/img/thumb.png" alt="'.get_the_title().'"/>';
+							}
+						?>
+					</figure>
+					<section class="timestamp">
+						<div class="wrapper">
+							<span class="day"><?php echo get_the_date( 'j' ); ?></span>
+							<span class="time">
+								<span class="line-1"><?php echo get_the_date( 'D, j F' ); ?></span>
+								<span class="line-2"><?php echo get_the_date( 'G : i' ); ?></span>
+							</span>
+						</div>
+					</section>
+					<section class="body">
+						<h2 class="title">
+							<a href="<?php echo get_permalink(); ?>">
+								<?php echo get_the_title(); ?>
+							</a>
+						</h2>
+						<?php html5wp_excerpt('html5wp_custom_post'); ?>
+					</section>
+				</div>
+			</li>
+
+		<?php endforeach; ?>
+		<?php wp_reset_postdata();?>
+
+		</ul>
+
+	<?php endif;?>
+
+	</section>
 
 <?php get_footer(); ?>

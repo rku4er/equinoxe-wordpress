@@ -39,10 +39,10 @@
                             </a>
                         </h1>
                     <?php else: ?>
-                        <span id="logo">
+                        <strong id="logo">
                             <a href="<?php echo home_url(); ?>"><img src="<?php echo get_template_directory_uri(); ?>/img/equinoxe-life-care.png" alt="Equinoxe LifeCare Homepage" />
                             </a>
-                        </h1>
+                        </strong>
                     <?php endif; ?>
                     <!-- /logo -->
 
@@ -57,43 +57,6 @@
 
                         <?php html5blank_nav(); ?>
 
-                        <!-- <ul class="menu">
-                            <li class="has-menu home">
-                                <a href="home_health.html">Home Care</a>
-                                <div class="dropdown">
-                                    <ul>
-                                        <li><a href="management.html">LifeCare Management</a></li>
-                                        <li><a href="home_care.html">Home Care and Specialized Personal Care</a></li>
-                                        <li><a href="technology.html">Technology Based Care Solutions</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="has-menu organization">
-                                <a href="home_health.html">Organizational Health</a>
-                                <div class="dropdown">
-                                    <ul>
-                                        <li><a href="technology.html">item 1</a></li>
-                                        <li><a href="technology.html">item 2</a></li>
-                                        <li><a href="technology.html">item 3</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="has-menu technology">
-                                <a href="home_health.html">Technology-Based Care</a>
-                                <div class="dropdown">
-                                    <ul>
-                                        <li><a href="technology.html">menu 1</a></li>
-                                        <li><a href="technology.html">menu 2</a></li>
-                                        <li><a href="technology.html">menu 3</a></li>
-                                        <li><a href="technology.html">menu 4</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="careers"><a href="#careers">Careers</a></li>
-                            <li class="training"><a href="listings.html">Training Courses</a></li>
-                            <li class="about"><a href="about.html">About</a></li>
-                            <li class="contact"><a href="contact.html">Contact</a></li>
-                        </ul> -->
                     </nav>
 
                     <div id="call-mess">REACH US ANYTIME <span style="color:#F37123">1-800-890-4200</span></div>
@@ -115,3 +78,9 @@
 
             <!-- main -->
             <div id="main" role="main">
+
+                <?php
+                    /*$form = get_field('your_form_field');
+                    gravity_form_enqueue_scripts($form->id, true);
+                    gravity_form($form->id, true, true, false, '', true, 1); */
+                ?>
