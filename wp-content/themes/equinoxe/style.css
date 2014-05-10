@@ -721,7 +721,7 @@ a:hover {
 .icheckbox-custom {
     background-position: 0 0
 }
-body.touch .icheckbox-custom.hover {
+html.touch .icheckbox-custom.hover {
     background-position: -24px 0
 }
 .icheckbox-custom.checked {
@@ -737,7 +737,7 @@ body.touch .icheckbox-custom.hover {
 .iradio-custom {
     background-position: -120px 0
 }
-body.touch .iradio-custom.hover {
+html.touch .iradio-custom.hover {
     background-position: -144px 0
 }
 .iradio-custom.checked {
@@ -1036,20 +1036,20 @@ a.more {
 .tile .back {
     opacity: 0;
 }
-body.no-touch .tile:hover .front ,
-body.touch .tile.hover .front {
+html.no-touch .tile:hover .front,
+html.touch .tile.hover .front {
     opacity: 0;
 }
-body.no-touch .tile:hover .back,
-body.touch .tile.hover .back {
+html.no-touch .tile:hover .back,
+html.touch .tile.hover .back {
     opacity: 1;
 }
 
 .tile:not(.right-side):not(.bottom-side):not(.left-side) .back {
     bottom: 100%;
 }
-body.no-touch .tile:hover:not(.right-side):not(.bottom-side):not(.left-side) .back,
-body.touch .tile.hover:not(.right-side):not(.bottom-side):not(.left-side) .back {
+html.no-touch .tile:hover:not(.right-side):not(.bottom-side):not(.left-side) .back,
+html.touch .tile.hover:not(.right-side):not(.bottom-side):not(.left-side) .back {
     bottom: 0;
 }
 .tile.top-side .back {
@@ -1064,20 +1064,20 @@ body.touch .tile.hover:not(.right-side):not(.bottom-side):not(.left-side) .back 
 .tile.left-side .back {
     right: 100%;
 }
-body.no-touch .tile.top-side:hover .back,
-body.touch .tile.top-side.hover .back {
+html.no-touch .tile.top-side:hover .back,
+html.touch .tile.top-side.hover .back {
     bottom: 0;
 }
-body.no-touch .tile.right-side:hover .back,
-body.touch .tile.right-side.hover .back {
+html.no-touch .tile.right-side:hover .back,
+html.touch .tile.right-side.hover .back {
     left: 0;
 }
-body.no-touch .tile.bottom-side:hover .back,
-body.touch .tile.bottom-side.hover .back {
+html.no-touch .tile.bottom-side:hover .back,
+html.touch .tile.bottom-side.hover .back {
     top: 0;
 }
-body.no-touch .tile.left-side:hover .back,
-body.touch .tile.left-side.hover .back {
+html.no-touch .tile.left-side:hover .back,
+html.touch .tile.left-side.hover .back {
     right: 0;
 }
 .tile.active .back {
@@ -1712,8 +1712,8 @@ body,
 	   -moz-transition: all .5s ease;
 			transition: all .5s ease;
 }
-body.no-touch #mainnav >ul.menu >li:hover .sub-menu,
-body.touch #mainnav >ul.menu >li.hover .sub-menu{
+html.no-touch #mainnav >ul.menu >li:hover .sub-menu,
+html.touch #mainnav >ul.menu >li.hover .sub-menu{
 	z-index:1;
 }
 #mainnav .sub-menu li{
@@ -1861,8 +1861,8 @@ body.touch #mainnav >ul.menu >li.hover .sub-menu{
 	   -moz-transition: all .3s ease;
 	        transition: all .3s ease;
 }
-body.no-touch #divisions .title a:hover,
-body.touch #divisions .title a.hover{
+html.no-touch #divisions .title a:hover,
+html.touch #divisions .title a.hover{
 
 }
 #divisions .title figure{
@@ -1895,24 +1895,24 @@ body.touch #divisions .title a.hover{
 	   -moz-transition: all .5s ease;
 	        transition: all .5s ease;
 }
-body.no-touch #divisions .title a:hover figure:before,
-body.touch #divisions .title a.hover figure:before{
+html.no-touch #divisions .title a:hover figure:before,
+html.touch #divisions .title a.hover figure:before{
 	margin:-100%;
 }
 
 
-body.no-touch #divisions .home .title a:hover figure:before,
-body.touch #divisions .home .title a.hover figure:before{
+html.no-touch #divisions .home .title a:hover figure:before,
+html.touch #divisions .home .title a.hover figure:before{
 	-webkit-box-shadow:inset 0 -10px 10px 0 rgba(243,113,34,0.5);
 		    box-shadow:inset 0 -10px 10px 0 rgba(243,113,34,0.5);
 }
-body.no-touch #divisions .organization .title a:hover figure:before,
-body.touch #divisions .organization .title a.hover figure:before{
+html.no-touch #divisions .organization .title a:hover figure:before,
+html.touch #divisions .organization .title a.hover figure:before{
 	-webkit-box-shadow:inset 0 -10px 10px 0 rgba(0,153,181,0.5);
 		    box-shadow:inset 0 -10px 10px 0 rgba(0,153,181,0.5);
 }
-body.no-touch #divisions .technology .title a:hover figure:before,
-body.touch #divisions .technology .title a.hover figure:before{
+html.no-touch #divisions .technology .title a:hover figure:before,
+html.touch #divisions .technology .title a.hover figure:before{
 	-webkit-box-shadow:inset 0 -10px 10px 0 rgba(255,0,84,0.5);
 		    box-shadow:inset 0 -10px 10px 0 rgba(255,0,84,0.5);
 }
@@ -1931,8 +1931,8 @@ body.touch #divisions .technology .title a.hover figure:before{
 	   -moz-transition: all .5s ease;
 	        transition: all .5s ease;
 }
-body.no-touch #divisions .title a:hover figure img,
-body.touch #divisions .title a.hover figure img{
+html.no-touch #divisions .title a:hover figure img,
+html.touch #divisions .title a.hover figure img{
 	-webkit-transform: scale(1.2);
        -moz-transform: scale(1.2);
 	        transform: scale(1.2);
@@ -1945,22 +1945,22 @@ body.touch #divisions .title a.hover figure img{
 	   -moz-transition: all .5s ease;
 	        transition: all .5s ease;
 }
-body.no-touch #divisions .title a:hover span,
-body.touch #divisions .title a.hover span{
+html.no-touch #divisions .title a:hover span,
+html.touch #divisions .title a.hover span{
 	-webkit-transform: translateY(-30px) scale(1.2);
 	   -moz-transform: translateY(-30px) scale(1.2);
 	        transform: translateY(-30px) scale(1.2);
 }
-body.no-touch #divisions .home .title a:hover span,
-body.touch #divisions .home .title a.hover span{
+html.no-touch #divisions .home .title a:hover span,
+html.touch #divisions .home .title a.hover span{
     color:#f37122;
 }
-body.no-touch #divisions .organization .title a:hover span,
-body.touch #divisions .organization .title a.hover span{
+html.no-touch #divisions .organization .title a:hover span,
+html.touch #divisions .organization .title a.hover span{
     color:#0099b5;
 }
-body.no-touch #divisions .technology .title a:hover span,
-body.touch #divisions .technology .title a.hover span{
+html.no-touch #divisions .technology .title a:hover span,
+html.touch #divisions .technology .title a.hover span{
     color:#ff0054;
 }
 
@@ -2746,8 +2746,8 @@ body.home #sponsors{
 #listing li:nth-child(2n){
 	/* background-color:#FCF2ED; */
 }
-body.no-touch #listing li:hover,
-body.touch #listing li.hover{
+html.no-touch #listing li:hover,
+html.touch #listing li.hover{
 	background-color:#fde3d3;
 }
 #listing li .midwrapper{
@@ -3351,31 +3351,31 @@ body.touch #listing li.hover{
     }
 
     #mainnav >ul.menu >li:not(.about):not(.contact).active >a:before,
-    body.no-touch #mainnav >ul.menu >li:not(.about):not(.contact):not(.menu-item-has-children):hover >a:before,
-	body.touch #mainnav >ul.menu >li:not(.about):not(.contact):not(.menu-item-has-children).hover >a:before,
+    html.no-touch #mainnav >ul.menu >li:not(.about):not(.contact):not(.menu-item-has-children):hover >a:before,
+	html.touch #mainnav >ul.menu >li:not(.about):not(.contact):not(.menu-item-has-children).hover >a:before,
 	#mainnav >ul.menu >li:not(.about):not(.contact):not(.menu-item-has-children) >a:hover:before,
 	#mainnav >ul.menu >li:not(.about):not(.contact):not(.menu-item-has-children) >a:focus:before{
 		left: 5%;
 		width: 90%;
 	}
     #mainnav >ul.menu >li:not(.about):not(.contact).active >a:after,
-    body.no-touch #mainnav >ul.menu >li:not(.about):not(.contact):not(.menu-item-has-children):hover >a:after,
-	body.touch #mainnav >ul.menu >li:not(.about):not(.contact):not(.menu-item-has-children).hover >a:after,
+    html.no-touch #mainnav >ul.menu >li:not(.about):not(.contact):not(.menu-item-has-children):hover >a:after,
+	html.touch #mainnav >ul.menu >li:not(.about):not(.contact):not(.menu-item-has-children).hover >a:after,
 	#mainnav >ul.menu >li:not(.about):not(.contact):not(.menu-item-has-children) >a:hover:after,
 	#mainnav >ul.menu >li:not(.about):not(.contact):not(.menu-item-has-children) >a:focus:after{
 		opacity: 0;
         visibility: hidden;
 	}
 
-    body.no-touch #mainnav >ul.menu >li:not(.about):not(.contact).menu-item-has-children:hover >a:after,
-	body.touch #mainnav >ul.menu >li:not(.about):not(.contact).menu-item-has-children.hover >a:after,
+    html.no-touch #mainnav >ul.menu >li:not(.about):not(.contact).menu-item-has-children:hover >a:after,
+	html.touch #mainnav >ul.menu >li:not(.about):not(.contact).menu-item-has-children.hover >a:after,
 	#mainnav >ul.menu >li:not(.about):not(.contact).menu-item-has-children >a:hover:after,
 	#mainnav >ul.menu >li:not(.about):not(.contact).menu-item-has-children >a:focus:after{
         opacity: 1;
         visibility: visible;
     }
-    body.no-touch #mainnav >ul.menu >li:not(.about):not(.contact).menu-item-has-children:hover >a:before,
-	body.touch #mainnav >ul.menu >li:not(.about):not(.contact).menu-item-has-children.hover >a:before,
+    html.no-touch #mainnav >ul.menu >li:not(.about):not(.contact).menu-item-has-children:hover >a:before,
+	html.touch #mainnav >ul.menu >li:not(.about):not(.contact).menu-item-has-children.hover >a:before,
 	#mainnav >ul.menu >li:not(.about):not(.contact).menu-item-has-children >a:hover:before,
 	#mainnav >ul.menu >li:not(.about):not(.contact).menu-item-has-children >a:focus:before{
 		left:50%;
@@ -3405,8 +3405,8 @@ body.touch #listing li.hover{
 		left: 0;
 		right: 0;
 	}
-    body.no-touch #mainnav >ul.menu >li:hover .sub-menu,
-	body.touch #mainnav >ul.menu >li.hover .sub-menu,
+    html.no-touch #mainnav >ul.menu >li:hover .sub-menu,
+	html.touch #mainnav >ul.menu >li.hover .sub-menu,
 	#mainnav >ul.menu >li a:focus + .sub-menu{
 		opacity: 1;
 		visibility: visible;
