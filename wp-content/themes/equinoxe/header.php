@@ -23,7 +23,7 @@
         </script>
 
 	</head>
-	<body <?php body_class('no-touch'); ?>>
+	<body <?php body_class(); ?>>
 
         <!-- page -->
         <div id="page">
@@ -97,7 +97,7 @@
                         </ul> -->
                     </nav>
 
-                    <div id="call-mess">Reach us anytime 1-800-890-4200</div>
+                    <div id="call-mess">REACH US ANYTIME <span style="color:#F37123">1-800-890-4200</span></div>
 
                 </div>
 

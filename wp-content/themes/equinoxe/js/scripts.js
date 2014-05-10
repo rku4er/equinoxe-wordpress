@@ -28,14 +28,16 @@
             increaseArea: false
         });
 
-        $('#divisions .title a, .tile, #mainnav >ul.menu >li, #listing li').on('touchstart', function(){
-                $(this).toggleClass('hover');
-            });
-
         // See if this is a touch device
         if ('ontouchstart' in window){
-            // Set the correct [touchscreen] body class
-            $('body').removeClass('no-touch').addClass('touch');
+            var scope = $('#divisions .title a, .tile, #mainnav >ul.menu >li, #listing li');
+
+            scope.on('click', function(){
+                scope.not($(this)).each(function(){
+                    $(this).removeClass('hover');
+                });
+                $(this).toggleClass('hover');
+            });
         }
 
         function EasyPeasyParallax() {
@@ -74,6 +76,7 @@
         var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 
         if(w != 0 && h != 0){
+
             // Tooltip set up
             var tooltip, timer, overlay;
 
@@ -267,13 +270,48 @@
             var self = $(this),
                 href = self.find('.title a').eq(0).attr('href');
 
-            self.on('click', function(){
+            self.on('click', function(event){
                 document.location.href = href;
 
                 if (event.stopPropagation) event.stopPropagation();
                 else event.cancelBubble = true;
             });
         });
+
+        // MainNavCtrl
+        (function mainNavCtrl(){
+            var menu = $('#mainnav'),
+                header = $('#header'),
+                main = $('#main'),
+                footer = $('#footer'),
+                button = $('#expandMainNav');
+
+            button.on('change', function(){
+                if($(this).is(':checked')){
+                    menu.css({
+
+                    });
+
+                    header.css({
+                        'position' : 'absolute'
+                    });
+
+                    main.hide();
+                    footer.hide();
+                }else{
+                    menu.css({
+
+                    });
+
+                    header.css({
+                        'position' : 'fixed'
+                    });
+
+                    main.show();
+                    footer.show();
+                }
+            }).trigger('change');
+        })();
 
 	});
 
