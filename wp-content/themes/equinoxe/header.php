@@ -13,6 +13,7 @@
 		<meta name="description" content="<?php bloginfo('description'); ?>">
 
 		<?php wp_head(); ?>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJ1zeXL0klf-9NPfdZPIlPsYko6Q7k090&sensor=true" type="text/javascript"></script>
 		<script>
         // configure environment tests
         conditionizr.config({
@@ -22,7 +23,7 @@
         </script>
 
 	</head>
-	<body <?php body_class(); ?>>
+	<body <?php body_class(); ?> data-templateurl="<?php echo get_template_directory_uri(); ?>">
 
         <!-- page -->
         <div id="page">

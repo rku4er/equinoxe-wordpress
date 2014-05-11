@@ -224,8 +224,9 @@
 
         // Google Maps
         if(typeof google != "undefined"){
+
             var myLatlng = new google.maps.LatLng(45.475734, -73.601348);
-            var image = 'images/bg/marker.png';
+            var image = $('body').data('templateurl') + '/img/bg/marker.png';
             var marker;
             var map;
 

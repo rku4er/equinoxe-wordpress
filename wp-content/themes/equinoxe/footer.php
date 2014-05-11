@@ -8,36 +8,39 @@
 
 					<div class="midwrapper">
 
+						<?php if(have_rows('columns', 'options')): ?>
+
 						<div id="links">
 
-							<div class="cell">
-
-								<h5 class="title">services</h5>
-
-								<ul>
-									<li><a href="#home-care">Home Care</a></li>
-									<li><a href="#organizational-care">Organizational Care</a></li>
-									<li><a href="#technology-based-care">Technology-Based Care</a></li>
-								</ul>
-
-							</div>
-
-
+							<?php while(have_rows('columns', 'options')): the_row();?>
 
 							<div class="cell">
 
-								<h5 class="title">connect</h5>
+								<h5 class="title"><?php echo get_sub_field('title'); ?></h5>
+
+								<?php
+								$posts = get_sub_field('column');
+								if($posts): ?>
 
 								<ul>
-									<li><a href="#careers">Careers</a></li>
-									<li><a href="listings.html">Training Courses</a></li>
-									<li><a href="#resources">Resources</a></li>
-									<li><a href="contact.html">Contact Us</a></li>
+									<?php foreach( $posts as $post): ?>
+									<?php setup_postdata($post);?>
+									<li><a href="<?php echo get_permalink(); ?>"><?php echo get_the_title(); ?></a></li>
+									<?php endforeach; ?>
+									<?php wp_reset_postdata();?>
 								</ul>
 
+								<?php endif; ?>
+
 							</div>
+
+							<?php endwhile; ?>
 
 						</div>
+
+						<?php endif; ?>
+
+
 
 						<div id="newsletter">
 
@@ -77,19 +80,27 @@
 
 					<div class="midwrapper">
 
-						<!-- copyright -->
 						<section id="copyright">
 							<p>Copyright &copy; <?php echo date('Y'); ?> - <br /> <?php bloginfo('name'); ?> - All rights Reserved.</p>
 						</section>
-						<!-- /copyright -->
+
+
+
+						<?php if(have_rows('socials', 'options')):?>
 
 						<section id="socials">
 							<ul>
-								<li><a href="#facebook" class="icon-facebook"></a></li>
-								<li><a href="#twitter" class="icon-twitter"></a></li>
-								<li><a href="#linkedin" class="icon-linkedin"></a></li>
+
+								<?php while(have_rows('socials', 'options')): the_row();?>
+								<li>
+									<a href="<?php echo get_sub_field('url'); ?>" class="icon-<?php echo get_sub_field('slug'); ?>"></a>
+								</li>
+								<?php endwhile; ?>
+
 							</ul>
 						</section>
+
+						<?php endif; ?>
 
 					</div>
 
@@ -109,7 +120,7 @@
 		(f[s].q=f[s].q||[]).push(arguments)},f[s].l=1*new Date();h=i.createElement(r),
 		l=i.getElementsByTagName(r)[0];h.async=1;h.src=e;l.parentNode.insertBefore(h,l)
 		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-		ga('create', 'UA-XXXXXXXX-XX', 'yourdomain.com');
+		ga('create', 'UA-XXXXXXXX-XX', 'equinoxe.loc');
 		ga('send', 'pageview');
 		</script>
 

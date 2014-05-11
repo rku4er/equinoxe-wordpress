@@ -1,10 +1,10 @@
 <?php /* Template Name: Listings */ get_header(); ?>
 
-	<?php if(get_field('show_slider')) :?>
+	<?php if(get_field('show_slider') && have_rows('seats')) :?>
 
 	<section id="slider">
 
-		<?php while(the_repeater_field('seats')): ?>
+		<?php while(have_rows('seats')): the_row();?>
 
 		<div class="slide">
 

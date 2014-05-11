@@ -1002,6 +1002,7 @@ a.more {
 	height:0;
 	position:relative;
 	display:block;
+    cursor: default;
 }
 .tile .scene{
 	position:absolute;
@@ -1093,42 +1094,41 @@ html.touch .tile.left-side.hover .back {
 	text-decoration:none;
 	display:block;
 }
+.tile .front .inner{
+    position:absolute;
+    left:0;
+    bottom:3em;
+    right:0;
+    font-size:1em;
+}
+.tile .front .title,
+.tile .front p{
+    font-size:1.6em;
+    font-family: MontserratBold, Arial, sans-serif;
+    text-transform:uppercase;
+    padding:0.5em 1em;
+    display:inline-block;
+    color:#fff;
+    margin:0;
+}
 .tile .front .title{
-	position:absolute;
-	left:0;
-	bottom:2em;
-	right:0;
-	font-size:1em;
+    max-width: 80%;
+    background-color:#f37122;
 }
-.tile .front .first-line,
-.tile .front .second-line,
-.tile .front .summary{
-	display:inline-block;
-	color:#fff;
-	margin:0;
+.tile .front p{
+    max-width: 70%;
+    background-color:#424242;
 }
-.tile .front .first-line,
-.tile .front .second-line{
-	font-size:1.6em;
-	font-family: MontserratBold, Arial, sans-serif;
-	text-transform:uppercase;
-	padding:0.5em 1em;
-}
-.tile .front .first-line{ max-width: 80%; }
-.tile .front .second-line,
-.tile .front .summary{ max-width: 70%; }
-.tile .front .summary{
+body:not(.home) .tile .front p{
 	font-size:1.2em;
 	padding:1em;
 	font-family:OpenSansSemibold, Arial, sans-serif;
+    text-transform: none;
 }
-.tile .front .first-line{ background-color:#f37122; }
-.tile .front .second-line{ background-color:#424242; }
-.tile .front .summary{ background-color:#424242; }
 .tile .back{
 	background-color:#F37123;
 	color:#fff;
-	padding:2em 3em;
+	padding:2em;
 
 	-webkit-box-sizing: border-box;
 	   -moz-box-sizing: border-box;
@@ -1136,18 +1136,19 @@ html.touch .tile.left-side.hover .back {
 }
 .tile .back .title{
 	font-size:1.8em;
+    line-height: 1em;
 	font-family: HelveticaBold, Arial, sans-serif;
 	font-weight:normal;
 	margin:0 0 0.5em;
 }
 body.home .tile .front .title{
-	margin:0 0 1em;
+	margin:0;
 }
 .tile .back .title a{
 	color:#fff;
 	text-decoration:none;
 }
-.tile .back .content{
+.tile .back p{
 	font-family: OpenSansSemibold, Arial, sans-serif;
 	font-size:1.4em;
 	color:#fff;
@@ -1163,11 +1164,14 @@ body.home .tile .front .title{
 .tile .back .more:before{
 	background-color:#fff;
 }
-.tile.double .scene .bg{
+body:not(.home) .tile:nth-child(1) .scene .bg{
 	width:auto;
 	right:0;
 	max-width: none;
 	min-width:100%;
+}
+body:not(.home) body:not(.home) .tile:nth-child(1) .tile .front p{
+    max-width: 50%;
 }
 /* content */
 .content{
@@ -1763,6 +1767,13 @@ html.touch #mainnav >ul.menu >li.hover .sub-menu{
 	overflow:hidden;
 	background-color:#fff;
 }
+body.home #slider .slide{
+    background-color: #272727;
+}
+body.home #slider .slide:nth-child(1) .inner:before{
+    content: url("img/equinoxe-sun.png");
+    display: block;
+}
 #slider .heading{
 	display:table;
 	width:100%;
@@ -1901,18 +1912,18 @@ html.touch #divisions .title a.hover figure:before{
 }
 
 
-html.no-touch #divisions .home .title a:hover figure:before,
-html.touch #divisions .home .title a.hover figure:before{
+html.no-touch #divisions .home-health .title a:hover figure:before,
+html.touch #divisions .home-health .title a.hover figure:before{
 	-webkit-box-shadow:inset 0 -10px 10px 0 rgba(243,113,34,0.5);
 		    box-shadow:inset 0 -10px 10px 0 rgba(243,113,34,0.5);
 }
-html.no-touch #divisions .organization .title a:hover figure:before,
-html.touch #divisions .organization .title a.hover figure:before{
+html.no-touch #divisions .organizational-health .title a:hover figure:before,
+html.touch #divisions .organizational-health .title a.hover figure:before{
 	-webkit-box-shadow:inset 0 -10px 10px 0 rgba(0,153,181,0.5);
 		    box-shadow:inset 0 -10px 10px 0 rgba(0,153,181,0.5);
 }
-html.no-touch #divisions .technology .title a:hover figure:before,
-html.touch #divisions .technology .title a.hover figure:before{
+html.no-touch #divisions .technology-based-care .title a:hover figure:before,
+html.touch #divisions .technology-based-care .title a.hover figure:before{
 	-webkit-box-shadow:inset 0 -10px 10px 0 rgba(255,0,84,0.5);
 		    box-shadow:inset 0 -10px 10px 0 rgba(255,0,84,0.5);
 }
@@ -1951,22 +1962,22 @@ html.touch #divisions .title a.hover span{
 	   -moz-transform: translateY(-30px) scale(1.2);
 	        transform: translateY(-30px) scale(1.2);
 }
-html.no-touch #divisions .home .title a:hover span,
-html.touch #divisions .home .title a.hover span{
+html.no-touch #divisions .home-health .title a:hover span,
+html.touch #divisions .home-health .title a.hover span{
     color:#f37122;
 }
-html.no-touch #divisions .organization .title a:hover span,
-html.touch #divisions .organization .title a.hover span{
+html.no-touch #divisions .organizational-health .title a:hover span,
+html.touch #divisions .organizational-health .title a.hover span{
     color:#0099b5;
 }
-html.no-touch #divisions .technology .title a:hover span,
-html.touch #divisions .technology .title a.hover span{
+html.no-touch #divisions .technology-based-care .title a:hover span,
+html.touch #divisions .technology-based-care .title a.hover span{
     color:#ff0054;
 }
 
-#divisions .home{ background-color:#f37122; }
-#divisions .organization{ background-color:#0099b5; }
-#divisions .technology{ background-color:#ff0054; }
+#divisions .home-health{ background-color:#f37122; }
+#divisions .organizational-health{ background-color:#0099b5; }
+#divisions .technology-based-care{ background-color:#ff0054; }
 /* tiles */
 #tiles{
 	margin:-0.5em 0 0;
@@ -3046,31 +3057,30 @@ html.touch #listing li.hover{
 	body.home .tile{
 		padding-bottom:36%;
 	}
-	.tile.double{
-		width:100%;
-		float:none;
-		clear:both;
-	}
-	.tile.double .title{
-		width:50%;
-	}
-	.tile.double .front .first-line{ max-width:100%; }
-	.tile.double .front .second-line,
-	.tile.double .front .summary{ max-width:70%; }
 	.tile .scene{
 		margin:0.5em;
 	}
-	.tile .front .first-line,
-	.tile .front .second-line{
+	.tile .front .title,
+	.tile .front p{
 		font-size:2.2em;
 	}
-	.tile .front .summary{
-		font-size:1.4em;
-	}
+    body:not(.home) .tile .front p{
+        font-size:1.4em;
+    }
 	.tile .back .title{
 		font-size:2.7em;
 		margin:0.5em 0;
 	}
+    body:not(.home) .tile:nth-child(1){
+        width:100%;
+        float:none;
+        clear:both;
+    }
+    body:not(.home) .tile:nth-child(1) .title{
+        width:50%;
+    }
+    body:not(.home) .tile:nth-child(1) .front .title{ max-width:100%; }
+    body:not(.home) .tile:nth-child(1) .front p{ max-width:70%; }
 	/* content */
 	.content p,
 	.content ul,
@@ -3466,7 +3476,7 @@ html.touch #listing li.hover{
 	}
 	/* divisions */
 	#divisions{
-		margin:0 0 1em;
+		margin:0;
 	}
 	#divisions .heading{
 		color:#f37122;
@@ -3487,7 +3497,8 @@ html.touch #listing li.hover{
 	}
 	/* tiles */
 	#tiles{
-		padding:0 0.5em;
+		padding:0.5em;
+        margin: 0 0 4em;
 	}
 	/* believe */
 	#believe .midwrapper{
@@ -3728,10 +3739,13 @@ html.touch #listing li.hover{
 	.tile .back .more:after{
 		right:-25px;
 	}
-	.tile .front .first-line,
-	.tile .front .second-line{
+	.tile .front .title,
+	.tile .front p{
 		font-size:2.8em;
 	}
+    body:not(.home) .tile .front p{
+        font-size: 1.4em;
+    }
 	/* sidehat */
 	.sidehat{
 		text-align:left;
@@ -3989,6 +4003,18 @@ a img.aligncenter {
     line-height:17px;
     margin:0;
     padding:0 4px 5px;
+}
+a.post-edit-link{
+    display: inline-block;
+    background-color: #fff;
+    color: #333;
+    text-decoration: none;
+    padding: 1em;
+    clear: both;
+    margin: 0 0 2em 100%;
+    white-space: nowrap;
+    position: relative;
+    left: -6.2em;
 }
 .sticky {
 

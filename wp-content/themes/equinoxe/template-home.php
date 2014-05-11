@@ -1,131 +1,150 @@
 <?php /* Template Name: Homepage */ get_header(); ?>
 
+
+
+	<?php if(get_field('show_slider') && have_rows('seats')) :?>
+
 	<section id="slider">
 
-		<div class="slide" style="background-color:#272727">
-			<span class="heading">
-				<a href="#slide">
-					<img src="<?php echo get_template_directory_uri(); ?>/img/equinoxe-sun.png" alt="" class="sun"/><br />
-					<span class="title">We take good care of you</span>
-					<br />
+		<?php while(have_rows('seats')): the_row();?>
+
+		<div class="slide">
+
+			<h1 class="heading">
+				<div class="inner">
+					<h1 class="title"><?php the_sub_field('title'); ?></h1>
 					<span class="text">
-						<span>Equinoxe LifeCare is a health care services company providing  personalized medical, wellness and mental health services, to organizations and individuals, 24 hours a day, 7 days a week</span>
+						<span>
+							<?php the_sub_field('sub_title'); ?>
+						</span>
 					</span>
-				</a>
-			</span>
-			<img src="<?php echo get_template_directory_uri(); ?>/img/slider/home.jpg" alt="home" class="ground"/>
+				</div>
+			</h1>
+
+			<?php
+			$thumb = wp_get_attachment_image_src( get_sub_field('image'), 'full');
+			if($thumb): ?>
+
+			<img src="<?php echo $thumb[0]; ?>" alt="background" class="ground">
+
+			<?php endif; ?>
+
 		</div>
+
+		<?php endwhile; ?>
 
 	</section>
 
-	<section class="midwrapper group">
+	<?php endif; ?>
+
+
+	<section class="midwrapper">
+
+		<?php
+		$posts = get_field('divisions');
+		if(count($posts) > 0):	?>
 
 		<section id="divisions">
 
 			<h3 class="heading">Our Divisions</h3>
 
 			<ul>
-				<li class="home">
+
+				<?php foreach( $posts as $post): ?>
+				<?php setup_postdata($post);?>
+
+				<li class="<?php echo $post->post_name; ?>">
 					<h2 class="title">
-						<a href="home_health.html">
+						<a href="<?php echo get_permalink(); ?>">
 							<figure>
-								<img src="<?php echo get_template_directory_uri(); ?>/img/divisions/home.png" alt="" />
+
+								<?php
+								$thumb = wp_get_attachment_image_src( get_field('division_icon'), 'full');
+								if($thumb): ?>
+								<img src="<?php echo $thumb[0]; ?>" alt="icon">
+								<?php endif; ?>
+
 							</figure>
-							<span>+ Home Health</span>
+							<span>+ <?php echo get_the_title(); ?></span>
 						</a>
 					</h2>
 				</li>
-				<li class="organization">
-					<h2 class="title">
-						<a href="home_health.html">
-							<figure>
-								<img src="<?php echo get_template_directory_uri(); ?>/img/divisions/organization.png" alt="" />
-							</figure>
-							<span>+ Organization Health</span>
-						</a>
-					</h2>
-				</li>
-				<li class="technology">
-					<h2 class="title">
-						<a href="home_health.html">
-							<figure>
-								<img src="<?php echo get_template_directory_uri(); ?>/img/divisions/technology.png" alt="" />
-							</figure>
-							<span>+ Technology-Based Care</span>
-						</a>
-					</h2>
-				</li>
+
+				<?php endforeach; ?>
+				<?php wp_reset_postdata();?>
+
 			</ul>
 
 		</section>
 
+		<?php endif; ?>
+
+
+
+		<?php
+		$posts = get_field('services');
+		if(count($posts) > 0):	?>
+
 		<section id="tiles">
 
-			<div class="tile">
-				<div class="scene">
-
-					<div class="face front">
-						<h3 class="title">
-							<a href="#tile">
-								<span class="first-line">Reach our clinical</span>
-								<br />
-								<span class="second-line">Call Center 24/7</span>
-							</a>
-						</h3>
-					</div>
-
-					<div class="face back">
-						<h3 class="title"><a href="#post">Schedule a Video or Phone Consultation</a></h3>
-						<p class="content">At the push of a button, schedule a video or phone consultation with an Equlnoxe Physician, Nurse Care Manager, Social Worker, 24/ 7 / 365, for health, wellness and mental health advice.</p>
-						<a href="#more" class="more">View More</a>
-					</div>
-
-					<img src="<?php echo get_template_directory_uri(); ?>/img/tile.jpg" alt="" class="bg" />
-
-				</div>
-			</div>
+			<?php foreach( $posts as $post): ?>
+			<?php setup_postdata($post); ?>
 
 			<div class="tile">
 				<div class="scene">
 
 					<div class="face front">
-						<h3 class="title">
-							<a href="#tile">
-								<span class="first-line">Reach our clinical</span>
-								<br />
-								<span class="second-line">Call Center 24/7</span>
-							</a>
-						</h3>
+						<div class="inner">
+							<h3 class="title"><?php echo get_the_title(); ?></h3>
+							<?php html5wp_excerpt('html5wp_tile_front'); ?>
+						</div>
 					</div>
 
 					<div class="face back">
-						<h3 class="title"><a href="#post">Schedule a Video or Phone Consultation</a></h3>
-						<p class="content">At the push of a button, schedule a video or phone consultation with an Equlnoxe Physician, Nurse Care Manager, Social Worker, 24/ 7 / 365, for health, wellness and mental health advice.</p>
-						<a href="#more" class="more">View More</a>
+						<h3 class="title"><?php echo get_the_title(); ?></h3>
+						<?php html5wp_excerpt('html5wp_tile_back'); ?>
+						<a href="<?php echo get_permalink(); ?>" class="more">View More</a>
 					</div>
 
-					<img src="<?php echo get_template_directory_uri(); ?>/img/tile.jpg" alt="" class="bg" />
+					<?php
+						$bg = get_the_post_thumbnail(get_the_ID(), 'full', array(
+							'title' => get_the_title(),
+							'class' => 'bg'
+						));
+
+						if($bg){
+							echo $bg;
+						} else{
+							// echo '<img src="'.get_bloginfo('template_url').'/img/thumb.png" alt="'.get_the_title().'"/>';
+						}
+					?>
 
 				</div>
 			</div>
 
+			<?php endforeach; ?>
+			<?php wp_reset_postdata();?>
 
 		</section>
 
+		<?php endif; ?>
+
 	</section>
 
-	<br />
-	<br />
-	<br />
+
+
+	<?php if(get_field('show_mission')) :?>
 
 	<section id="believe">
 
 		<div class="midwrapper">
 
 			<div class="group">
-				<h3 class="title">What we believe</h3>
-				<a href="#readmission" class="read">Read our mission</a>
+				<h3 class="title"><?php the_field('mission_title'); ?></h3>
+				<a href="<?php the_field('mission_link_url'); ?>" class="read"><?php the_field('mission_link_text'); ?></a>
 			</div>
+
+			<?php if(have_rows('mission_seats')): ?>
 
 			<div id="quote-slider">
 
@@ -133,94 +152,109 @@
 				<span class="next icon-arrow-right7"></span>
 
 				<div class="slide-holder content">
-					<blockquote>
-						We focus on the individual: we recognize that every situation is unique, and we respond by providing tailored approaches to meet each
-					</blockquote>
+
+					<?php while(have_rows('mission_seats')): the_row();?>
 
 					<blockquote>
-						Pellentesque placerat orci dui, ut molestie sem tincidunt a. Duis commodo molestie neque, quis facilisis nibh venenatis non.
+						<?php the_sub_field('message'); ?>
 					</blockquote>
 
-					<blockquote>
-						Sed vestibulum, leo at gravida fringilla, sem quam dictum magna, vitae posuere arcu diam gravida magna. Nullam condimentum, lorem ut vestibulum ornare;
-					</blockquote>
+					<?php endwhile; ?>
+
 				</div>
 
 			</div>
 
+			<?php endif; ?>
+
 		</div>
 
 	</section>
+
+	<?php endif; ?>
+
+
+
+	<?php if(get_field('show_about')) :?>
 
 	<section id="about">
 
 		<div class="midwrapper">
 
 			<div class="group">
-				<h3 class="title">About Equinoxe</h3>
-				<a href="#readmission" class="read">Find Out More</a>
+				<h3 class="title"><?php the_field('about_title'); ?></h3>
+				<a href="#readmission" class="read"><?php the_field('about_link_text'); ?></a>
 			</div>
 			<div class="content">
-				<p>Equinoxe LifeCare is an ISO 9001:2008 certified health care management company. We have pioneered a fully integrated system of tailored services, incorporating both public and private resources, with the objective of improving the quality of life and wellbeing of our clients and their families.</p>
-				<p>We offer organizations and individuals access to our leading health, wellness and mental health counselling services, and fellow health care providers access to technology based consultation and monitoring platforms, all with the goal of encouraging a healthy</p>
+				<?php
+					$post = get_page(get_ID_by_slug('about'));
+					html5wp_excerpt('html5wp_custom_post');
+					wp_reset_postdata($post);
+				?>
 			</div>
 
 		</div>
 
 	</section>
+
+	<?php endif; ?>
+
+
+
+	<?php if(get_field('show_call_us')) :?>
 
 	<section id="givecall">
 
 		<div class="midwrapper">
 
-			<h4 class="title">You can reach us anytime 24 / 7 at</h4>
-			<div class="phone">1-800-890-4200</div>
+			<h4 class="title"><?php the_field('call_us_title'); ?></h4>
+			<div class="phone"><?php the_field('call_us_phone'); ?></div>
 
 		</div>
 
 	</section>
+
+	<?php endif; ?>
+
+
+
+	<?php if(get_field('show_sponsors')) :?>
 
 	<section id="sponsors">
 
 		<div class="midwrapper">
 
-			<h5 class="title">Accreditations</h5>
+			<h5 class="title"><?php echo get_field('sponsors_title'); ?></h5>
+
+			<?php if(have_rows('sponsors')): ?>
 
 			<ul>
+
+				<?php while(have_rows('sponsors')): the_row();?>
+
 				<li>
-					<a href="#sponsor">
-						<img src="<?php echo get_template_directory_uri(); ?>/img/sponsors/thumb_01.gif" alt="sponsor_01" />
-						<span>CHCA</span>
+					<a href="<?php echo get_sub_field('url') ?>">
+						<?php
+						$logo = get_sub_field('logo');
+						if(count($logo) > 0) echo '<img src="'.$logo['url'].'" alt="'.$logo['title'].'"/>';
+						?>
+
+						<span><?php echo get_sub_field('title') ?></span>
 					</a>
 				</li>
-				<li>
-					<a href="#sponsor">
-						<img src="<?php echo get_template_directory_uri(); ?>/img/sponsors/thumb_02.gif" alt="sponsor_02" />
-						<span>GCM</span>
-					</a>
-				</li>
-				<li>
-					<a href="#sponsor">
-						<img src="<?php echo get_template_directory_uri(); ?>/img/sponsors/thumb_03.gif" alt="sponsor_03" />
-						<span>ISO</span>
-					</a>
-				</li>
-				<li>
-					<a href="#sponsor">
-						<img src="<?php echo get_template_directory_uri(); ?>/img/sponsors/thumb_04.gif" alt="sponsor_04" />
-						<span>UEC</span>
-					</a>
-				</li>
-				<li>
-					<a href="#sponsor">
-						<img src="<?php echo get_template_directory_uri(); ?>/img/sponsors/thumb_05.gif" alt="sponsor_05" />
-						<span>NAPGCM</span>
-					</a>
-				</li>
+
+				<?php endwhile; ?>
+
 			</ul>
+
+			<?php endif; ?>
 
 		</div>
 
 	</section>
+
+	<?php endif; ?>
+
+
 
 <?php get_footer(); ?>

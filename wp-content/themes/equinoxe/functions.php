@@ -220,14 +220,26 @@ function html5wp_pagination()
     ));
 }
 
-// Custom Excerpts
-function html5wp_index($length) // Create 20 Word Callback for Index page Excerpts, call using html5wp_excerpt('html5wp_index');
-{
-    return 20;
+// Get a WordPress Page ID with the Slug
+function get_ID_by_slug($page_slug) {
+    $page = get_page_by_path($page_slug);
+    if ($page) {
+        return $page->ID;
+    } else {
+        return null;
+    }
 }
 
 // Create 40 Word Callback for Custom Post Excerpts, call using html5wp_excerpt('html5wp_custom_post');
 function html5wp_custom_post($length)
+{
+    return 40;
+}
+function html5wp_tile_front($length)
+{
+    return 20;
+}
+function html5wp_tile_back($length)
 {
     return 40;
 }
@@ -245,7 +257,7 @@ function html5wp_excerpt($length_callback = '', $more_callback = '')
     $output = get_the_excerpt();
     $output = apply_filters('wptexturize', $output);
     $output = apply_filters('convert_chars', $output);
-    $output = '<p>' . $output . '</p>';
+    $output = '<p>'.$output.'</p>';
     echo $output;
 }
 
@@ -342,6 +354,10 @@ function html5blankcomments($comment, $args, $depth)
 \*------------------------------------*/
 
 // Add Actions
+add_action( 'init', 'my_add_excerpts_to_pages' );
+function my_add_excerpts_to_pages() {
+     add_post_type_support( 'page', 'excerpt' );
+}
 add_action('init', 'html5blank_header_scripts'); // Add Custom Scripts to wp_head
 add_action('wp_print_scripts', 'html5blank_conditional_scripts'); // Add Conditional Page Scripts
 add_action('get_header', 'enable_threaded_comments'); // Enable Threaded Comments

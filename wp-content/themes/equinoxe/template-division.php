@@ -1,10 +1,10 @@
 <?php /* Template Name: Division */ get_header(); ?>
 
-	<?php if(get_field('show_slider')) :?>
+	<?php if(get_field('show_slider') && have_rows('seats')) :?>
 
 	<section id="slider">
 
-		<?php while(the_repeater_field('seats')): ?>
+		<?php while(have_rows('seats')): the_row();?>
 
 		<div class="slide">
 
@@ -48,8 +48,6 @@
 
 					<?php the_content(); ?>
 
-					<br class="clear">
-
 					<?php edit_post_link(); ?>
 
 				</article>
@@ -72,6 +70,60 @@
 		</div>
 
 	</section>
+
+	<?php
+	$posts = get_field('services');
+	if(count($posts) > 0):	?>
+
+	<section class="midwrapper">
+
+		<div id="tiles">
+
+			<?php foreach( $posts as $post): ?>
+			<?php setup_postdata($post); ?>
+
+			<div class="tile">
+				<div class="scene">
+
+					<div class="face front">
+						<div class="inner">
+							<h3 class="title"><?php echo get_the_title(); ?></h3>
+							<?php html5wp_excerpt('html5wp_tile_front'); ?>
+						</div>
+					</div>
+
+					<div class="face back">
+						<h3 class="title"><?php echo get_the_title(); ?></h3>
+						<?php html5wp_excerpt('html5wp_tile_back'); ?>
+						<a href="<?php echo get_permalink(); ?>" class="more">View More</a>
+					</div>
+
+					<?php
+						$bg = get_the_post_thumbnail(get_the_ID(), 'full', array(
+							'title' => get_the_title(),
+							'class' => 'bg'
+						));
+
+						if($bg){
+							echo $bg;
+						} else{
+							// echo '<img src="'.get_bloginfo('template_url').'/img/thumb.png" alt="'.get_the_title().'"/>';
+						}
+					?>
+
+				</div>
+			</div>
+
+			<?php endforeach; ?>
+			<?php wp_reset_postdata();?>
+
+			<a href="#full" id="expander">For a full list of our services click here <span class="icon-arrow-down6"></span></a>
+
+		</div>
+
+	</section>
+
+	<?php endif; ?>
 
 
 <?php get_footer(); ?>
