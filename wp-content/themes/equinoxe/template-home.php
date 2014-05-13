@@ -224,16 +224,16 @@
 
 		<div class="midwrapper">
 
-			<h5 class="title"><?php echo get_field('sponsors_title'); ?></h5>
+			<h5 class="title"><?php echo get_field('sponsors_title', 'options'); ?></h5>
 
-			<?php if(have_rows('sponsors')): ?>
+			<?php if(have_rows('sponsors', 'options')): ?>
 
 			<ul>
 
-				<?php while(have_rows('sponsors')): the_row();?>
+				<?php while(have_rows('sponsors', 'options')): the_row();?>
 
 				<li>
-					<a href="<?php echo get_sub_field('url') ?>">
+					<a href="<?php echo get_sub_field('url') ?>" target="_blank">
 						<?php
 						$logo = get_sub_field('logo');
 						if(count($logo) > 0) echo '<img src="'.$logo['url'].'" alt="'.$logo['title'].'"/>';

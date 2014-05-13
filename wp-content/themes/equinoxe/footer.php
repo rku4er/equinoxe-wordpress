@@ -42,35 +42,17 @@
 
 
 
+						<?php if(get_field('newsletter_form', 'options')): ?>
+
 						<div id="newsletter">
-
-							<h6 class="title">sign up for our newsletter</h6>
-
-							<form action="#">
-
-								<p class="form-row">
-									<input type="email" placeholder="Email"/>
-									<button type="submit">Submit</button>
-								</p>
-
-								<p class="form-row">
-									<label>
-										<input rel="icheckIgnore" type="radio" name="newsletter" value="Individual" checked="checked"/>
-										Individual
-									</label>
-									<label>
-										<input rel="icheckIgnore" type="radio" name="newsletter" value="Organizational" />
-										Organizational
-									</label>
-									<label>
-										<input rel="icheckIgnore" type="radio" name="newsletter" value="Technology" />
-										Technology
-									</label>
-								</p>
-
-							</form>
-
+							<?php
+							$form = get_field('newsletter_form', 'options');
+	                    	gravity_form($form->id, true, true, false, '', true, 1);
+							?>
 						</div>
+
+						<?php endif;?>
+
 
 					</div>
 
@@ -116,12 +98,12 @@
 
 		<!-- analytics -->
 		<script>
-		(function(f,i,r,e,s,h,l){i['GoogleAnalyticsObject']=s;f[s]=f[s]||function(){
+		/*(function(f,i,r,e,s,h,l){i['GoogleAnalyticsObject']=s;f[s]=f[s]||function(){
 		(f[s].q=f[s].q||[]).push(arguments)},f[s].l=1*new Date();h=i.createElement(r),
 		l=i.getElementsByTagName(r)[0];h.async=1;h.src=e;l.parentNode.insertBefore(h,l)
 		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 		ga('create', 'UA-XXXXXXXX-XX', 'equinoxe.loc');
-		ga('send', 'pageview');
+		ga('send', 'pageview');*/
 		</script>
 
 	</body>

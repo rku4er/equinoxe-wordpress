@@ -69,152 +69,54 @@
 
 	</section>
 
+
+	<?php if(get_field('show_team')) :?>
+
 	<section id="team">
 
 		<div class="midwrapper headings">
 
 			<h3>Who we are</h3>
 
+			<?php if(have_rows('staff')): ?>
+
 			<ul class="group">
 
+				<?php while(have_rows('staff')): the_row();?>
+
 				<li>
-					<a href="#face">
-						<header>
-							<figure class="face">
-								<img src="images/avatar.jpg" alt="" />
-							</figure>
-							<span class="title">Danielle Pollack</span>
-							<span class="position">Founder</span>
-						</header>
-						<span class="summary">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
-					</a>
-				</li>
-				<li>
-					<a href="#face">
-						<header>
-							<figure class="face">
-								<img src="images/avatar.jpg" alt="" />
-							</figure>
-							<span class="title">Danielle Pollack</span>
-							<span class="position">Founder</span>
-						</header>
-						<span class="summary">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
-					</a>
-				</li>
-				<li>
-					<a href="#face">
-						<header>
-							<figure class="face">
-								<img src="images/avatar.jpg" alt="" />
-							</figure>
-							<span class="title">Danielle Pollack</span>
-							<span class="position">Founder</span>
-						</header>
-						<span class="summary">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
-					</a>
-				</li>
-				<li>
-					<a href="#face">
-						<header>
-							<figure class="face">
-								<img src="images/avatar.jpg" alt="" />
-							</figure>
-							<span class="title">Danielle Pollack</span>
-							<span class="position">Founder</span>
-						</header>
-						<span class="summary">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
-					</a>
-				</li>
-				<li>
-					<a href="#face">
-						<header>
-							<figure class="face">
-								<img src="images/avatar.jpg" alt="" />
-							</figure>
-							<span class="title">Danielle Pollack</span>
-							<span class="position">Founder</span>
-						</header>
-						<span class="summary">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
-					</a>
-				</li>
-				<li>
-					<a href="#face">
-						<header>
-							<figure class="face">
-								<img src="images/avatar.jpg" alt="" />
-							</figure>
-							<span class="title">Danielle Pollack</span>
-							<span class="position">Founder</span>
-						</header>
-						<span class="summary">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
-					</a>
-				</li>
-				<li>
-					<a href="#face">
-						<header>
-							<figure class="face">
-								<img src="images/avatar.jpg" alt="" />
-							</figure>
-							<span class="title">Danielle Pollack</span>
-							<span class="position">Founder</span>
-						</header>
-						<span class="summary">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
-					</a>
-				</li>
-				<li>
-					<a href="#face">
-						<header>
-							<figure class="face">
-								<img src="images/avatar.jpg" alt="" />
-							</figure>
-							<span class="title">Danielle Pollack</span>
-							<span class="position">Founder</span>
-						</header>
-						<span class="summary">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
-					</a>
-				</li>
-				<li>
-					<a href="#face">
-						<header>
-							<figure class="face">
-								<img src="images/avatar.jpg" alt="" />
-							</figure>
-							<span class="title">Danielle Pollack</span>
-							<span class="position">Founder</span>
-						</header>
-						<span class="summary">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
-					</a>
-				</li>
-				<li>
-					<a href="#face">
-						<header>
-							<figure class="face">
-								<img src="images/avatar.jpg" alt="" />
-							</figure>
-							<span class="title">Danielle Pollack</span>
-							<span class="position">Founder</span>
-						</header>
-						<span class="summary">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
-					</a>
-				</li>
-				<li>
-					<a href="#face">
-						<header>
-							<figure class="face">
-								<img src="images/avatar.jpg" alt="" />
-							</figure>
-							<span class="title">Danielle Pollack</span>
-							<span class="position">Founder</span>
-						</header>
-						<span class="summary">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
-					</a>
+					<header>
+						<figure class="face">
+							<?php
+							$thumb = get_sub_field('thumb');
+							if($thumb):
+							?>
+
+							<img src="<?php echo $thumb[0]; ?>" alt="">
+
+							<?php endif; ?>
+						</figure>
+						<span class="title"><?php echo get_sub_field('name') ?></span>
+						<span class="position"><?php echo get_sub_field('position') ?></span>
+					</header>
+					<div class="summary"><?php echo get_sub_field('bio'); ?></div>
 				</li>
 
+				<?php endwhile; ?>
+
 			</ul>
+
+			<?php endif; ?>
 
 		</div>
 
 	</section>
+
+	<?php endif; ?>
+
+
+
+	<?php if(get_field('show_manage_care')) :?>
 
 	<section id="manage" class="midwrapper content headings group">
 
@@ -223,6 +125,47 @@
 		<p><img src="<?php echo get_bloginfo('template_url') ?>/img/manage-care.png" alt="manage care" class="aligncenter"/></p>
 
 	</section>
+
+	<?php endif; ?>
+
+
+
+	<?php if(get_field('show_sponsors')) :?>
+
+	<section id="sponsors">
+
+		<div class="midwrapper">
+
+			<h5 class="title"><?php echo get_field('sponsors_title', 'options'); ?></h5>
+
+			<?php if(have_rows('sponsors', 'options')): ?>
+
+			<ul>
+
+				<?php while(have_rows('sponsors', 'options')): the_row();?>
+
+				<li>
+					<a href="<?php echo get_sub_field('url') ?>" target="_blank">
+						<?php
+						$logo = get_sub_field('logo');
+						if(count($logo) > 0) echo '<img src="'.$logo['url'].'" alt="'.$logo['title'].'"/>';
+						?>
+
+						<span><?php echo get_sub_field('title') ?></span>
+					</a>
+				</li>
+
+				<?php endwhile; ?>
+
+			</ul>
+
+			<?php endif; ?>
+
+		</div>
+
+	</section>
+
+	<?php endif; ?>
 
 
 <?php get_footer(); ?>

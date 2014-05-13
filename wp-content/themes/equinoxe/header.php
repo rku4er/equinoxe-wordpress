@@ -23,7 +23,7 @@
         </script>
 
 	</head>
-	<body <?php body_class(); ?> data-templateurl="<?php echo get_template_directory_uri(); ?>">
+	<body <?php body_class(); ?> data-marker="<?php echo get_field('marker_icon', get_ID_by_slug('contact')); ?>" data-latitude="<?php echo get_field('latitude', get_ID_by_slug('contact')); ?>" data-longitude="<?php echo get_field('longitude', get_ID_by_slug('contact')); ?>">
 
         <!-- page -->
         <div id="page">
@@ -80,8 +80,3 @@
             <!-- main -->
             <div id="main" role="main">
 
-                <?php
-                    /*$form = get_field('your_form_field');
-                    gravity_form_enqueue_scripts($form->id, true);
-                    gravity_form($form->id, true, true, false, '', true, 1); */
-                ?>

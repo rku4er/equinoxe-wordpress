@@ -22,7 +22,7 @@
         });
 
         // Custom Checkboxes
-        $('input[type="radio"], input[type="checkbox"]').not('[rel="icheckIgnore"]').not('.showMenu').iCheck({
+        $('#main').find('input[type="radio"], input[type="checkbox"]').not('[rel="icheckIgnore"]').not('.showMenu').iCheck({
             checkboxClass: 'icheckbox-custom',
             radioClass: 'iradio-custom',
             increaseArea: false
@@ -114,7 +114,6 @@
                 'left' : 0,
                 'background' : '#000',
                 'opacity' : '.5',
-                'cursor' : 'pointer',
                 'display' : 'none',
                 'z-index' : 98
             });
@@ -155,7 +154,7 @@
             function fireTip(obj){
                 clearTimeout(timer);
 
-                if(tooltip.data('index') != $(obj).closest('li').index()){
+                if(tooltip.data('index') != $(obj).index()){
                     tooltip.html($(obj).data('content'));
                     setPosition(tooltip);
                 }
@@ -165,7 +164,7 @@
                     tooltip.fadeIn(200);
                 }
 
-                tooltip.data('index', $(obj).closest('li').index());
+                tooltip.data('index', $(obj).index());
 
             }
 
@@ -176,7 +175,7 @@
             });
 
             // Team list tooltip
-            $( '#team a' ).each( function() {
+            $( '#team li' ).each( function() {
                 var self = $(this),
                     content = self.html();
 
@@ -225,10 +224,14 @@
         // Google Maps
         if(typeof google != "undefined"){
 
-            var myLatlng = new google.maps.LatLng(45.475734, -73.601348);
-            var image = $('body').data('templateurl') + '/img/bg/marker.png';
+            var myLatlng = new google.maps.LatLng($('body').data('latitude'), $('body').data('longitude'));
+            var image = $('body').data('marker');
             var marker;
             var map;
+
+            $('body').removeAttr('data-latitude');
+            $('body').removeAttr('data-longitude');
+            $('body').removeAttr('data-marker');
 
             function initialize() {
                 var mapOptions = {

@@ -4,90 +4,75 @@
 
 		<div class="midwrapper">
 
+			<?php if(get_field('show_contact_sections') && have_rows('contact_sections')): ?>
+
 			<ul id="sections">
+
+				<?php while(have_rows('contact_sections')): the_row();?>
+
 				<li>
 					<figure class="icon">
-						<span class="icon-earth"></span>
+						<span class="icon-<?php echo get_sub_field('icon_slug'); ?>"></span>
 					</figure>
-					<h2 class="title">Our Address</h2>
-					<p>
-						Equinoxe LifeCare - Montreal <br />
-						235-4999 rue Sainte-Catherine 0 <br />
-						Montreal, QC H3Z 1T3
-					</p>
+					<h2 class="title"><?php echo get_sub_field('title'); ?></h2>
+					<p><?php echo get_sub_field('content'); ?></p>
 				</li>
-				<li>
-					<figure class="icon">
-						<span class="icon-phone"></span>
-					</figure>
-					<h2 class="title">Telephone</h2>
-					<p>
-						Tel: 514.935.2600 <br />
-						Toll Free: 1.877.935.2600 <br />
-						Fax: 514-935-0230
-					</p>
-				</li>
-				<li>
-					<figure class="icon">
-						<span class="icon-paperclip"></span>
-					</figure>
-					<h2 class="title">Email</h2>
-					<p>
-						info@equinoxlifecare.com <br />
-						press@equinoxelifecare.com
-					</p>
-				</li>
+
+				<?php endwhile; ?>
+
 			</ul>
+
+			<?php endif; ?>
 
 			<div class="group content headings">
 
+				<?php if(get_field('show_contacts')): ?>
+
 				<section id="find-us">
 
-					<h3 class="title">Find Us On</h3>
+					<h3 class="title"><?php echo get_field('contacts_title'); ?></h3>
 
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae tempor libero. Nam sit amet pharetra enim. Sed elit lorem, molestie eu lectus in, sagittis hendrerit tortor. Etiam nec arcu quis augue sagittis dapibus. Morbi vel odio ligula. Aliquam rhoncus aliquet pretium. Cras sagittis lectus nec ipsum tempus, non mattis augue vestibulum. Nullam libero diam, porttitor et tortor a, sagittis congue enim.</p>
+					<?php echo get_field('contacts'); ?>
 
 				</section>
+
+				<?php endif; ?>
+
+
+
+				<?php if(get_field('contact_form', 'options')): ?>
 
 				<section id="contact-form">
 
-					<h3 class="title">Get in Touch</h3>
-
-					<form action="#">
-
-						<p class="form-row">
-							<input type="text" placeholder="Your Name"/>
-						</p>
-
-						<p class="form-row">
-							<input type="email" placeholder="Email"/>
-						</p>
-
-						<p class="form-row">
-							<textarea cols="50" rows="5" placeholder="Your Message"></textarea>
-						</p>
-
-						<p class="form-row buttons">
-							<button type="submit">Submit</button>
-						</p>
-
-					</form>
+					<?php
+	                    $form = get_field('contact_form', 'options');
+	                    gravity_form($form->id, true, true, false, '', true, 1);
+	                ?>
 
 				</section>
+
+				<?php endif; ?>
 
 			</div>
 
 		</div>
 
-		<br />
-		<br />
-		<br />
+
+		<?php if(get_field('show_maps')): ?>
 
 		<div id="map_holder">
 
-			<div class="wrapper" id="map"><img src="<?php echo get_bloginfo('template_url') ?>/img/gmap.jpg" alt="" /></div>
+			<div class="wrapper" id="map">
+				<?php
+				$thumb = wp_get_attachment_image_src( get_field('map_placeholder'), 'full');
+				if($thumb): ?>
+				<img src="<?php echo $thumb[0]; ?>" alt="location" title="Click to view interactive map"/>
+				<?php endif; ?>
+			</div>
 
 		</div>
+
+		<?php endif; ?>
 
 	</section>
 

@@ -302,6 +302,10 @@ textarea {
     overflow: auto;
     vertical-align: top;
 }
+textarea:focus,
+input:focus{
+    outline: 0;
+}
 /* ==========================================================================
    Tables
    ========================================================================== */
@@ -453,7 +457,15 @@ a:hover {
 .content input[type="search"].error,
 .content input[type="file"].error,
 .content select.error,
-.content textarea.error {
+.content textarea.error,
+.content .gfield_error input[type="text"],
+.content .gfield_error input[type="password"],
+.content .gfield_error input[type="email"],
+.content .gfield_error input[type="number"],
+.content .gfield_error input[type="search"],
+.content .gfield_error input[type="file"],
+.content .gfield_error select,
+.content .gfield_error textarea{
     border-color:#e3928f;
     background-color: #fef4f4;
 }
@@ -2270,17 +2282,71 @@ html.touch #divisions .technology-based-care .title a.hover span{
 	width:40%;
 	margin-top:2em;
 }
-#newsletter .title{
-	font-family: OpenSansSemibold, Arial, sans-serif;
-	font-weight:normal;
-	color:#fff;
-	font-size:1.4em;
-	text-transform:uppercase;
-	margin:0;
+#newsletter .gform_wrapper{
+    position: relative;
 }
-#newsletter .form-row{
+#newsletter .gform_title{
+    font-family: OpenSansSemibold, Arial, sans-serif;
+    font-weight:normal;
+    color:#fff;
+    font-size:1.4em;
+    text-transform:uppercase;
+    margin:0;
+}
+#newsletter .gplaceholder >label:first-child{
+    display: none;
+}
+#newsletter .gfield{
 	font-size:1em;
-	overflow:hidden;
+}
+#newsletter .gfield_radio{
+    position: absolute;
+    top: 6.5em;
+    left: 0;
+    width: 100%;
+}
+#newsletter .gfield_radio input[type="radio"],
+#newsletter .gfield_radio label{
+    vertical-align: middle;
+    font-size: 1.3em;
+}
+#newsletter .gfield_radio input[type="radio"]{
+    margin-right: 0.2em;
+}
+#newsletter .gfield_radio label{
+    margin-right: 1em;
+}
+#newsletter .gfield_radio li{
+    display: inline;
+}
+#newsletter .validation_error{
+    display: none;
+}
+#newsletter .validation_message{
+    position: absolute;
+    top: 6.5em;
+    left: 0;
+    background-color: #f00;
+    color: #fff;
+    font-size: 1.4em;
+    padding: 0 0.2em;
+    width: 100%;
+    text-align: center;
+}
+#newsletter .gform_confirmation_message{
+    font-size: 1.4em;
+    font-family: HelveticaBold;
+    padding: 1em;
+    border: 1px solid #ccc;
+}
+#newsletter .gform_ajax_spinner{
+    margin-left: 1em;
+}
+
+#newsletter ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 #newsletter input[type="text"],
 #newsletter input[type="email"]{
@@ -2391,16 +2457,14 @@ html.touch #divisions .technology-based-care .title a.hover span{
 #team ul{
 	list-style:none;
 	padding:0;
-	margin:0 -10px;
+	margin:0 -10px 2em;
 	text-align:center;
 	font-size:1.7em;
 }
 #team li{
-	display:inline;
-}
-#team a{
 	text-decoration:none;
 	color:#9c9c9c;
+    cursor: pointer;
 
 	display:inline-block;
 	padding:0 10px;
@@ -2462,16 +2526,24 @@ html.touch #divisions .technology-based-care .title a.hover span{
 	   -moz-border-radius: 50%;
 	        border-radius: 50%;
 }
-#team a:hover .face:before{
-	border-color:#f37122;
-	border-width:1em;
-	opacity:1;
-	visibility:visible;
+#team li:hover .face:before{
+    border-color:#f37122;
+    border-width:1em;
+    opacity:1;
+    visibility:visible;
+}
+#team li:hover .title,
+#team li:hover .position{
+    color: #f37122;
 }
 #team .title,
 #team .position{
 	display:block;
 	margin:1em 0;
+
+    -webkit-transition: all .2s ease;
+    -moz-transition: all .2s ease;
+    transition: all .2s ease;
 }
 #team .title{
 	font-family: MontserratBold, Arial, sans-serif;
@@ -2897,23 +2969,46 @@ html.touch #listing li.hover{
 	max-width: 280px;
 	margin:0 auto;
 }
-#contact-form .title{
+#contact-form ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 1em;
+}
+#contact-form .gform_title{
 	text-transform: none;
 	font-size:1.6em;
 	margin:1em 0;
 	padding-bottom:0.8em;
 }
-#contact-form .title:before{
+#contact-form .gform_title:before{
 	height:3px;
 	width:3em;
 }
-#contact-form .form-row{
+#contact-form .gfield{
 	font-size:1em;
 }
-#contact-form .form-row input[type="text"],
-#contact-form .form-row input[type="email"],
-#contact-form .form-row textarea{
+#contact-form .gform_footer{
+    margin-top: 0.5em;
+}
+#contact-form .validation_error,
+#contact-form .validation_message{
+    color: #f00;
+    font-size: 1.4em;
+    margin-bottom: 1em;
+}
+#contact-form .gform_confirmation_message{
+    font-size: 2.5em;
+    font-family: OpenSansLight;
+    text-align: center;
+}
+#contact-form input[type="text"],
+#contact-form input[type="email"],
+#contact-form textarea{
 	font-size:1.4em;
+}
+#contact-form textarea{
+    height: 140px;
 }
 #contact-form button[type="submit"],
 #contact-form input[type="submit"],
@@ -2989,6 +3084,7 @@ html.touch #listing li.hover{
 	height:0;
 	padding-bottom:50%;
 	position:relative;
+    margin-top: 5em;
 }
 #map_holder .wrapper{
 	position:absolute;
@@ -3679,11 +3775,11 @@ html.touch #listing li.hover{
 		width:60%;
 		max-width: none;
 	}
-	#contact-form .title{
+	#contact-form .gform_title{
 		font-size:1.8em;
 		text-align:left;
 	}
-	#contact-form .title:before{
+	#contact-form .gform_title:before{
 		right:auto;
 		left:0;
 	}
@@ -3691,13 +3787,13 @@ html.touch #listing li.hover{
 	#contact-form input[type="submit"],
 	#contact-form input[type="button"],
 	#contact-form .btn,
-	#contact-form .form-row input[type="text"],
-	#contact-form .form-row input[type="email"],
-	#contact-form .form-row textarea{
+	#contact-form input[type="text"],
+	#contact-form input[type="email"],
+	#contact-form textarea{
 		font-size:1.8em;
 	}
-	#contact-form .form-row input[type="text"],
-	#contact-form .form-row input[type="email"]{
+	#contact-form input[type="text"],
+	#contact-form input[type="email"]{
 		width:320px;
 	}
 	#contact-form button[type="submit"],
