@@ -88,11 +88,11 @@
 					<header>
 						<figure class="face">
 							<?php
-							$thumb = get_sub_field('thumb');
+							$thumb = wp_get_attachment_image_src( get_sub_field('thumb'), 'team-size');
 							if($thumb):
 							?>
 
-							<img src="<?php echo $thumb[0]; ?>" alt="">
+							<img src="<?php echo $thumb[0]; ?>" alt="face">
 
 							<?php endif; ?>
 						</figure>

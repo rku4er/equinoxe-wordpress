@@ -284,17 +284,13 @@
 
         // MainNavCtrl
         (function mainNavCtrl(){
-            var menu = $('#mainnav'),
-                header = $('#header'),
+            var header = $('#header'),
                 main = $('#main'),
                 footer = $('#footer'),
                 button = $('#expandMainNav');
 
             button.on('change', function(){
                 if($(this).is(':checked')){
-                    menu.css({
-
-                    });
 
                     header.css({
                         'position' : 'absolute'
@@ -303,9 +299,6 @@
                     main.hide();
                     footer.hide();
                 }else{
-                    menu.css({
-
-                    });
 
                     header.css({
                         'position' : 'fixed'
