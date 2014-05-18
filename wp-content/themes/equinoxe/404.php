@@ -1,24 +1,30 @@
 <?php get_header(); ?>
 
-	<main role="main">
-		<!-- section -->
-		<section>
+	<div id="content-holder" class="single-listing">
 
-			<!-- article -->
-			<article id="post-404">
+		<div class="midwrapper group">
 
-				<h1><?php _e( 'Page not found', 'html5blank' ); ?></h1>
-				<h2>
-					<a href="<?php echo home_url(); ?>"><?php _e( 'Return home?', 'html5blank' ); ?></a>
-				</h2>
+			<h1 id="listing-title"><?php the_title(); ?></h1>
 
-			</article>
-			<!-- /article -->
+			<?php get_sidebar(); ?>
 
-		</section>
-		<!-- /section -->
-	</main>
+			<section id="content" class="content group">
 
-<?php get_sidebar(); ?>
+				<!-- article -->
+				<article id="post-404">
+
+					<h1><?php _e( 'Page not found', 'html5blank' ); ?></h1>
+					<h2>
+						<a href="<?php echo home_url(); ?>"><?php _e( 'Return home?', 'html5blank' ); ?></a>
+					</h2>
+
+				</article>
+				<!-- /article -->
+
+			</section>
+
+		</div>
+
+	</div>
 
 <?php get_footer(); ?>

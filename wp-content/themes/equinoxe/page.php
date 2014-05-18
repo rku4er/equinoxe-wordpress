@@ -6,34 +6,6 @@
 
 			<h1 id="listing-title"><?php the_title(); ?></h1>
 
-			<!-- <aside id="sidebar">
-
-				<figure class="thumb">
-					<img src="images/thumb.png" alt="" />
-				</figure>
-
-				<section class="timestamp">
-					<div class="wrapper">
-						<span class="day">6</span>
-						<span class="time">
-							<span class="line-1">Thu, 6 February</span>
-							<span class="line-2">7:00</span>
-						</span>
-					</div>
-				</section>
-
-				<section class="box content">
-					<a href="#btn" class="btn">Attend</a>
-				</section>
-
-				<section class="box location">
-					Convension Center <br />
-					555 Main St floor 7 <br />
-					New York. NY 10002
-				</section>
-
-			</aside> -->
-
 			<?php get_sidebar(); ?>
 
 			<section id="content" class="content group">

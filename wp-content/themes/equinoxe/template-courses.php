@@ -41,12 +41,14 @@
 	<section id="blog">
 
 	<?php
+	$postsPerPage = get_field('courses_to_display') ? get_field('courses_to_display') : 6;
+
 	$args = array(
 		'post_type' => 'courses',
 		'order' => 'DESC',
 		'orderby' => $orderby,
 		'paged' => get_query_var('page'),
-		'posts_per_page' => -1
+		'posts_per_page' => $postsPerPage
 	);
 	$posts = get_posts( $args );
 

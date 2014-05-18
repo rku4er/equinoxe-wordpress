@@ -1,45 +1,129 @@
 <?php /* Template Name: Service */ get_header(); ?>
 
-	<main role="main">
-		<!-- section -->
-		<section>
+	<div id="content-holder">
 
-			<h1><?php the_title(); ?></h1>
+		<div class="midwrapper group">
 
-		<?php if (have_posts()): while (have_posts()) : the_post(); ?>
+			<?php
 
-			<!-- article -->
-			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+			?>
 
-				<?php the_content(); ?>
+			<aside id="sidenav">
 
-				<?php comments_template( '', true ); // Remove if you don't want comments ?>
+				<h3 class="sidehat home">
+					<a href="<?php echo get_permalink($post->post_parent); ?>">
+						<span><?php echo get_the_title($post->post_parent); ?></span>
+						<figure>
+							<?php
+							$thumb = wp_get_attachment_image_src( get_field('division_icon', $post->post_parent), 'full');
+							if($thumb): ?>
+							<img src="<?php echo $thumb[0]; ?>" alt="icon">
+							<?php endif; ?>
+						</figure>
+					</a>
+				</h3>
 
-				<br class="clear">
+				<?php
+					wp_nav_menu( array(
+					'theme_location' => 'header-menu',
+					'sub_menu' => true,
+					'menu_class' => 'sidenav'
+					));
+				?>
 
-				<?php edit_post_link(); ?>
+			</aside>
 
-			</article>
-			<!-- /article -->
+			<section id="content" class="group">
 
-		<?php endwhile; ?>
+				<div class="content">
 
-		<?php else: ?>
+					<div id="heading" class="home">
 
-			<!-- article -->
-			<article>
+						<div class="inner">
 
-				<h2><?php _e( 'Sorry, nothing to display.', 'html5blank' ); ?></h2>
+							<h1 class="title">
+								<figure>
+									<img src="<?php echo get_bloginfo('template_url'); ?>/img/bg/icon-heart.png" alt="" />
+								</figure>
+								<span><?php the_title(); ?></span>
+							</h1>
 
-			</article>
-			<!-- /article -->
+							<!-- post thumbnail -->
+							<?php if ( has_post_thumbnail()) :?>
+								<?php the_post_thumbnail('heading'); ?>
+							<?php endif; ?>
 
-		<?php endif; ?>
+						</div>
 
-		</section>
-		<!-- /section -->
-	</main>
+					</div>
 
-<?php get_sidebar(); ?>
+					<?php if (have_posts()): while (have_posts()) : the_post(); ?>
+
+						<!-- article -->
+						<article id="post-<?php the_ID(); ?>" <?php post_class('headings'); ?>>
+
+							<?php the_content(); ?>
+
+							<br class="clear">
+
+							<?php edit_post_link(); ?>
+
+						</article>
+						<!-- /article -->
+
+					<?php endwhile; ?>
+
+					<?php else: ?>
+
+						<!-- article -->
+						<article>
+
+							<h2><?php _e( 'Sorry, nothing to display.', 'html5blank' ); ?></h2>
+
+						</article>
+						<!-- /article -->
+
+					<?php endif; ?>
+
+
+
+					<?php if(get_field('show_overview')): ?>
+
+					<section id="colorboard">
+
+						<h2 class="title"><?php the_field('overview_title'); ?></h2>
+
+
+						<?php if(have_rows('overview_sections')): ?>
+						<div class="board-wrapper">
+
+							<?php $i = 0; while(have_rows('overview_sections')): the_row(); $i++;?>
+
+							<div class="board color-<?php echo $i; ?>">
+
+								<h3 class="header"><?php the_sub_field('title'); ?></h3>
+
+								<div class="body">
+
+									<?php the_sub_field('content'); ?>
+
+								</div>
+
+							</div>
+
+							<?php endwhile; ?>
+
+						</div>
+						<?php endif; ?>
+
+					</section>
+
+					<?php endif; ?>
+
+				</section>
+
+			</div>
+
+		</div>
 
 <?php get_footer(); ?>

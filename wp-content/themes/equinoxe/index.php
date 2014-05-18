@@ -1,19 +1,23 @@
 <?php get_header(); ?>
 
-	<main role="main">
-		<!-- section -->
-		<section>
+    <div id="content-holder">
 
-			<h1><?php _e( 'Latest Posts', 'html5blank' ); ?></h1>
+        <div class="midwrapper group">
 
-			<?php get_template_part('loop'); ?>
+            <h1 id="listing-title"><?php _e( 'Latest Posts', 'html5blank' ); ?></h1>
 
-			<?php get_template_part('pagination'); ?>
+            <?php get_sidebar(); ?>
 
-		</section>
-		<!-- /section -->
-	</main>
+            <section id="content" class="content group">
 
-<?php get_sidebar(); ?>
+    			<?php get_template_part('loop'); ?>
+
+    			<?php get_template_part('pagination'); ?>
+
+            </section>
+
+        </div>
+
+    </div>
 
 <?php get_footer(); ?>

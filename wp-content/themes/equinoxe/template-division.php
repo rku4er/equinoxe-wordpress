@@ -71,15 +71,13 @@
 
 	</section>
 
-	<?php
-	$posts = get_field('services');
-	if(count($posts) > 0):	?>
+	<?php if(get_field('services')): ?>
 
 	<section class="midwrapper">
 
 		<div id="tiles">
 
-			<?php foreach( $posts as $post): ?>
+			<?php foreach( get_field('services') as $post): ?>
 			<?php setup_postdata($post); ?>
 
 			<div class="tile">
@@ -99,7 +97,7 @@
 					</div>
 
 					<?php
-						$bg = get_the_post_thumbnail(get_the_ID(), 'full', array(
+						$bg = get_the_post_thumbnail(get_the_ID(), 'custom-size', array(
 							'title' => get_the_title(),
 							'class' => 'bg'
 						));

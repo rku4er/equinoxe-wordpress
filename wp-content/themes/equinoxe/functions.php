@@ -31,8 +31,10 @@ if (function_exists('add_theme_support'))
     add_image_size('large', 700, '', true); // Large Thumbnail
     add_image_size('medium', 250, '', true); // Medium Thumbnail
     add_image_size('small', 120, '', true); // Small Thumbnail
-    add_image_size('custom-size', 106, 106, true); // Custom Thumbnail Size call using the_post_thumbnail('custom-size');
-    add_image_size('team-size', 220, 220, true); // Custom Thumbnail Size call using the_post_thumbnail('custom-size');
+    add_image_size('custom-size', 310, 310, true);
+    add_image_size('team-size', 220, 220, true);
+    add_image_size('heading', 635, 222, true);
+    add_image_size('loop', 100, 100, true);
 
     // Add Support for Custom Backgrounds - Uncomment below if you're going to use
     /*add_theme_support('custom-background', array(
@@ -322,23 +324,28 @@ function html5blankcomments($comment, $args, $depth)
 ?>
     <!-- heads up: starting < for the html tag (li or div) in the next line: -->
     <<?php echo $tag ?> <?php comment_class(empty( $args['has_children'] ) ? '' : 'parent') ?> id="comment-<?php comment_ID() ?>">
+
 	<?php if ( 'div' != $args['style'] ) : ?>
 	<div id="div-comment-<?php comment_ID() ?>" class="comment-body">
 	<?php endif; ?>
-	<div class="comment-author vcard">
-	<?php if ($args['avatar_size'] != 0) echo get_avatar( $comment, $args['180'] ); ?>
-	<?php printf(__('<cite class="fn">%s</cite> <span class="says">says:</span>'), get_comment_author_link()) ?>
-	</div>
-<?php if ($comment->comment_approved == '0') : ?>
-	<em class="comment-awaiting-moderation"><?php _e('Your comment is awaiting moderation.') ?></em>
-	<br />
-<?php endif; ?>
 
-	<div class="comment-meta commentmetadata"><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>">
-		<?php
-			printf( __('%1$s at %2$s'), get_comment_date(),  get_comment_time()) ?></a><?php edit_comment_link(__('(Edit)'),'  ','' );
-		?>
+	<div class="comment-author vcard">
+
+	    <?php if ($args['avatar_size'] != 0) echo get_avatar( $comment, $args['180'] ); ?>
+
+        <span class="comment-meta commentmetadata"><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>">
+            <?php
+                printf( __('%1$s at %2$s'), get_comment_date(),  get_comment_time()) ?></a><?php edit_comment_link(__('(Edit)'),'  ','' );
+            ?>
+        </span>
+
+	   <?php printf(__('<cite class="fn">%s</cite> <span class="says">says:</span>'), get_comment_author_link()); ?>
 	</div>
+
+    <?php if ($comment->comment_approved == '0') : ?>
+    	<em class="comment-awaiting-moderation"><?php _e('Your comment is awaiting moderation.') ?></em>
+    	<br />
+    <?php endif; ?>
 
 	<?php comment_text() ?>
 
@@ -422,27 +429,30 @@ function create_post_type_html5()
     register_post_type('courses', // Register Custom Post Type
         array(
         'labels' => array(
-            'name' => __('Training Courses', 'html5blank'), // Rename these to suit
-            'singular_name' => __('Training Course', 'html5blank'),
+            'name' => __('Courses', 'html5blank'), // Rename these to suit
+            'singular_name' => __('Course', 'html5blank'),
             'add_new' => __('Add New', 'html5blank'),
-            'add_new_item' => __('Add New Training Course', 'html5blank'),
+            'add_new_item' => __('Add New Course', 'html5blank'),
             'edit' => __('Edit', 'html5blank'),
-            'edit_item' => __('Edit Training Course', 'html5blank'),
-            'new_item' => __('New Training Course', 'html5blank'),
-            'view' => __('View Training Course', 'html5blank'),
-            'view_item' => __('View Training Course', 'html5blank'),
-            'search_items' => __('Search Training Courses', 'html5blank'),
-            'not_found' => __('No Training Courses found', 'html5blank'),
-            'not_found_in_trash' => __('No Training Courses found in Trash', 'html5blank')
+            'edit_item' => __('Edit Course', 'html5blank'),
+            'new_item' => __('New Course', 'html5blank'),
+            'view' => __('View Course', 'html5blank'),
+            'view_item' => __('View Course', 'html5blank'),
+            'search_items' => __('Search Courses', 'html5blank'),
+            'not_found' => __('No Courses found', 'html5blank'),
+            'not_found_in_trash' => __('No Courses found in Trash', 'html5blank')
         ),
+
         'public' => true,
         'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
         'has_archive' => true,
+        'menu_position' => 5,
         'supports' => array(
             'title',
             'editor',
             'excerpt',
-            'thumbnail'
+            'thumbnail',
+            'comments'
         ), // Go to Dashboard Custom HTML5 Blank post for supports
         'can_export' => true, // Allows export in Tools > Export
         'taxonomies' => array(
@@ -466,6 +476,58 @@ function html5_shortcode_demo($atts, $content = null)
 function html5_shortcode_demo_2($atts, $content = null) // Demo Heading H2 shortcode, allows for nesting within above element. Fully expandable.
 {
     return '<h2>' . $content . '</h2>';
+}
+
+// add hook
+add_filter( 'wp_nav_menu_objects', 'my_wp_nav_menu_objects_sub_menu', 10, 2 );
+
+// filter_hook function to react on sub_menu flag
+function my_wp_nav_menu_objects_sub_menu( $sorted_menu_items, $args ) {
+  if ( isset( $args->sub_menu ) ) {
+    $root_id = 0;
+
+    // find the current menu item
+    foreach ( $sorted_menu_items as $menu_item ) {
+      if ( $menu_item->current ) {
+        // set the root id based on whether the current menu item has a parent or not
+        $root_id = ( $menu_item->menu_item_parent ) ? $menu_item->menu_item_parent : $menu_item->ID;
+        break;
+      }
+    }
+
+    // find the top level parent
+    if ( ! isset( $args->direct_parent ) ) {
+      $prev_root_id = $root_id;
+      while ( $prev_root_id != 0 ) {
+        foreach ( $sorted_menu_items as $menu_item ) {
+          if ( $menu_item->ID == $prev_root_id ) {
+            $prev_root_id = $menu_item->menu_item_parent;
+            // don't set the root_id to 0 if we've reached the top of the menu
+            if ( $prev_root_id != 0 ) $root_id = $menu_item->menu_item_parent;
+            break;
+          }
+        }
+      }
+    }
+
+    $menu_item_parents = array();
+    foreach ( $sorted_menu_items as $key => $item ) {
+      // init menu_item_parents
+      if ( $item->ID == $root_id ) $menu_item_parents[] = $item->ID;
+
+      if ( in_array( $item->menu_item_parent, $menu_item_parents ) ) {
+        // part of sub-tree: keep!
+        $menu_item_parents[] = $item->ID;
+      } else if ( ! ( isset( $args->show_parent ) && in_array( $item->ID, $menu_item_parents ) ) ) {
+        // not part of sub-tree: away with it!
+        unset( $sorted_menu_items[$key] );
+      }
+    }
+
+    return $sorted_menu_items;
+  } else {
+    return $sorted_menu_items;
+  }
 }
 
 ?>

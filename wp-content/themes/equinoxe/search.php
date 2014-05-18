@@ -1,19 +1,25 @@
 <?php get_header(); ?>
 
-	<main role="main">
-		<!-- section -->
-		<section>
+    <div id="content-holder" class="single-listing">
 
-			<h1><?php echo sprintf( __( '%s Search Results for ', 'html5blank' ), $wp_query->found_posts ); echo get_search_query(); ?></h1>
+        <div class="midwrapper group">
 
-			<?php get_template_part('loop'); ?>
+            <h1 id="listing-title"><?php the_title(); ?></h1>
 
-			<?php get_template_part('pagination'); ?>
+            <?php get_sidebar(); ?>
 
-		</section>
-		<!-- /section -->
-	</main>
+            <section id="content" class="content group">
 
-<?php get_sidebar(); ?>
+    			<h1><?php echo sprintf( __( '%s Search Results for ', 'html5blank' ), $wp_query->found_posts ); echo get_search_query(); ?></h1>
+
+    			<?php get_template_part('loop'); ?>
+
+    			<?php get_template_part('pagination'); ?>
+
+            </section>
+
+        </div>
+
+    </div>
 
 <?php get_footer(); ?>
