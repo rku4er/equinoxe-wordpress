@@ -25,6 +25,21 @@
 	</head>
 	<body <?php body_class(); ?> data-marker="<?php echo get_field('marker_icon', get_ID_by_slug('contact')); ?>" data-latitude="<?php echo get_field('latitude', get_ID_by_slug('contact')); ?>" data-longitude="<?php echo get_field('longitude', get_ID_by_slug('contact')); ?>">
 
+        <style type="text/css">
+            #habla_window_div{
+                border-style: solid;
+                border-color: #fff;
+                border-width: 1px 1px 0;
+                background: #fff;
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                border-radius: 5px;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+            }
+        </style>
+
         <!-- page -->
         <div id="page">
 

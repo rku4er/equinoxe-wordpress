@@ -1179,13 +1179,13 @@ body.home .tile .front .title{
 .tile .back .more:before{
 	background-color:#fff;
 }
-body:not(.home) .tile:nth-child(1) .scene .bg{
+body:not(.home) .tile.full-width .scene .bg{
 	width:auto;
 	right:0;
 	max-width: none;
 	min-width:100%;
 }
-body:not(.home) body:not(.home) .tile:nth-child(1) .tile .front p{
+body:not(.home) body:not(.home) .tile.full-width .tile .front p{
     max-width: 50%;
 }
 /* content */
@@ -1201,7 +1201,11 @@ body:not(.home) body:not(.home) .tile:nth-child(1) .tile .front p{
 	font-size:1.2em;
 }
 .content ul p,
-.content ol p{
+.content ol p,
+.content ul ul,
+.content ul ol,
+.content ol ul,
+.content ol ol{
     font-size: 1em;
 }
 .content ul,
@@ -1267,9 +1271,9 @@ body:not(.home) body:not(.home) .tile:nth-child(1) .tile .front p{
 	background-color:#f37122;
 }
 /* sidehat */
-.sidehat.home{ background-color:#f37122; }
-.sidehat.organization{ background-color:#0099b5; }
-.sidehat.technology{ background-color:#ff0054; }
+.sidehat.home-care{ background-color:#f37122; }
+.sidehat.organizational-health{ background-color:#0099b5; }
+.sidehat.technology-based-care{ background-color:#ff0054; }
 .sidehat{
 	background-color:#ea751f;
 	margin:0;
@@ -2096,10 +2100,38 @@ html.touch #mainnav >ul.menu >li.hover .sub-menu{
 	bottom:0;
 	right:0;
 	overflow:hidden;
-	background-color:#fff;
+	background-color:#272727;
 }
-body.home #slider .slide{
-    background-color: #272727;
+#slider .slide .leftSide,
+#slider .slide .rightSide{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 20%;
+}
+#slider .slide .leftSide{
+    left: 0;
+
+background: -moz-linear-gradient(left,  rgba(39,39,39,1) 0%, rgba(0,0,0,0) 100%);
+background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(39,39,39,1)), color-stop(100%,rgba(0,0,0,0)));
+background: -webkit-linear-gradient(left,  rgba(39,39,39,1) 0%,rgba(0,0,0,0) 100%);
+background: -o-linear-gradient(left,  rgba(39,39,39,1) 0%,rgba(0,0,0,0) 100%);
+background: -ms-linear-gradient(left,  rgba(39,39,39,1) 0%,rgba(0,0,0,0) 100%);
+background: linear-gradient(to right,  rgba(39,39,39,1) 0%,rgba(0,0,0,0) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#272727', endColorstr='#00ffffff',GradientType=1 );
+
+}
+#slider .slide .rightSide{
+    right: 0;
+
+background: -moz-linear-gradient(left,  rgba(0,0,0,0) 0%, rgba(39,39,39,1) 100%);
+background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(39,39,39,1)));
+background: -webkit-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(39,39,39,1) 100%);
+background: -o-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(39,39,39,1) 100%);
+background: -ms-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(39,39,39,1) 100%);
+background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(39,39,39,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#272727',GradientType=1 );
+
 }
 body.home #slider .slide:nth-child(1) .inner:before{
     content: url("img/equinoxe-sun.png");
@@ -2147,12 +2179,12 @@ body.home #slider .slide:nth-child(1) .inner:before{
 			box-shadow: 3em 0 0 #424242, -3em 0 0 #424242;
 }
 #slider .ground{
-	height: 100%;
     margin: 0 auto;
     max-width: none;
     position: absolute;
     right: 0;
     top: 0;
+    left: 0;
 }
 #slider .sun{
 	width:15%;
@@ -2243,8 +2275,8 @@ html.touch #divisions .title a.hover figure:before{
 }
 
 
-html.no-touch #divisions .home-health .title a:hover figure:before,
-html.touch #divisions .home-health .title a.hover figure:before{
+html.no-touch #divisions .home-care .title a:hover figure:before,
+html.touch #divisions .home-care .title a.hover figure:before{
 	-webkit-box-shadow:inset 0 -10px 10px 0 rgba(243,113,34,0.5);
 		    box-shadow:inset 0 -10px 10px 0 rgba(243,113,34,0.5);
 }
@@ -2293,8 +2325,8 @@ html.touch #divisions .title a.hover span{
 	   -moz-transform: translateY(-30px) scale(1.2);
 	        transform: translateY(-30px) scale(1.2);
 }
-html.no-touch #divisions .home-health .title a:hover span,
-html.touch #divisions .home-health .title a.hover span{
+html.no-touch #divisions .home-care .title a:hover span,
+html.touch #divisions .home-care .title a.hover span{
     color:#f37122;
 }
 html.no-touch #divisions .organizational-health .title a:hover span,
@@ -2306,13 +2338,17 @@ html.touch #divisions .technology-based-care .title a.hover span{
     color:#ff0054;
 }
 
-#divisions .home-health{ background-color:#f37122; }
+#divisions .home-care{ background-color:#f37122; }
 #divisions .organizational-health{ background-color:#0099b5; }
 #divisions .technology-based-care{ background-color:#ff0054; }
 /* tiles */
 #tiles{
 	margin:-0.5em 0 0;
 	overflow:hidden;
+
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    transition: all .5s ease;
 }
 /* believe */
 #believe{
@@ -2947,10 +2983,7 @@ html.touch #divisions .technology-based-care .title a.hover span{
 	color:#424242;
 	text-transform:uppercase;
 	text-align:center;
-	float:left;
-	width:100%;
-	clear:both;
-	margin:1em 0;
+	margin:0;
 	text-decoration:none;
 
 	-webkit-box-sizing: border-box;
@@ -3507,26 +3540,30 @@ html.touch #listing li.hover{
 		font-size:2.7em;
 		margin:0.5em 0;
 	}
-    body:not(.home) .tile:nth-child(1){
+    body:not(.home) .tile.full-width{
         width:100%;
         float:none;
         clear:both;
     }
-    body:not(.home) .tile:nth-child(1) .title{
+    body:not(.home) .tile.full-width .title{
         width:50%;
     }
-    body:not(.home) .tile:nth-child(1) .front .title{ max-width:100%; }
-    body:not(.home) .tile:nth-child(1) .front p{ max-width:70%; }
+    body:not(.home) .tile.full-width .front .title{ max-width:100%; }
+    body:not(.home) .tile.full-width .front p{ max-width:70%; }
 	/* content */
 	.content p,
 	.content ul,
 	.content ol{
 		font-size:1.6em;
 	}
-    /* .content ul p,
-    .content ol p{
+    .content ul p,
+    .content ol p,
+    .content ul ul,
+    .content ul ol,
+    .content ol ul,
+    .content ol ol{
         font-size: 1em;
-    } */
+    }
 	.headings h1,
 	.headings h2,
 	.headings h3,
@@ -3939,8 +3976,8 @@ html.touch #listing li.hover{
 	#tiles{
 		padding:0.5em;
     }
-    .home #tiles{
-        margin: 0 0 4em;
+    body.home #expander{
+        margin-bottom: 2em;
     }
 	/* believe */
 	#believe .midwrapper{
@@ -4464,6 +4501,7 @@ a.post-edit-link{
 .bypostauthor {
 
 }
+
 /* =============================================================================
    Print Styles
    ========================================================================== */

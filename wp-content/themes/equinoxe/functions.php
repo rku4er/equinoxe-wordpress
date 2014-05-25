@@ -35,6 +35,8 @@ if (function_exists('add_theme_support'))
     add_image_size('team-size', 220, 220, true);
     add_image_size('heading', 635, 222, true);
     add_image_size('loop', 100, 100, true);
+    add_image_size('tile_regular', 465, 418, true);
+    add_image_size('tile_full_width', 940, 418, true);
 
     // Add Support for Custom Backgrounds - Uncomment below if you're going to use
     /*add_theme_support('custom-background', array(

@@ -40,6 +40,94 @@
             });
         }
 
+        /*--- news function ---*/
+        (function initNews(){
+            var change_speed = 500; //in ms
+
+            var box_hold = $('#tiles');
+            var _btn = $('#expander');
+            var anim_f = true;
+
+            if(_btn.length){
+
+                _btn.click(function(){
+                    loadPosts(3);
+                    return false;
+                });
+
+            }
+
+            function loadPosts(_ind){
+                if(anim_f){
+                    anim_f = false;
+                    box_hold.addClass('loading');
+
+                    var data = {};
+                    data['offset'] = box_hold.children().length;
+                    data['load'] = _ind;
+
+                    $.ajax({
+                        url: window.location.href,
+                        type: 'POST',
+                        data: data,
+                        dataType: 'html',
+                        success: function(_html){
+                            box_hold.removeClass('loading');
+
+                            box_hold.append(_html);
+
+                            if(box_hold.children().length == data['offset'] +1){
+                                _btn.hide();
+                            }
+                            anim_f = true;
+                        }
+                    });
+                }
+            }
+        })();
+
+        // Slider Image soft edges
+        var slider = $('#slider');
+
+        if(slider.length){
+
+            var items = slider.children('.slide');
+
+            items.each(function(){
+                var self = $(this),
+                    leftSide = $('<div/>').addClass('leftSide'),
+                    rightSide = $('<div/>').addClass('rightSide'),
+                    img = self.children('img').eq(0),
+                    offset;
+
+                if(img.length){
+                    self.append(leftSide, rightSide);
+
+                    $(window).on('resize', function() {
+                        setTimeout(function(){
+                            offset = (self.width() - img.width()) / 2;
+
+                            leftSide.css('left', offset);
+                            rightSide.css('right', offset);
+                        }, 10);
+                    }).trigger('resize');
+                }
+
+            });
+        }
+
+        // Content Height Adjust
+        $(window).on('resize', function() {
+            if($('#page').height() < Math.max(document.documentElement.clientHeight, window.innerHeight || 0)){
+                setTimeout(function(){
+                    var offsetTop = Math.max(document.documentElement.clientHeight, window.innerHeight || 0) - $('#content').offset().top - $('#footer .bottom-row').outerHeight() - parseInt($('#content-holder').css('padding-bottom'));
+
+                    $('#content').css('min-height', offsetTop);
+                }, 10);
+            }
+        }).trigger('resize');
+
+        // Sticky Footer
         function EasyPeasyParallax() {
             scrollPos = $(this).scrollTop();
             windowH = $(this).height();
@@ -72,6 +160,8 @@
             EasyPeasyParallax();
         });
 
+
+        // Tooltip
         var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
         var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 
@@ -187,9 +277,8 @@
             });
         }
 
-        // Rewritten version
+        // Viewport fix
         // By @mathias, @cheeaun and @jdalton
-
         (function(doc) {
 
             var addEvent = 'addEventListener',
@@ -264,9 +353,15 @@
 
             /* google.maps.event.addDomListener(window, 'load', initialize); */
 
-            $('#map img').on('click', function(){
+            /*$('#map img').on('click', function(){
                 initialize();
-            });
+            });*/
+
+            $('#map').waypoint(function() {
+                if($('#map >img').length){
+                    initialize();
+                }
+            }, { offset: '50%' });
         }
 
         // Listings

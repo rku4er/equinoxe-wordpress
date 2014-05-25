@@ -4,13 +4,11 @@
 
 		<div class="midwrapper group">
 
-			<?php
-
-			?>
+			<?php $parent = get_page($post->post_parent); ?>
 
 			<aside id="sidenav">
 
-				<h3 class="sidehat home">
+				<h3 class="sidehat <?php echo $parent->post_name; ?>">
 					<a href="<?php echo get_permalink($post->post_parent); ?>">
 						<span><?php echo get_the_title($post->post_parent); ?></span>
 						<figure>
