@@ -3417,8 +3417,10 @@ html.touch #listing li.hover{
 	left:0;
 	margin:0 -1em;
 }
-#map_holder .wrapper >img{
+#map_holder .wrapper img{
     max-width: none;
+}
+#map_holder .wrapper >img{
 	height:100%;
 
 	position:absolute;
@@ -3936,8 +3938,10 @@ html.touch #listing li.hover{
 	/* tiles */
 	#tiles{
 		padding:0.5em;
+    }
+    .home #tiles{
         margin: 0 0 4em;
-	}
+    }
 	/* believe */
 	#believe .midwrapper{
 		padding:2em;
