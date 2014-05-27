@@ -14,6 +14,7 @@
 		// HTML5 Placeholder
         $('input, textarea').placeholder();
 
+        // Remove asteriks from required field
         $(document).bind('gform_post_render', function(){
 
             $('.ginput_container input, .ginput_container textarea').each(function(){
@@ -24,6 +25,19 @@
             });
 
         });
+
+        // Check hash
+        if(window.location.hash) {
+            var hash = window.location.hash;
+            console.log(hash);
+
+            $('body,html').animate({
+                scrollTop: $(hash).offset().top - $('#header').outerHeight() - 20
+            }, {
+                duration: 400,
+                queue: false
+            });
+        }
 
         // Custom Selects
         var customSelects = $('select').selectik({
@@ -56,6 +70,7 @@
             var change_speed = 500; //in ms
 
             var box_hold = $('#tiles');
+            var box_inner = $('#tiles >.inner');
             var _btn = $('#expander');
             var anim_f = true;
 
@@ -74,7 +89,7 @@
                     box_hold.addClass('loading');
 
                     var data = {};
-                    data['offset'] = box_hold.children().length;
+                    data['offset'] = box_inner.find('.tile').length;
                     data['load'] = _ind;
 
                     $.ajax({
@@ -83,11 +98,42 @@
                         data: data,
                         dataType: 'html',
                         success: function(_html){
-                            box_hold.removeClass('loading');
+                            var holderHeight = box_hold.height();
+                            var response = $(_html);
+                            var offset = box_hold.offset().top + holderHeight - $('#header').outerHeight();
+                            var tiles = response.find('.tile');
 
-                            box_hold.append(_html);
+                            $('body,html').animate({
+                                scrollTop: offset
+                            }, {
+                                duration: change_speed,
+                                queue: false
+                            });
 
-                            if(box_hold.children().length == data['offset'] +1){
+                            box_hold.css({
+                                height : holderHeight
+                            });
+
+                            tiles.each(function(){
+                                $(this).css({
+                                    opacity : 0
+                                });
+                            });
+
+                            box_inner.append(tiles);
+
+                            box_hold.stop().animate({height: box_inner.height() }, 400, 'easeOutExpo', function(){
+                                box_hold.css({ height: 'auto' }).removeClass('loading');
+
+                                tiles.each(function(i){
+                                    var self = $(this);
+                                    setTimeout(function(){
+                                        self.animate({opacity: 1}, 400, 'easeInExpo', function(){});
+                                    }, i*200);
+                                });
+                            });
+
+                            if(box_inner.find('.tile').length == data['offset'] +1){
                                 _btn.hide();
                             }
                             anim_f = true;

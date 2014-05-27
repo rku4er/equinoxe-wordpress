@@ -556,6 +556,7 @@ a:hover {
 }
 .content a[href$="/contact/"]:hover{
     background-color: #F37122;
+    text-decoration: none;
 }
 .content a[href$="/contact/"]:before{
     display: none;
@@ -2018,14 +2019,14 @@ body,
     height: auto;
 }
 #lang_sel_click a.lang_sel_sel{
-    color: #fff;
     background-color: transparent;
     border: 0 none;
     font-size: 1.4em;
     text-transform: uppercase;
 }
+#lang_sel_click a.lang_sel_sel,
 #lang_sel_click a.lang_sel_sel:hover{
-    color: #fff;
+    color: #424242;
 }
 #lang_sel_click ul ul,
 #lang_sel_click ul li{
@@ -2036,19 +2037,20 @@ body,
 #lang_sel_click ul ul{
     border: 0 none;
     height: auto;
-    background-color: #424242;
+    background-color: #fff;
 }
 #lang_sel_click ul ul a,
 #lang_sel_click ul ul a:visited{
     border-width: 1px 0 0;
     background-color: transparent;
-    color: #fff;
+    color: #424242;
 }
 #lang_sel_click ul ul a:hover,
 #lang_sel_click ul ul a:visited:hover{
-    color: #424242;
-    background-color: #eee;
+    color: #fff;
+    background-color: #424242;
 }
+
 /* mainnav */
 #mainnav label{
 	right:0;
@@ -2389,6 +2391,9 @@ html.touch #divisions .technology-based-care .title a.hover span{
 /* tiles */
 #tiles{
 	margin:-0.5em 0 0;
+    overflow:hidden;
+}
+#tiles .inner{
 	overflow:hidden;
 }
 /* believe */
@@ -3662,6 +3667,23 @@ html.touch #listing li.hover{
 	#lang_sel_click{
 		right:16em;
 	}
+    /* lang */
+    #lang_sel_click a.lang_sel_sel,
+    #lang_sel_click a.lang_sel_sel:hover{
+        color: #fff;
+    }
+    #lang_sel_click ul ul{
+        background-color: #424242;
+    }
+    #lang_sel_click ul ul a,
+    #lang_sel_click ul ul a:visited{
+        color: #fff
+    }
+    #lang_sel_click ul ul a:hover,
+    #lang_sel_click ul ul a:visited:hover{
+        color: #424242;
+        background-color: #eee;
+    }
 	/* page */
     #page{
         padding-top: 14.4em;
