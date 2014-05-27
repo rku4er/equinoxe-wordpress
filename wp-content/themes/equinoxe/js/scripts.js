@@ -27,14 +27,14 @@
         });
 
         // Check hash
-        if(window.location.hash) {
-            var hash = window.location.hash;
-            console.log(hash);
+        var hash = window.location.hash;
 
+        if($(hash).length) {
             $('body,html').animate({
                 scrollTop: $(hash).offset().top - $('#header').outerHeight() - 20
             }, {
                 duration: 400,
+                easing: 'easeInOutExpo',
                 queue: false
             });
         }
