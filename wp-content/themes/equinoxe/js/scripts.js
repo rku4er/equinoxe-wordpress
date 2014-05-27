@@ -175,6 +175,10 @@
                             }, 10);
                         }).trigger('resize');
                     });
+
+                    $(window).on('focus', function(){
+                        if(!offset) img.trigger('load');
+                    });
                 }
 
             });
