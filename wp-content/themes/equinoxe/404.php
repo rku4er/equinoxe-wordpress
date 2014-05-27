@@ -4,7 +4,7 @@
 
 		<div class="midwrapper group">
 
-			<h1 id="listing-title"><?php the_title(); ?></h1>
+			<h1 id="listing-title">Error 404</h1>
 
 			<?php get_sidebar(); ?>
 

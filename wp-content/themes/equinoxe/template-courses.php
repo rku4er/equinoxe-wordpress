@@ -8,17 +8,16 @@
 
 		<div class="slide">
 
-			<h1 class="heading">
+			<div class="heading">
 				<div class="inner">
 					<h1 class="title"><?php the_sub_field('title'); ?></h1>
-					<br />
-					<span class="text">
+					<p class="text">
 						<span>
 							<?php the_sub_field('sub_title'); ?>
 						</span>
-					</span>
+					</p>
 				</div>
-			</h1>
+			</div>
 
 			<?php
 			$thumb = wp_get_attachment_image_src( get_sub_field('image'), 'full');
@@ -76,11 +75,19 @@
 					</figure>
 					<section class="timestamp">
 						<div class="wrapper">
-							<span class="day"><?php echo get_the_date( 'j' ); ?></span>
+
+							<?php
+								$day = date('j', get_field('location_time'));
+								$date = date('D, j F', get_field('location_time'));
+								$time = date('G : i', get_field('location_time'));
+							?>
+
+							<span class="day"><?php echo $day; ?></span>
 							<span class="time">
-								<span class="line-1"><?php echo get_the_date( 'D, j F' ); ?></span>
-								<span class="line-2"><?php echo get_the_date( 'G : i' ); ?></span>
+								<span class="line-1"><?php echo $date; ?></span>
+								<span class="line-2"><?php echo $time; ?></span>
 							</span>
+
 						</div>
 					</section>
 					<section class="body">
@@ -89,7 +96,7 @@
 								<?php echo get_the_title(); ?>
 							</a>
 						</h2>
-						<?php html5wp_excerpt('html5wp_custom_post'); ?>
+						<?php echo html5wp_excerpt('html5wp_custom_post'); ?>
 					</section>
 				</div>
 			</li>

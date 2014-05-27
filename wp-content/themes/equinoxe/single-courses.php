@@ -22,16 +22,22 @@
 
 					<section class="timestamp">
 						<div class="wrapper">
-							<span class="day"><?php echo get_the_date( 'j' ); ?></span>
+							<?php
+								$day = date('j', get_field('location_time'));
+								$date = date('D, j F', get_field('location_time'));
+								$time = date('G : i', get_field('location_time'));
+							?>
+
+							<span class="day"><?php echo $day; ?></span>
 							<span class="time">
-								<span class="line-1"><?php echo get_the_date( 'D, j F' ); ?></span>
-								<span class="line-2"><?php echo get_the_date( 'G : i' ); ?></span>
+								<span class="line-1"><?php echo $date; ?></span>
+								<span class="line-2"><?php echo $time; ?></span>
 							</span>
 						</div>
 					</section>
 
 					<section class="box content">
-						<a href="#btn" class="btn">Attend</a>
+						<a href="mailto:<?php echo get_field('attend_email', 'options');?>" class="btn">Attend</a>
 					</section>
 
 
@@ -52,12 +58,6 @@
 					<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 						<?php the_content(); // Dynamic Content ?>
-
-						<p class="tags"><?php the_tags( __( 'Tags: ', 'html5blank' ), ', ', '<br>'); // Separated by commas with a line break at the end ?></p>
-
-						<p class="category"><?php _e( 'Categorised in: ', 'html5blank' ); the_category(', '); // Separated by commas ?></p>
-
-						<p class="post-author"><?php _e( 'This post was written by ', 'html5blank' ); the_author(); ?></p>
 
 						<?php edit_post_link(); // Always handy to have Edit Post Links available ?>
 

@@ -1,5 +1,40 @@
 <?php /* Template Name: Service */ get_header(); ?>
 
+	<?php if(get_field('show_slider') && have_rows('seats')) :?>
+
+	<section id="slider">
+
+		<?php while(have_rows('seats')): the_row();?>
+
+		<div class="slide">
+
+			<div class="heading">
+				<div class="inner">
+					<h1 class="title"><?php the_sub_field('title'); ?></h1>
+					<p class="text">
+						<span>
+							<?php the_sub_field('sub_title'); ?>
+						</span>
+					</p>
+				</div>
+			</div>
+
+			<?php
+			$thumb = wp_get_attachment_image_src( get_sub_field('image'), 'full');
+			if($thumb): ?>
+
+			<img src="<?php echo $thumb[0]; ?>" alt="background" class="ground">
+
+			<?php endif; ?>
+
+		</div>
+
+		<?php endwhile; ?>
+
+	</section>
+
+	<?php endif; ?>
+
 	<div id="content-holder">
 
 		<div class="midwrapper group">
@@ -39,7 +74,7 @@
 
 						<div class="inner">
 
-							<h1 class="title">
+							<h1 class="title <?php echo $parent->post_name; ?>">
 								<figure>
 									<img src="<?php echo get_bloginfo('template_url'); ?>/img/bg/icon-heart.png" alt="" />
 								</figure>
@@ -58,7 +93,7 @@
 					<?php if (have_posts()): while (have_posts()) : the_post(); ?>
 
 						<!-- article -->
-						<article id="post-<?php the_ID(); ?>" <?php post_class('headings'); ?>>
+						<article id="post-<?php the_ID(); ?>" <?php post_class('headings-2'); ?>>
 
 							<?php the_content(); ?>
 

@@ -1,7 +1,5 @@
 <?php /* Template Name: About */ get_header(); ?>
 
-
-
 	<?php if(get_field('show_slider') && have_rows('seats')) :?>
 
 	<section id="slider">
@@ -10,16 +8,16 @@
 
 		<div class="slide">
 
-			<h1 class="heading">
+			<div class="heading">
 				<div class="inner">
 					<h1 class="title"><?php the_sub_field('title'); ?></h1>
-					<span class="text">
+					<p class="text">
 						<span>
 							<?php the_sub_field('sub_title'); ?>
 						</span>
-					</span>
+					</p>
 				</div>
-			</h1>
+			</div>
 
 			<?php
 			$thumb = wp_get_attachment_image_src( get_sub_field('image'), 'full');

@@ -101,16 +101,23 @@
                     offset;
 
                 if(img.length){
-                    self.append(leftSide, rightSide);
+                    img.css({
+                        opacity : 0
+                    });
 
-                    $(window).on('resize', function() {
-                        setTimeout(function(){
-                            offset = (self.width() - img.width()) / 2;
+                    img.on('load', function(){
+                        self.append(leftSide, rightSide);
+                        img.animate({opacity: 1}, 300);
 
-                            leftSide.css('left', offset);
-                            rightSide.css('right', offset);
-                        }, 10);
-                    }).trigger('resize');
+                        $(window).on('resize', function() {
+                            setTimeout(function(){
+                                offset = Math.floor((self.width() - img.width()) / 2);
+
+                                leftSide.css('border-left-width', offset + 'px');
+                                rightSide.css('border-right-width', offset + 'px');
+                            }, 10);
+                        }).trigger('resize');
+                    });
                 }
 
             });
@@ -125,6 +132,7 @@
                     $('#content').css('min-height', offsetTop);
                 }, 10);
             }
+
         }).trigger('resize');
 
         // Sticky Footer

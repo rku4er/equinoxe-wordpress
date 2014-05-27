@@ -18,19 +18,30 @@
 
 								<h5 class="title"><?php echo get_sub_field('title'); ?></h5>
 
-								<?php
-								$posts = get_sub_field('column');
-								if($posts): ?>
-
+								<?php if(have_rows('column')): ?>
 								<ul>
+
+									<?php while(have_rows('column')): the_row(); ?>
+
+									<?php
+									$posts = get_sub_field('page');
+									if($posts): ?>
+
 									<?php foreach( $posts as $post): ?>
 									<?php setup_postdata($post);?>
-									<li><a href="<?php echo get_permalink(); ?>"><?php echo get_the_title(); ?></a></li>
+
+									<li><a href="<?php echo get_permalink(); if(get_sub_field('hash')) echo '#'.get_sub_field('hash'); ?>"><?php echo get_the_title(); ?></a></li>
+
 									<?php endforeach; ?>
 									<?php wp_reset_postdata();?>
-								</ul>
 
+									<?php endif; ?>
+
+									<?php endwhile; ?>
+
+								</ul>
 								<?php endif; ?>
+
 
 							</div>
 

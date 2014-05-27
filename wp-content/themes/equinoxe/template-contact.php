@@ -1,5 +1,40 @@
 <?php /* Template Name: Contact */ get_header(); ?>
 
+	<?php if(get_field('show_slider') && have_rows('seats')) :?>
+
+	<section id="slider">
+
+		<?php while(have_rows('seats')): the_row();?>
+
+		<div class="slide">
+
+			<div class="heading">
+				<div class="inner">
+					<h1 class="title"><?php the_sub_field('title'); ?></h1>
+					<p class="text">
+						<span>
+							<?php the_sub_field('sub_title'); ?>
+						</span>
+					</p>
+				</div>
+			</div>
+
+			<?php
+			$thumb = wp_get_attachment_image_src( get_sub_field('image'), 'full');
+			if($thumb): ?>
+
+			<img src="<?php echo $thumb[0]; ?>" alt="background" class="ground">
+
+			<?php endif; ?>
+
+		</div>
+
+		<?php endwhile; ?>
+
+	</section>
+
+	<?php endif; ?>
+
 	<section id="contact">
 
 		<div class="midwrapper">
@@ -15,7 +50,7 @@
 						<span class="icon-<?php echo get_sub_field('icon_slug'); ?>"></span>
 					</figure>
 					<h2 class="title"><?php echo get_sub_field('title'); ?></h2>
-					<p><?php echo get_sub_field('content'); ?></p>
+					<?php echo get_sub_field('content'); ?>
 				</li>
 
 				<?php endwhile; ?>

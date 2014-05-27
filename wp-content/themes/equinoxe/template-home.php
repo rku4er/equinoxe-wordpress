@@ -25,32 +25,41 @@
 				<div class="tile <?php if(get_sub_field('full_width')) echo 'full-width' ?>">
 					<div class="scene">
 
-						<div class="face front">
-							<div class="inner">
-								<h3 class="title"><?php echo get_the_title(); ?></h3>
-								<?php html5wp_excerpt('html5wp_tile_front'); ?>
-							</div>
-						</div>
-
-						<div class="face back">
-							<h3 class="title"><?php echo get_the_title(); ?></h3>
-							<?php html5wp_excerpt('html5wp_tile_back'); ?>
-							<a href="<?php echo get_permalink(); if(get_sub_field('hash')) echo '#'.get_sub_field('hash'); ?>" class="more">View More</a>
-						</div>
-
 						<?php
+							$title = get_field('tile_title', $post->ID) ? get_field('tile_title', $post->ID) : get_the_title();
+
+							if(get_field('tile_excerpt_front', $post->ID)){
+								$content_front = '<p>'.get_field('tile_excerpt_front', $post->ID).'</p>';
+							}else{
+								$content_front = html5wp_excerpt('html5wp_tile_front');
+							}
+							if(get_field('tile_excerpt_back', $post->ID)){
+								$content_back = '<p>'.get_field('tile_excerpt_back', $post->ID).'</p>';
+							}else{
+								$content_back = html5wp_excerpt('html5wp_tile_back');
+							}
+
 							$size = get_sub_field('full_width') ? 'tile_full_width' : 'tile_regular';
 							$bg = get_the_post_thumbnail(get_the_ID(), $size, array(
 								'title' => get_the_title(),
 								'class' => 'bg'
 							));
-
-							if($bg){
-								echo $bg;
-							} else{
-								// echo '<img src="'.get_bloginfo('template_url').'/img/thumb.png" alt="'.get_the_title().'"/>';
-							}
 						?>
+
+						<div class="face front">
+							<div class="inner">
+								<h3 class="title"><?php echo $title ?></h3>
+								<?php echo $content_front; ?>
+							</div>
+						</div>
+
+						<div class="face back">
+							<h3 class="title"><?php echo $title; ?></h3>
+							<?php echo $content_back; ?>
+							<a href="<?php echo get_permalink(); if(get_sub_field('hash')) echo '#'.get_sub_field('hash'); ?>" class="more">View More</a>
+						</div>
+
+						<?php echo $bg; ?>
 
 					</div>
 				</div>
@@ -76,16 +85,16 @@
 
 			<div class="slide">
 
-				<h1 class="heading">
+				<div class="heading">
 					<div class="inner">
 						<h1 class="title"><?php the_sub_field('title'); ?></h1>
-						<span class="text">
+						<p class="text">
 							<span>
 								<?php the_sub_field('sub_title'); ?>
 							</span>
-						</span>
+						</p>
 					</div>
-				</h1>
+				</div>
 
 				<?php
 				$thumb = wp_get_attachment_image_src( get_sub_field('image'), 'full');
@@ -159,32 +168,41 @@
 					<div class="tile <?php if(get_sub_field('full_width')) echo 'full-width' ?>">
 						<div class="scene">
 
-							<div class="face front">
-								<div class="inner">
-									<h3 class="title"><?php echo get_the_title(); ?></h3>
-									<?php html5wp_excerpt('html5wp_tile_front'); ?>
-								</div>
-							</div>
-
-							<div class="face back">
-								<h3 class="title"><?php echo get_the_title(); ?></h3>
-								<?php html5wp_excerpt('html5wp_tile_back'); ?>
-								<a href="<?php echo get_permalink(); if(get_sub_field('hash')) echo '#'.get_sub_field('hash'); ?>" class="more">View More</a>
-							</div>
-
 							<?php
+								$title = get_field('tile_title', $post->ID) ? get_field('tile_title', $post->ID) : get_the_title();
+
+								if(get_field('tile_excerpt_front', $post->ID)){
+									$content_front = '<p>'.get_field('tile_excerpt_front', $post->ID).'</p>';
+								}else{
+									$content_front = html5wp_excerpt('html5wp_tile_front');
+								}
+								if(get_field('tile_excerpt_back', $post->ID)){
+									$content_back = '<p>'.get_field('tile_excerpt_back', $post->ID).'</p>';
+								}else{
+									$content_back = html5wp_excerpt('html5wp_tile_back');
+								}
+
 								$size = get_sub_field('full_width') ? 'tile_full_width' : 'tile_regular';
 								$bg = get_the_post_thumbnail(get_the_ID(), $size, array(
 									'title' => get_the_title(),
 									'class' => 'bg'
 								));
-
-								if($bg){
-									echo $bg;
-								} else{
-									// echo '<img src="'.get_bloginfo('template_url').'/img/thumb.png" alt="'.get_the_title().'"/>';
-								}
 							?>
+
+							<div class="face front">
+								<div class="inner">
+									<h3 class="title"><?php echo $title ?></h3>
+									<?php echo $content_front; ?>
+								</div>
+							</div>
+
+							<div class="face back">
+								<h3 class="title"><?php echo $title; ?></h3>
+								<?php echo $content_back; ?>
+								<a href="<?php echo get_permalink(); if(get_sub_field('hash')) echo '#'.get_sub_field('hash'); ?>" class="more">View More</a>
+							</div>
+
+							<?php echo $bg; ?>
 
 						</div>
 					</div>
@@ -261,7 +279,7 @@
 				<div class="content">
 					<?php
 						$post = get_page(get_ID_by_slug('about'));
-						html5wp_excerpt('html5wp_custom_post');
+						echo html5wp_excerpt('html5wp_custom_post');
 						wp_reset_postdata($post);
 					?>
 				</div>
