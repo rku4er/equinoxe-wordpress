@@ -1578,10 +1578,15 @@ body:not(.home) body:not(.home) .tile.full-width .tile .front p{
 	margin:1em 0;
 }
 /* sidebar-widget */
+.sidebar-widget .widget_icl_lang_sel_click_widget{
+    padding:2em 2.5em;
+}
+.sidebar-widget .widget_search{
+    overflow: hidden;
+}
 .sidebar-widget >div{
     background-color:#f2f2f2;
     margin-bottom: 2em;
-    overflow: hidden;
 }
 .sidebar-widget h3{
     background-color:#e2e2e2;
@@ -2004,18 +2009,45 @@ body,
 #logo img{
 	max-height: 3em;
 }
-/* langSwitch */
-#langSwitch{
+/* lang_sel_click */
+#lang_sel_click{
 	position:absolute;
-	right:7em;
+	right:8em;
 	bottom:100%;
-	margin-bottom:0.7em;
+	margin-bottom:0.5em;
+    height: auto;
 }
-#langSwitch label{
-	position:static;
-	background: none;
-	color:#202020;
-	font-family: 'OpenSans', Arial, sans-serif;
+#lang_sel_click a.lang_sel_sel{
+    color: #fff;
+    background-color: transparent;
+    border: 0 none;
+    font-size: 1.4em;
+    text-transform: uppercase;
+}
+#lang_sel_click a.lang_sel_sel:hover{
+    color: #fff;
+}
+#lang_sel_click ul ul,
+#lang_sel_click ul li{
+    width: auto;
+    min-width: 100px;
+    float: none;
+}
+#lang_sel_click ul ul{
+    border: 0 none;
+    height: auto;
+    background-color: #424242;
+}
+#lang_sel_click ul ul a,
+#lang_sel_click ul ul a:visited{
+    border-width: 1px 0 0;
+    background-color: transparent;
+    color: #fff;
+}
+#lang_sel_click ul ul a:hover,
+#lang_sel_click ul ul a:visited:hover{
+    color: #424242;
+    background-color: #eee;
 }
 /* mainnav */
 #mainnav label{
@@ -2156,10 +2188,6 @@ background: -ms-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(39,39,39,1) 100%);
 background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(39,39,39,1) 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#272727',GradientType=1 );
 
-}
-body.home #slider .slide:nth-child(1) .inner:before{
-    content: url("img/equinoxe-sun.png");
-    display: block;
 }
 #slider .heading{
 	display:table;
@@ -2667,24 +2695,24 @@ html.touch #divisions .technology-based-care .title a.hover span{
 #newsletter .gfield{
 	font-size:1em;
 }
-#newsletter .gfield_radio{
+#newsletter .gfield_checkbox{
     position: absolute;
     top: 6.5em;
     left: 0;
     width: 100%;
 }
-#newsletter .gfield_radio input[type="radio"],
-#newsletter .gfield_radio label{
+#newsletter .gfield_checkbox input[type="checkbox"],
+#newsletter .gfield_checkbox label{
     vertical-align: middle;
     font-size: 1.3em;
 }
-#newsletter .gfield_radio input[type="radio"]{
+#newsletter .gfield_checkbox input[type="checkbox"]{
     margin-right: 0.2em;
 }
-#newsletter .gfield_radio label{
+#newsletter .gfield_checkbox label{
     margin-right: 1em;
 }
-#newsletter .gfield_radio li{
+#newsletter .gfield_checkbox li{
     display: inline;
 }
 #newsletter .validation_error{
@@ -3365,7 +3393,7 @@ html.touch #listing li.hover{
 #quote-slider{
 	position:relative;
 	margin:2.4em 0;
-	padding:0 2em;
+	padding:0 3em;
 }
 #quote-slider blockquote{
 	margin:0;
@@ -3385,10 +3413,10 @@ html.touch #listing li.hover{
 	margin:-1em 0 0;
 }
 #quote-slider .prev{
-	left:-2em;
+	left:0;
 }
 #quote-slider .next{
-	right:-2em;
+	right:0;
 }
 #quote-slider .prev:hover,
 #quote-slider .next:hover{
@@ -3397,30 +3425,6 @@ html.touch #listing li.hover{
 #quote-slider .slide-holder{
 	min-height:64px;
 	position:relative;
-}
-#quote-slider:before,
-#quote-slider:after{
-	font-family: icomoon;
-	font-weight:normal;
-	font-style:normal;
-	display:block;
-	color:#696969;
-	font-size:1.6em;
-}
-#quote-slider:before{
-	content:'\e621';
-	float:left;
-	margin-left:-1.4em;
-
-	-webkit-transform: rotate(180deg);
-	   -moz-transform: rotate(180deg);
-	        transform: rotate(180deg);
-}
-#quote-slider:after{
-	content:'\e621';
-	float:right;
-	margin-right:-1.4em;
-	margin-top:-1em;
 }
 /* map_holder */
 #map_holder{
@@ -3491,19 +3495,6 @@ html.touch #listing li.hover{
 		-webkit-box-shadow: none;
 		   -moz-box-shadow: none;
 		        box-shadow: none;
-	}
-	.showMenu:checked + #langSwitch label{
-		background: none;
-	}
-	.showMenu:checked + #langSwitch label:before{
-		content:"";
-		position:absolute;
-		top:0;
-		right:0;
-		bottom:0;
-		left:0;
-		opacity:0.7;
-		z-index:-1;
 	}
 	/* tile */
 	.tile{
@@ -3667,16 +3658,10 @@ html.touch #listing li.hover{
 	.single-listing .line-2{
 		display:block;
 	}
-	/* langSwitch */
-	#langSwitch{
-		right:14.5em;
+	/* lang_sel_click */
+	#lang_sel_click{
+		right:16em;
 	}
-	#langSwitch label{
-		color:#fff;
-	}
-    #langSwitch a{
-        font-size: 1.4em;
-    }
 	/* page */
     #page{
         padding-top: 14.4em;
@@ -3932,12 +3917,11 @@ html.touch #listing li.hover{
 		padding:0.5em 2em;
 		display:inline-block;
 		margin-bottom:0.2em;
-		/* margin-top:4em; */
 	}
-	body.home #slider .title{
-		display:block;
-		margin:0.5em 0.5em 0;
-	}
+    body.home #slider .title{
+        display:block;
+        margin:0.5em 0.5em 0;
+    }
 	#slider .text{
 		display: block;
         margin: 0 auto;
@@ -3996,17 +3980,7 @@ html.touch #listing li.hover{
 	}
 	/* quote-slider */
 	#quote-slider{
-		padding:0 3em;
-	}
-	#quote-slider:before,
-	#quote-slider:after{
-		font-size:2rem;
-	}
-	#quote-slider:before{
-		margin-left:-1.2em;
-	}
-	#quote-slider:after{
-		margin-right:-1.2em;
+		padding:0 4em;
 	}
 	/* about */
 	#about .midwrapper{
@@ -4245,15 +4219,19 @@ html.touch #listing li.hover{
 	#slider .text span{
 		font-size:1.6em;
 	}
+    body.home #slider .slide:nth-child(1) .inner:before{
+        content: url("img/equinoxe-sun.png");
+        display: block;
+    }
 	/* footer */
 	#footer .bottom-row .midwrapper{
 		max-width: 960px;
 	}
-	/* langSwitch */
-    #langSwitch{
+	/* lang_sel_click */
+    #lang_sel_click{
         left:50%;
         right: auto;
-        margin-left: 23.8em;
+        margin-left: 22.5em;
     }
 	/* sidenav */
 	#sidenav{

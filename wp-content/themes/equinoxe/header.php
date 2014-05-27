@@ -79,15 +79,8 @@
 
                 </div>
 
-                <!-- Expandable mobile menu control -->
-                <input type="checkbox" name="" class="showMenu" id="langSwitchCtrl"/>
-
-                <section id="langSwitch" class="showMenuCtrl">
-                    <label for="langSwitchCtrl">
-                        <span class="showText">francais <span class="icon-arrow-down6"></span></span>
-                        <span class="hideText">english <span class="icon-arrow-up6"></span></span>
-                    </label>
-                </section>
+                <!-- Lang Switch  -->
+                <?php do_action('icl_language_selector'); ?>
 
             </header>
             <!-- /header -->

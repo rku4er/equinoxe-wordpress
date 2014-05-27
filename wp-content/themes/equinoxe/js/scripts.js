@@ -14,6 +14,17 @@
 		// HTML5 Placeholder
         $('input, textarea').placeholder();
 
+        $(document).bind('gform_post_render', function(){
+
+            $('.ginput_container input, .ginput_container textarea').each(function(){
+                var placeholder = $(this).attr('placeholder');
+                if(placeholder){
+                    $(this).attr('placeholder', placeholder.replace('*', ''));
+                }
+            });
+
+        });
+
         // Custom Selects
         var customSelects = $('select').selectik({
             width: 0,
