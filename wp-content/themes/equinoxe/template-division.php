@@ -227,7 +227,7 @@
 
 				</div>
 
-				<?php if(count(get_field('services')) > 3): ?>
+				<?php if(count(get_field('services')) > $posts_per_page): ?>
 					<a href="#full" id="expander">For a full list of our services click here <span class="icon-arrow-down6"></span></a>
 				<?php endif; ?>
 

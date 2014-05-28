@@ -132,7 +132,7 @@
                                     }, i*200);
                                 });
                             });
-                            console.log(box_inner.find('.tile').length);
+
                             if(box_inner.find('.tile').length == data['offset'] +1){
                                 _btn.hide();
                             }
