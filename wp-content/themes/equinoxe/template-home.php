@@ -159,6 +159,10 @@
 			<?php endif; ?>
 
 
+			<?php
+				$posts_per_page =  2;
+				$offset =  0;
+			?>
 
 			<?php if(have_rows('services')): ?>
 
@@ -166,57 +170,61 @@
 
 				<div class="inner">
 
-					<?php while(have_rows('services')): the_row();?>
+					<?php $i = 0;  while(have_rows('services')): the_row();?>
 
-						<?php foreach( get_sub_field('page') as $post): ?>
-						<?php setup_postdata($post); ?>
+						<?php if($offset-1 < $i && $i - $offset < $posts_per_page):?>
 
-						<div class="tile <?php if(get_sub_field('full_width')) echo 'full-width' ?>">
-							<div class="scene">
+							<?php foreach( get_sub_field('page') as $post): ?>
+							<?php setup_postdata($post); ?>
 
-								<?php
-									$title = get_field('tile_title', $post->ID) ? get_field('tile_title', $post->ID) : get_the_title();
+							<div class="tile <?php if(get_sub_field('full_width')) echo 'full-width' ?>">
+								<div class="scene">
 
-									if(get_field('tile_excerpt_front', $post->ID)){
-										$content_front = '<p>'.get_field('tile_excerpt_front', $post->ID).'</p>';
-									}else{
-										$content_front = html5wp_excerpt('html5wp_tile_front');
-									}
-									if(get_field('tile_excerpt_back', $post->ID)){
-										$content_back = '<p>'.get_field('tile_excerpt_back', $post->ID).'</p>';
-									}else{
-										$content_back = html5wp_excerpt('html5wp_tile_back');
-									}
+									<?php
+										$title = get_field('tile_title', $post->ID) ? get_field('tile_title', $post->ID) : get_the_title();
 
-									$size = get_sub_field('full_width') ? 'tile_full_width' : 'tile_regular';
-									$bg = get_the_post_thumbnail(get_the_ID(), $size, array(
-										'title' => get_the_title(),
-										'class' => 'bg'
-									));
-								?>
+										if(get_field('tile_excerpt_front', $post->ID)){
+											$content_front = '<p>'.get_field('tile_excerpt_front', $post->ID).'</p>';
+										}else{
+											$content_front = html5wp_excerpt('html5wp_tile_front');
+										}
+										if(get_field('tile_excerpt_back', $post->ID)){
+											$content_back = '<p>'.get_field('tile_excerpt_back', $post->ID).'</p>';
+										}else{
+											$content_back = html5wp_excerpt('html5wp_tile_back');
+										}
 
-								<div class="face front">
-									<div class="inner">
-										<h3 class="title"><?php echo $title ?></h3>
-										<?php echo $content_front; ?>
+										$size = get_sub_field('full_width') ? 'tile_full_width' : 'tile_regular';
+										$bg = get_the_post_thumbnail(get_the_ID(), $size, array(
+											'title' => get_the_title(),
+											'class' => 'bg'
+										));
+									?>
+
+									<div class="face front">
+										<div class="inner">
+											<h3 class="title"><?php echo $title ?></h3>
+											<?php echo $content_front; ?>
+										</div>
 									</div>
+
+									<div class="face back">
+										<h3 class="title"><?php echo $title; ?></h3>
+										<?php echo $content_back; ?>
+										<a href="<?php echo get_permalink(); if(get_sub_field('hash')) echo '#'.get_sub_field('hash'); ?>" class="more">View More</a>
+									</div>
+
+									<?php echo $bg; ?>
+
 								</div>
-
-								<div class="face back">
-									<h3 class="title"><?php echo $title; ?></h3>
-									<?php echo $content_back; ?>
-									<a href="<?php echo get_permalink(); if(get_sub_field('hash')) echo '#'.get_sub_field('hash'); ?>" class="more">View More</a>
-								</div>
-
-								<?php echo $bg; ?>
-
 							</div>
-						</div>
 
 						<?php endforeach; ?>
 						<?php wp_reset_postdata();?>
 
-					<?php endwhile; ?>
+					<?php endif; ?>
+
+					<?php $i++; endwhile; ?>
 
 				</div>
 

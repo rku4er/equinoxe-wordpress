@@ -66,7 +66,7 @@
         }
 
         /*--- news function ---*/
-        (function initNews(){
+        (function initServices(){
             var change_speed = 500; //in ms
 
             var box_hold = $('#tiles');
@@ -132,7 +132,7 @@
                                     }, i*200);
                                 });
                             });
-
+                            console.log(box_inner.find('.tile').length);
                             if(box_inner.find('.tile').length == data['offset'] +1){
                                 _btn.hide();
                             }
