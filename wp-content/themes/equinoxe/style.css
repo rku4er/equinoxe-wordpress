@@ -3151,7 +3151,7 @@ html.touch #divisions .technology-based-care .title a.hover span{
 	display:inline-block;
 	vertical-align:middle;
 	font-size:1.4em;
-    width: 95%;
+    width: 100%;
 }
 #heading img.attachment-heading{
 	height: 100%;
@@ -4348,6 +4348,9 @@ html.touch #listing li.hover{
 	}
     #heading .title{
         height: 60%;
+    }
+    #heading .title:after{
+        padding-bottom: 30%;
     }
 	#heading .title figure{
 
