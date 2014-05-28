@@ -81,13 +81,15 @@
 
 	<?php get_header(); ?>
 
+	<?php $parent = get_page($post->post_parent); ?>
+
 	<?php if(get_field('revolution_slider')): ?>
 		<section id="revolution-slider"><?php echo get_field('revolution_slider'); ?></section>
 	<?php endif; ?>
 
 	<?php if(get_field('show_slider') && have_rows('seats')) :?>
 
-	<section id="slider">
+	<section id="slider" class="<?php echo $parent->post_name; ?>">
 
 		<?php while(have_rows('seats')): the_row();?>
 
@@ -120,7 +122,7 @@
 
 	<?php endif; ?>
 
-		<section id="article">
+		<section id="article" class="<?php echo $parent->post_name; ?>">
 
 			<div class="midwrapper content headings">
 
@@ -161,7 +163,7 @@
 
 		<?php if(have_rows('services')): ?>
 
-			<div class="midwrapper">
+			<div class="midwrapper group">
 
 				<div id="tiles">
 

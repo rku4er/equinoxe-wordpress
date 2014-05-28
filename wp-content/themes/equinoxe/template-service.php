@@ -1,12 +1,14 @@
 <?php /* Template Name: Service */ get_header(); ?>
 
+	<?php $parent = get_page($post->post_parent); ?>
+
 	<?php if(get_field('revolution_slider')): ?>
 		<section id="revolution-slider"><?php echo get_field('revolution_slider'); ?></section>
 	<?php endif; ?>
 
 	<?php if(get_field('show_slider') && have_rows('seats')) :?>
 
-	<section id="slider">
+	<section id="slider" class="<?php echo $parent->post_name; ?>">
 
 		<?php while(have_rows('seats')): the_row();?>
 
@@ -43,7 +45,6 @@
 
 		<div class="midwrapper group">
 
-			<?php $parent = get_page($post->post_parent); ?>
 
 			<aside id="sidenav">
 
@@ -70,7 +71,7 @@
 
 			</aside>
 
-			<section id="content" class="group">
+			<section id="content" class="group <?php echo $parent->post_name; ?>">
 
 				<div class="content">
 
@@ -157,10 +158,12 @@
 
 					<?php endif; ?>
 
-				</section>
+				</div>
 
-			</div>
+			</section>
 
 		</div>
+
+	</div>
 
 <?php get_footer(); ?>

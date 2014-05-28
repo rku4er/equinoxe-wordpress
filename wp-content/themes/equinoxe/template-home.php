@@ -121,7 +121,7 @@
 		<?php endif; ?>
 
 
-		<section class="midwrapper">
+		<section class="midwrapper group">
 
 			<?php
 			$posts = get_field('divisions');

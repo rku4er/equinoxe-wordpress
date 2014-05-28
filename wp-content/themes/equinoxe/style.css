@@ -1276,6 +1276,38 @@ body:not(.home) body:not(.home) .tile.full-width .tile .front p{
 	overflow:hidden;
 	background-color:#f37122;
 }
+.organizational-health .headings h1,
+.organizational-health .headings h2,
+.organizational-health .headings h3,
+.organizational-health .headings h4,
+.organizational-health .headings h5,
+.organizational-health .headings h6{
+    color:#0099B5;
+}
+.organizational-health .headings h1:before,
+.organizational-health .headings h2:before,
+.organizational-health .headings h3:before,
+.organizational-health .headings h4:before,
+.organizational-health .headings h5:before,
+.organizational-health .headings h6:before{
+    background-color:#0099B5;
+}
+.technology-based-care .headings h1,
+.technology-based-care .headings h2,
+.technology-based-care .headings h3,
+.technology-based-care .headings h4,
+.technology-based-care .headings h5,
+.technology-based-care .headings h6{
+    color:#FF0054;
+}
+.technology-based-care .headings h1:before,
+.technology-based-care .headings h2:before,
+.technology-based-care .headings h3:before,
+.technology-based-care .headings h4:before,
+.technology-based-care .headings h5:before,
+.technology-based-care .headings h6:before{
+    background-color:#FF0054;
+}
 /* headings */
 .headings-2{
     color:#696969;
@@ -1290,6 +1322,38 @@ body:not(.home) body:not(.home) .tile.full-width .tile .front p{
     position:relative;
     text-transform:none;
     font-size:1.4em;
+}
+.organizational-health .headings-2 h1,
+.organizational-health .headings-2 h2,
+.organizational-health .headings-2 h3,
+.organizational-health .headings-2 h4,
+.organizational-health .headings-2 h5,
+.organizational-health .headings-2 h6{
+    color:#0099B5;
+}
+.organizational-health .headings-2 h1:before,
+.organizational-health .headings-2 h2:before,
+.organizational-health .headings-2 h3:before,
+.organizational-health .headings-2 h4:before,
+.organizational-health .headings-2 h5:before,
+.organizational-health .headings-2 h6:before{
+    background-color:#0099B5;
+}
+.technology-based-care .headings-2 h1,
+.technology-based-care .headings-2 h2,
+.technology-based-care .headings-2 h3,
+.technology-based-care .headings-2 h4,
+.technology-based-care .headings-2 h5,
+.technology-based-care .headings-2 h6{
+    color:#FF0054;
+}
+.technology-based-care .headings-2 h1:before,
+.technology-based-care .headings-2 h2:before,
+.technology-based-care .headings-2 h3:before,
+.technology-based-care .headings-2 h4:before,
+.technology-based-care .headings-2 h5:before,
+.technology-based-care .headings-2 h6:before{
+    background-color:#FF0054;
 }
 /* sidehat */
 .sidehat.home-care{ background-color:#f37122; }
@@ -2216,9 +2280,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
 	font-size:1.6em;
 	margin:1em;
 }
-#slider .title.home-care{background-color:#f37122;}
-#slider .title.organizational-health{background-color:#0099B5;}
-#slider .title.technology-based-care{background-color:#FF0054;}
+#slider.home-care .title{background-color:#f37122;}
+#slider.organizational-health .title{background-color:#0099B5;}
+#slider.technology-based-care .title{background-color:#FF0054;}
 #slider .text{
 	display:none;
 }
@@ -2836,6 +2900,10 @@ html.touch #divisions .technology-based-care .title a.hover span{
 	   -moz-border-radius: 50%;
 	        border-radius: 50%;
 }
+#socials a:hover{
+    color:#000;
+    background-color:#fff;
+}
 #socials a:before{
 	font-size:1.4em;
 	display:inline-block;
@@ -2844,11 +2912,6 @@ html.touch #divisions .technology-based-care .title a.hover span{
 	-webkit-transition: all .3s ease;
 	   -moz-transition: all .3s ease;
 	        transition: all .3s ease;
-}
-#socials a:hover:before{
-	-webkit-transform:  scale(1.6) translateY(-4px);
-	   -moz-transform:  scale(1.6) translateY(-4px);
-	        transform:  scale(1.6) translateY(-4px);
 }
 
 /* team */
@@ -3022,6 +3085,7 @@ html.touch #divisions .technology-based-care .title a.hover span{
 /* expander */
 #expander{
 	display:block;
+    clear: both;
 	background-color:#e2e2e2;
 	padding:1.5em 1em;
 	font-size:1.2em;
@@ -3029,7 +3093,7 @@ html.touch #divisions .technology-based-care .title a.hover span{
 	color:#424242;
 	text-transform:uppercase;
 	text-align:center;
-	margin:0;
+	margin:0 0 0.5em;
 	text-decoration:none;
 
 	-webkit-box-sizing: border-box;
