@@ -81,44 +81,44 @@
 
 	<?php get_header(); ?>
 
-		<?php if(get_field('show_slider') && have_rows('seats')) :?>
+	<?php if(get_field('revolution_slider')): ?>
+		<section id="revolution-slider"><?php echo get_field('revolution_slider'); ?></section>
+	<?php endif; ?>
 
-			<section id="slider">
+	<?php if(get_field('show_slider') && have_rows('seats')) :?>
 
-				<?php while(have_rows('seats')): the_row();?>
+	<section id="slider">
 
-				<div class="slide">
+		<?php while(have_rows('seats')): the_row();?>
 
-					<div class="heading">
-						<div class="inner">
-							<?php $parent = get_page($post->post_parent); ?>
+		<div class="slide">
 
-							<h1 class="title <?php echo $parent->post_name; ?>"><?php the_sub_field('title'); ?></h1>
-
-							<p class="text">
-								<span>
-									<?php the_sub_field('sub_title'); ?>
-								</span>
-							</p>
-						</div>
-					</div>
-
-					<?php
-					$thumb = wp_get_attachment_image_src( get_sub_field('image'), 'full');
-					if($thumb): ?>
-
-					<img src="<?php echo $thumb[0]; ?>" alt="background" class="ground">
-
-					<?php endif; ?>
-
+			<div class="heading">
+				<div class="inner">
+					<h1 class="title"><?php the_sub_field('title'); ?></h1>
+					<p class="text">
+						<span>
+							<?php the_sub_field('sub_title'); ?>
+						</span>
+					</p>
 				</div>
+			</div>
 
-				<?php endwhile; ?>
+			<?php
+			$thumb = wp_get_attachment_image_src( get_sub_field('image'), 'full');
+			if($thumb): ?>
 
-			</section>
+			<img src="<?php echo $thumb[0]; ?>" alt="background" class="ground">
 
-		<?php endif; ?>
+			<?php endif; ?>
 
+		</div>
+
+		<?php endwhile; ?>
+
+	</section>
+
+	<?php endif; ?>
 
 		<section id="article">
 

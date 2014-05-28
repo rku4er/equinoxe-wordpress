@@ -1,5 +1,9 @@
 <?php /* Template Name: About */ get_header(); ?>
 
+	<?php if(get_field('revolution_slider')): ?>
+		<section id="revolution-slider"><?php echo get_field('revolution_slider'); ?></section>
+	<?php endif; ?>
+
 	<?php if(get_field('show_slider') && have_rows('seats')) :?>
 
 	<section id="slider">
@@ -34,8 +38,6 @@
 	</section>
 
 	<?php endif; ?>
-
-
 
 	<section id="article" class="midwrapper content headings">
 

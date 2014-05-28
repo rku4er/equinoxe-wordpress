@@ -81,6 +81,10 @@
 
 	<?php get_header(); ?>
 
+		<?php if(get_field('revolution_slider')): ?>
+			<section id="revolution-slider"><?php echo get_field('revolution_slider'); ?></section>
+		<?php endif; ?>
+
 		<?php if(get_field('show_slider') && have_rows('seats')) :?>
 
 		<section id="slider">
