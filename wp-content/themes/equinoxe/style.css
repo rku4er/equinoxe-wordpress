@@ -532,35 +532,6 @@ a:hover {
 .content span.required {
     color: #f00
 }
-/* contact_button */
-.content a[href$="/contact/"]{
-    display:block;
-    background-color:#ea751f;
-    color:#fff;
-    font-family: OpenSansLight, Arial, sans-serif;
-    font-size:1.6em;
-    padding:0.7em;
-    text-align:center;
-    width:100%;
-    clear:both;
-    margin:1em 0;
-    text-decoration:none;
-
-    -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box;
-
-    -webkit-border-radius: 3px;
-       -moz-border-radius: 3px;
-            border-radius: 3px;
-}
-.content a[href$="/contact/"]:hover{
-    background-color: #F37122;
-    text-decoration: none;
-}
-.content a[href$="/contact/"]:before{
-    display: none;
-}
 
 /* custom selects */
 .custom-select {
@@ -1094,42 +1065,6 @@ html.touch .tile.hover .back {
     opacity: 1;
 }
 
-/* .tile:not(.right-side):not(.bottom-side):not(.left-side) .back {
-    bottom: 100%;
-}
-html.no-touch .tile:hover:not(.right-side):not(.bottom-side):not(.left-side) .back,
-html.touch .tile.hover:not(.right-side):not(.bottom-side):not(.left-side) .back {
-    bottom: 0;
-} */
-/* .tile.top-side .back {
-    bottom: 100%;
-}
-.tile.right-side .back {
-    left: 100%;
-}
-.tile.bottom-side .back {
-    top: 100%;
-}
-.tile.left-side .back {
-    right: 100%;
-} */
-/* html.no-touch .tile.top-side:hover .back,
-html.touch .tile.top-side.hover .back {
-    bottom: 0;
-}
-html.no-touch .tile.right-side:hover .back,
-html.touch .tile.right-side.hover .back {
-    left: 0;
-}
-html.no-touch .tile.bottom-side:hover .back,
-html.touch .tile.bottom-side.hover .back {
-    top: 0;
-}
-html.no-touch .tile.left-side:hover .back,
-html.touch .tile.left-side.hover .back {
-    right: 0;
-} */
-
 .tile .front a{
 	text-decoration:none;
 	display:block;
@@ -1155,6 +1090,9 @@ html.touch .tile.left-side.hover .back {
     max-width: 80%;
     background-color:#f37122;
 }
+.home-care .tile .front .title{background-color: #f37122;}
+.organizational-health .tile .front .title{background-color: #0099B5;}
+.technology-based-care .tile .front .title{background-color: #FF0054;}
 .tile .front p{
     max-width: 70%;
     background-color:#424242;
@@ -1166,14 +1104,17 @@ body:not(.home) .tile .front p{
     text-transform: none;
 }
 .tile .back{
-	background-color:#E2E2E2;
-	color:#696969;
+	background-color:#F37222;
+	color:#fff;
 	padding:2em;
 
 	-webkit-box-sizing: border-box;
 	   -moz-box-sizing: border-box;
 	        box-sizing: border-box;
 }
+.home-care .tile .back{background-color: #f37122;}
+.organizational-health .tile .back{background-color: #0099B5;}
+.technology-based-care .tile .back{background-color: #FF0054;}
 .tile .back .title{
 	font-size:1.8em;
     line-height: 1em;
@@ -1189,7 +1130,7 @@ body.home .tile .front .title{
 	font-size:1.4em;
 }
 .tile .back .more{
-	color:#696969;
+	color:#fff;
 	font-size:1.6em;
 
 	position:absolute;
@@ -1197,7 +1138,7 @@ body.home .tile .front .title{
 	left:1.5em;
 }
 .tile .back .more:before{
-	background-color:#696969;
+	background-color:#fff;
 }
 body:not(.home) .tile.full-width .scene .bg{
 	width:auto;
@@ -1236,11 +1177,60 @@ body:not(.home) body:not(.home) .tile.full-width .tile .front p{
 	position:relative;
 	text-decoration:none;
 }
+.home-care .content a{
+    color: #F37122;
+}
+.organizational-health .content a{
+    color: #0099B5;
+}
+.technology-based-care .content a{
+    color: #FF0054;
+}
 .content a img{
     position: relative;
 }
 .content a:hover{
     text-decoration: underline;
+}
+/* contact_button */
+.content a[href="/contact/"]{
+    display:block;
+    background-color:#F37122;
+    color:#fff;
+    font-family: OpenSansLight, Arial, sans-serif;
+    font-size:1.6em;
+    padding:0.7em;
+    text-align:center;
+    width:100%;
+    clear:both;
+    margin:1em 0;
+    text-decoration:none;
+
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+
+    -webkit-border-radius: 3px;
+       -moz-border-radius: 3px;
+            border-radius: 3px;
+}
+.home-care .content a[href="/contact/"]{
+    background-color: #F37122;
+    color: #fff;
+}
+.organizational-health .content a[href="/contact/"]{
+    background-color: #0099B5;
+    color: #fff;
+}
+.technology-based-care .content a[href="/contact/"]{
+    background-color: #FF0054;
+    color: #fff;
+}
+.content a[href="/contact/"]:hover{
+    text-decoration: none;
+}
+.content a[href="/contact/"]:before{
+    display: none;
 }
 /* headings */
 .headings{
@@ -1275,6 +1265,22 @@ body:not(.home) body:not(.home) .tile.full-width .tile .front p{
 	height:1px;
 	overflow:hidden;
 	background-color:#f37122;
+}
+.home-care .headings h1,
+.home-care .headings h2,
+.home-care .headings h3,
+.home-care .headings h4,
+.home-care .headings h5,
+.home-care .headings h6{
+    color:#f37122;
+}
+.home-care .headings h1:before,
+.home-care .headings h2:before,
+.home-care .headings h3:before,
+.home-care .headings h4:before,
+.home-care .headings h5:before,
+.home-care .headings h6:before{
+    background-color:#f37122;
 }
 .organizational-health .headings h1,
 .organizational-health .headings h2,
@@ -3122,19 +3128,55 @@ html.touch #divisions .technology-based-care .title a.hover span{
 	left:0;
 	overflow:hidden;
 }
-#heading .title{
-	position: absolute;
+#heading .row{
+    position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
 
-	height: 40%;
-    margin: auto 0;
-	padding:0.5em 5em 0.5em 30%;
+    z-index: 2;
 
-    z-index:2;
-    font-size:1em;
+    height: 60%;
+    margin: auto 0;
+    padding:0.5em 5em 0.5em 30%;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+#heading .row:before{
+    background-color: transparent;
+    content: "";
+    height: auto;
+    bottom: auto;
+    margin: 0 auto;
+    overflow: visible;
+    width: auto;
+    display:inline-block;
+    vertical-align: middle;
+
+    position:absolute;
+    top:0;
+    right:3em;
+    bottom:0;
+    left:0;
+    z-index:-1;
+
+    background-color:#000;
+    opacity:.3;
+    filter:alpha(opacity="30");
+}
+#heading .holder{
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+#heading .title{
+    display: table-cell;
+    vertical-align: middle;
+    font-size:1.4em;
+    padding-left: 1em;
 
     color:#fff;
     font-family: OpenSans, Arial, sans-serif;
@@ -3145,41 +3187,12 @@ html.touch #divisions .technology-based-care .title a.hover span{
 	   -moz-box-sizing: border-box;
 	        box-sizing: border-box;
 }
-#heading .title:before{
-	background-color: transparent;
-    content: "";
-    height: auto;
-    bottom: auto;
-    margin: 0 auto;
-    overflow: visible;
-    width: auto;
-	display:inline-block;
-    vertical-align: middle;
-
-	position:absolute;
-	top:0;
-	right:3em;
-	bottom:0;
-	left:0;
-	z-index:-1;
-
-	background-color:#000;
-	opacity:.3;
-	filter:alpha(opacity="30");
-}
-#heading .title:after{
-	content:"";
-	display:inline-block;
-	vertical-align:middle;
-    height: 0;
-    padding-bottom: 21%;
-}
-#heading .title figure{
+#heading .row figure{
 	display:inline-block;
 	position:relative;
-	width:30%;
+	width:40%;
 	height:0;
-	padding-bottom:30%;
+	padding-bottom:40%;
 
 	vertical-align:middle;
 	margin:-5% 0 -5% -40%;
@@ -3187,7 +3200,7 @@ html.touch #divisions .technology-based-care .title a.hover span{
 	float:left;
 	z-index:2;
 }
-#heading .title figure:before{
+#heading .row figure:before{
 	content:"";
 	position:absolute;
 	top:0;
@@ -3198,10 +3211,11 @@ html.touch #divisions .technology-based-care .title a.hover span{
 
 	background-color:#F37122;
 }
-#heading .title.home-care figure:before{ background-color:#f37122; }
-#heading .title.organizational-health figure:before{ background-color:#0099b5; }
-#heading .title.technology-based-care figure:before{ background-color:#ff0054; }
-#heading .title figure img{
+.home-care #heading .row figure:before{ background-color:#f37122; }
+.organizational-health #heading .row figure:before{ background-color:#0099b5; }
+.technology-based-care #heading .row figure:before{ background-color:#ff0054; }
+
+#heading .row figure img{
 	position:absolute;
 	top:0;
 	right:0;
@@ -3210,12 +3224,6 @@ html.touch #divisions .technology-based-care .title a.hover span{
 	margin:auto;
 
 	max-width: 2em;
-}
-#heading .title span{
-	display:inline-block;
-	vertical-align:middle;
-	font-size:1.4em;
-    width: 100%;
 }
 #heading img.attachment-heading{
 	height: 100%;
@@ -4160,22 +4168,10 @@ html.touch #listing li.hover{
 		margin:0;
 	}
     #heading .title{
-        height: 51%;
+        font-size:3em;
     }
-    #heading .title:after{
-        padding-bottom: 26%;
-    }
-	#heading .title figure{
-		margin:-5% 0;
-        width:41%;
-        padding-bottom:41%;
-        margin-left:-44%;
-	}
-	#heading .title figure img{
-		max-width: 3.5em;
-	}
-	#heading .title span{
-		font-size:3em;
+	#heading .row figure img{
+		max-width: none;
 	}
 	/* contact-button */
 	#contact_button{
@@ -4409,18 +4405,6 @@ html.touch #listing li.hover{
 	/* heading */
 	#heading{
 		margin:0 0 2em;
-	}
-    #heading .title{
-        height: 60%;
-    }
-    #heading .title:after{
-        padding-bottom: 30%;
-    }
-	#heading .title figure{
-
-	}
-	#heading .title figure img{
-		max-width: none;
 	}
 	/* map_holder */
 	#map_holder{

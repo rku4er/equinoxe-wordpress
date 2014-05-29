@@ -79,12 +79,19 @@
 
 						<div class="inner">
 
-							<h1 class="title <?php echo $parent->post_name; ?>">
+							<div class="row">
+
 								<figure>
 									<img src="<?php echo get_bloginfo('template_url'); ?>/img/bg/icon-heart.png" alt="" />
 								</figure>
-								<span><?php the_title(); ?></span>
-							</h1>
+
+								<div class="holder">
+
+									<h1 class="title"><?php the_title(); ?></h1>
+
+								</div>
+
+							</div>
 
 							<!-- post thumbnail -->
 							<?php if ( has_post_thumbnail()) :?>

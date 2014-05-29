@@ -165,7 +165,7 @@
 
 			<div class="midwrapper group">
 
-				<div id="tiles">
+				<div id="tiles" class="<?php echo $parent->post_name; ?>">
 
 					<div class="inner">
 
@@ -182,11 +182,6 @@
 									<?php
 										$title = get_field('tile_title', $post->ID) ? get_field('tile_title', $post->ID) : get_the_title();
 
-										if(get_field('tile_excerpt_front', $post->ID)){
-											$content_front = '<p>'.get_field('tile_excerpt_front', $post->ID).'</p>';
-										}else{
-											$content_front = html5wp_excerpt('html5wp_tile_front');
-										}
 										if(get_field('tile_excerpt_back', $post->ID)){
 											$content_back = '<p>'.get_field('tile_excerpt_back', $post->ID).'</p>';
 										}else{
@@ -203,7 +198,6 @@
 									<div class="face front">
 										<div class="inner">
 											<h3 class="title"><?php echo $title ?></h3>
-											<?php echo $content_front; ?>
 										</div>
 									</div>
 

@@ -187,11 +187,6 @@
 									<?php
 										$title = get_field('tile_title', $post->ID) ? get_field('tile_title', $post->ID) : get_the_title();
 
-										if(get_field('tile_excerpt_front', $post->ID)){
-											$content_front = '<p>'.get_field('tile_excerpt_front', $post->ID).'</p>';
-										}else{
-											$content_front = html5wp_excerpt('html5wp_tile_front');
-										}
 										if(get_field('tile_excerpt_back', $post->ID)){
 											$content_back = '<p>'.get_field('tile_excerpt_back', $post->ID).'</p>';
 										}else{
@@ -208,7 +203,6 @@
 									<div class="face front">
 										<div class="inner">
 											<h3 class="title"><?php echo $title ?></h3>
-											<?php echo $content_front; ?>
 										</div>
 									</div>
 
@@ -298,9 +292,13 @@
 				</div>
 				<div class="content">
 					<?php
-						$post = get_page(get_ID_by_slug('about'));
-						echo html5wp_excerpt('html5wp_custom_post');
-						wp_reset_postdata($post);
+						if(get_field('about_content')){
+							echo get_field('about_content');
+						} else{
+							$post = get_page(get_ID_by_slug('about'));
+							echo html5wp_excerpt('html5wp_custom_post');
+							wp_reset_postdata($post);
+						}
 					?>
 				</div>
 
