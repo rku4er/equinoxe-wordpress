@@ -528,4 +528,43 @@ function my_wp_nav_menu_objects_sub_menu( $sorted_menu_items, $args ) {
   }
 }
 
+
+function colorboard($atts, $content = null) {
+    extract(shortcode_atts(array(
+
+    ), $atts));
+
+
+    $output = '';
+
+    if(get_field('show_overview')){
+
+    $output .= '<section id="colorboard"><h2 class="title">'.get_field('overview_title').'</h2>';
+
+
+        if(have_rows('overview_sections')){
+            $output .= '<div class="board-wrapper">';
+
+            $i = 0;
+
+            while(have_rows('overview_sections')){
+
+                the_row();
+                $i++;
+
+                $output .= '<div class="board color-'.$i.'"><h3 class="header">'.get_sub_field('title').'</h3><div class="body">'.get_sub_field('content').'</div></div>';
+            }
+
+            $output .= '</div>';
+        }
+
+    $output .= '</section>';
+
+    }
+
+    return $output;
+}
+
+add_shortcode('colorboard', 'colorboard');
+
 ?>

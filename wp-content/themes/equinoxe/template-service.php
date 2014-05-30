@@ -132,41 +132,6 @@
 
 					<?php endif; ?>
 
-
-
-					<?php if(get_field('show_overview')): ?>
-
-					<section id="colorboard">
-
-						<h2 class="title"><?php the_field('overview_title'); ?></h2>
-
-
-						<?php if(have_rows('overview_sections')): ?>
-						<div class="board-wrapper">
-
-							<?php $i = 0; while(have_rows('overview_sections')): the_row(); $i++;?>
-
-							<div class="board color-<?php echo $i; ?>">
-
-								<h3 class="header"><?php the_sub_field('title'); ?></h3>
-
-								<div class="body">
-
-									<?php the_sub_field('content'); ?>
-
-								</div>
-
-							</div>
-
-							<?php endwhile; ?>
-
-						</div>
-						<?php endif; ?>
-
-					</section>
-
-					<?php endif; ?>
-
 				</div>
 
 			</section>

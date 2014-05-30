@@ -1154,6 +1154,29 @@ body:not(.home) .tile.full-width .tile .front p{
 .content{
 	color:#202020;
 }
+.content table{
+    border-collapse: collapse;
+    border: 0 none;
+}
+.content table,
+.content table td{
+    border-color: #F37122;
+}
+.content table td{
+    vertical-align: top;
+}
+.home-care .content table,
+.home-care .content table td{
+    border-color: #F37122;
+}
+.organizational-health .content table,
+.organizational-health .content table td{
+    border-color: #0099B5;
+}
+.technology-based-care .content table,
+.technology-based-care .content table td{
+    border-color: #FF0054;
+}
 .content p{
 	margin:1.5em 0;
 }
@@ -1173,6 +1196,35 @@ body:not(.home) .tile.full-width .tile .front p{
 .content ul,
 .content ol{
 	padding-left:2em;
+}
+.content ul{
+    list-style: none;
+}
+.content ul li:before{
+    content: "";
+    float: left;
+    width: 7px;
+    height: 7px;
+    font-size: 0;
+    overflow: hidden;
+    position: relative;
+    left: -10px;
+    top: 8px;
+    margin-left: -7px;
+    background-color: #F37122;
+
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+.home-care .content ul li:before{
+    background-color: #F37122;
+}
+.organizational-health .content ul li:before{
+    background-color: #0099B5;
+}
+.technology-based-care .content ul li:before{
+    background-color: #FF0054;
 }
 .content a{
 	position:relative;
@@ -1506,6 +1558,9 @@ body:not(.home) .tile.full-width .tile .front p{
 	border-top:0 none;
 	padding-top:0;
 }
+.board .header{
+    color: #fff;
+}
 .board.color-1{ background-color: #f17320; }
 .board.color-2{ background-color: #1699b3; }
 .board.color-3{ background-color: #fb1156; }
@@ -1643,10 +1698,10 @@ body:not(.home) .tile.full-width .tile .front p{
 .single-listing h4,
 .single-listing h5,
 .single-listing h6{
-	color:#202020;
+	color:#F37122;
 	font-size:2.4em;
 	font-family:HelveticaBold, Arial, sans-serif;
-	text-transform:uppercase;
+	text-transform:none;
 	margin:1em 0;
 }
 /* sidebar-widget */
@@ -3115,6 +3170,15 @@ html.touch #divisions .technology-based-care .title a.hover span{
 #expander:hover{
 	background-color:#F37122;
 	color:#fff;
+}
+#expander.home-care:hover{
+    background-color:#F37122;
+}
+#expander.organizational-health:hover{
+    background-color:#0099B5;
+}
+#expander.technology-based-care:hover{
+    background-color:#FF0054;
 }
 /* heading */
 #heading{

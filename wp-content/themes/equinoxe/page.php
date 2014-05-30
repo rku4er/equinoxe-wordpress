@@ -45,9 +45,7 @@
 
 		<div class="midwrapper group">
 
-			<h1 id="listing-title"><?php the_title(); ?></h1>
-
-			<section id="content" class="content group">
+			<section id="content" class="content group headings-2">
 
 				<?php if (have_posts()): while (have_posts()) : the_post(); ?>
 
