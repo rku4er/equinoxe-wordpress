@@ -240,10 +240,6 @@ function html5wp_custom_post($length)
 {
     return 40;
 }
-function html5wp_tile_front($length)
-{
-    return 20;
-}
 function html5wp_tile_back($length)
 {
     return 40;

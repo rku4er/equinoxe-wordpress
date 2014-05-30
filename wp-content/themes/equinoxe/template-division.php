@@ -2,80 +2,107 @@
 
 <?php if($_POST['offset']): ?>
 
-	<?php
-		if( get_query_var('page') ) {
-			$page = get_query_var( 'page' );
-		} else {
-			$page = 1;
+<?php
+	if( get_query_var('page') ) {
+		$page = get_query_var( 'page' );
+	} else {
+		$page = 1;
+	}
+
+	$posts_per_page =  $_POST['load'];
+	$offset = $_POST['offset'];
+	$output = '';
+
+	if(count(get_field('services')) > $offset + $posts_per_page){
+		$empty = false;
+	}else{
+		$empty = true;
+	}
+
+	if(have_rows('services')){
+
+		$output .= '<div class="wrapper">';
+
+		$i = 0;
+
+		while(have_rows('services')){
+			the_row();
+
+			if($offset-1 < $i && $i - $offset < $posts_per_page){
+
+				foreach( get_sub_field('page') as $post){
+					setup_postdata($post);
+
+					$output .= '<div class="tile';
+
+					if(get_sub_field('full_width')){
+						$output .= ' full-width">';
+					}else{
+						$output .= '">';
+					}
+
+					$output .= '<div class="scene">';
+
+					$title = get_field('tile_title', $post->ID) ? get_field('tile_title', $post->ID) : get_the_title();
+
+					if(get_field('tile_excerpt_back', $post->ID)){
+						$content_back = '<p>'.get_field('tile_excerpt_back', $post->ID).'</p>';
+					}else{
+						$content_back = html5wp_excerpt('html5wp_tile_back');
+					}
+
+					$size = get_sub_field('full_width') ? 'tile_full_width' : 'tile_regular';
+					$thumb = get_the_post_thumbnail(get_the_ID(), $size, array(
+						'title' => get_the_title(),
+						'class' => 'bg'
+					));
+					$seats = get_field('seats');
+					$firstSlide = $seats[0];
+
+					if(!$thumb && $firstSlide['image']){
+						$src = wp_get_attachment_image_src($firstSlide['image'], $size, false);
+						$thumb = '<img src="'.$src[0].'" alt="" class="bg" />';
+					}
+
+					$output .= '<div class="face front">';
+						$output .= '<div class="inner">';
+							$output .= '<h3 class="title">'.$title.'</h3>';
+						$output .= '</div>';
+					$output .= '</div>';
+
+					$output .= '<div class="face back">';
+						$output .= '<h3 class="title">'.$title.'</h3>';
+						$output .= $content_back;
+						$output .= '<a href="'.get_permalink();
+							if(get_sub_field('hash')) $output .= '#'.get_sub_field('hash');
+						$output .= '" class="more">View More</a>';
+					$output .= '</div>';
+
+					$output .= $thumb;
+
+					$output .= '</div>';
+					$output .= '</div>';
+
+				}
+
+				wp_reset_postdata();
+			}
+
+			$i++;
+
 		}
 
-		$posts_per_page =  $_POST['load'];
-		$offset = $_POST['offset'];
-	?>
+		$output .= '</div>';
 
-	<?php if(have_rows('services')): ?>
+	}
 
-		<div class="wrapper">
-
-			<?php $i = 0; while(have_rows('services')): the_row();?>
-
-			<?php if($offset-1 < $i && $i - $offset < $posts_per_page):?>
-
-				<?php foreach( get_sub_field('page') as $post): ?>
-					<?php setup_postdata($post); ?>
-
-					<div class="tile <?php if(get_sub_field('full_width')) echo 'full-width' ?>">
-						<div class="scene">
-
-							<?php
-								$title = get_field('tile_title', $post->ID) ? get_field('tile_title', $post->ID) : get_the_title();
-
-								if(get_field('tile_excerpt_front', $post->ID)){
-									$content_front = '<p>'.get_field('tile_excerpt_front', $post->ID).'</p>';
-								}else{
-									$content_front = html5wp_excerpt('html5wp_tile_front');
-								}
-								if(get_field('tile_excerpt_back', $post->ID)){
-									$content_back = '<p>'.get_field('tile_excerpt_back', $post->ID).'</p>';
-								}else{
-									$content_back = html5wp_excerpt('html5wp_tile_back');
-								}
-
-								$size = get_sub_field('full_width') ? 'tile_full_width' : 'tile_regular';
-								$bg = get_the_post_thumbnail(get_the_ID(), $size, array(
-									'title' => get_the_title(),
-									'class' => 'bg'
-								));
-							?>
-
-							<div class="face front">
-								<div class="inner">
-									<h3 class="title"><?php echo $title ?></h3>
-									<?php echo $content_front; ?>
-								</div>
-							</div>
-
-							<div class="face back">
-								<h3 class="title"><?php echo $title; ?></h3>
-								<?php echo $content_back; ?>
-								<a href="<?php echo get_permalink(); if(get_sub_field('hash')) echo '#'.get_sub_field('hash'); ?>" class="more">View More</a>
-							</div>
-
-							<?php echo $bg; ?>
-
-						</div>
-					</div>
-
-					<?php endforeach; ?>
-					<?php wp_reset_postdata();?>
-
-				<?php endif; ?>
-
-			<?php $i++; endwhile; ?>
-
-		</div>
-
-	<?php endif; ?>
+	$json = array(
+	    'html'	=>	$output,
+	    'empty'	=>	$empty
+	);
+	echo json_encode($json);
+	exit;
+?>
 
 <?php else: ?>
 
@@ -84,7 +111,9 @@
 	<?php $parent = get_page($post->post_parent); ?>
 
 	<?php if(get_field('revolution_slider')): ?>
-		<section id="revolution-slider"><?php echo get_field('revolution_slider'); ?></section>
+		<section id="revolution-slider">
+				<?php echo do_shortcode( get_field('revolution_slider') ) ?>
+		</section>
 	<?php endif; ?>
 
 	<?php if(get_field('show_slider') && have_rows('seats')) :?>
@@ -189,10 +218,18 @@
 										}
 
 										$size = get_sub_field('full_width') ? 'tile_full_width' : 'tile_regular';
-										$bg = get_the_post_thumbnail(get_the_ID(), $size, array(
+										$thumb = get_the_post_thumbnail(get_the_ID(), $size, array(
 											'title' => get_the_title(),
 											'class' => 'bg'
 										));
+										$seats = get_field('seats');
+										$firstSlide = $seats[0];
+
+										if(!$thumb && $firstSlide['image']){
+											$src = wp_get_attachment_image_src($firstSlide['image'], $size, false);
+											$thumb = '<img src="'.$src[0].'" alt="" class="bg" />';
+										}
+
 									?>
 
 									<div class="face front">
@@ -207,7 +244,7 @@
 										<a href="<?php echo get_permalink(); if(get_sub_field('hash')) echo '#'.get_sub_field('hash'); ?>" class="more">View More</a>
 									</div>
 
-									<?php echo $bg; ?>
+									<?php echo $thumb; ?>
 
 								</div>
 							</div>

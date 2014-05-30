@@ -1027,6 +1027,7 @@ a.more {
 	left:0;
 	margin:0.5em 1em;
 	overflow:hidden;
+    background-color: #fff;
 }
 
 .tile .scene .bg{
@@ -1140,13 +1141,13 @@ body.home .tile .front .title{
 .tile .back .more:before{
 	background-color:#fff;
 }
-body:not(.home) .tile.full-width .scene .bg{
+.tile.full-width .scene .bg{
 	width:auto;
 	right:0;
 	max-width: none;
 	min-width:100%;
 }
-body:not(.home) body:not(.home) .tile.full-width .tile .front p{
+body:not(.home) .tile.full-width .tile .front p{
     max-width: 50%;
 }
 /* content */
@@ -2937,6 +2938,7 @@ html.touch #divisions .technology-based-care .title a.hover span{
     cursor: pointer;
 
 	display:inline-block;
+    vertical-align: top;
 	padding:0 10px;
 	position:relative;
 	width:100%;
@@ -3596,16 +3598,16 @@ html.touch #listing li.hover{
 		font-size:2.7em;
 		margin:0.5em 0;
 	}
-    body:not(.home) .tile.full-width{
+    .tile.full-width{
         width:100%;
         float:none;
         clear:both;
     }
-    body:not(.home) .tile.full-width .title{
+    .tile.full-width .title{
         width:50%;
     }
-    body:not(.home) .tile.full-width .front .title{ max-width:100%; }
-    body:not(.home) .tile.full-width .front p{ max-width:70%; }
+    .tile.full-width .front .title{ max-width:100%; }
+    .tile.full-width .front p{ max-width:70%; }
 	/* content */
 	.content p,
 	.content ul,

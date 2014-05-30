@@ -71,13 +71,14 @@
 
             var box_hold = $('#tiles');
             var box_inner = $('#tiles >.inner');
+            var loadAmount = $('body.home').length ? 2 : 3 ;
             var _btn = $('#expander');
             var anim_f = true;
 
             if(_btn.length){
 
                 _btn.click(function(){
-                    loadPosts(3);
+                    loadPosts(loadAmount);
                     return false;
                 });
 
@@ -96,47 +97,60 @@
                         url: window.location.href,
                         type: 'POST',
                         data: data,
-                        dataType: 'html',
+                        dataType: 'json',
                         success: function(_html){
-                            var holderHeight = box_hold.height();
-                            var response = $(_html);
-                            var offset = box_hold.offset().top + holderHeight - $('#header').outerHeight();
-                            var tiles = response.find('.tile');
+                            var response;
+                            var empty;
 
-                            $('body,html').animate({
-                                scrollTop: offset
-                            }, {
-                                duration: change_speed,
-                                queue: false
+                            $.each(_html, function(index, element) {
+                                if(index == 'html'){
+                                    response = element;
+                                }
+                                if(index == 'empty'){
+                                    empty = element;
+                                }
                             });
 
-                            box_hold.css({
-                                height : holderHeight
-                            });
+                            if(response){
+                                var holderHeight = box_hold.height();
+                                var offset = box_hold.offset().top + holderHeight - $('#header').outerHeight();
+                                var tiles = $(response).find('.tile');
 
-                            tiles.each(function(){
-                                $(this).css({
-                                    opacity : 0
+                                $('body,html').animate({
+                                    scrollTop: offset
+                                }, {
+                                    duration: change_speed,
+                                    queue: false
                                 });
-                            });
 
-                            box_inner.append(tiles);
-
-                            box_hold.stop().animate({height: box_inner.height() }, 400, 'easeOutExpo', function(){
-                                box_hold.css({ height: 'auto' }).removeClass('loading');
-
-                                tiles.each(function(i){
-                                    var self = $(this);
-                                    setTimeout(function(){
-                                        self.animate({opacity: 1}, 400, 'easeInExpo', function(){});
-                                    }, i*200);
+                                tiles.each(function(){
+                                    $(this).css({
+                                        opacity : 0
+                                    });
                                 });
-                            });
 
-                            if(box_inner.find('.tile').length == data['offset'] +1){
-                                _btn.hide();
+                                box_hold.css({
+                                    height : holderHeight
+                                });
+
+                                box_inner.append(tiles);
+
+                                box_hold.stop().animate({height: box_inner.height() }, 400, 'easeOutExpo', function(){
+                                    box_hold.css({ height: 'auto' }).removeClass('loading');
+
+                                    tiles.each(function(i){
+                                        var self = $(this);
+                                        setTimeout(function(){
+                                            self.animate({opacity: 1}, 400, 'easeInExpo', function(){});
+                                        }, i*200);
+                                    });
+                                });
+
+                                if(empty){
+                                    _btn.hide();
+                                }
+                                anim_f = true;
                             }
-                            anim_f = true;
                         }
                     });
                 }
