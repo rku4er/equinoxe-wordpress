@@ -39,6 +39,24 @@
             });
         }
 
+        // Anchored links
+        $('a[href^="#"]').each(function(){
+            var self = $(this);
+            var hash = self.attr('href');
+
+            if($(hash).length){
+                self.on('click', function(){
+                    $('body,html').animate({
+                        scrollTop: $(hash).offset().top - $('#header').outerHeight() - 20
+                    }, {
+                        duration: 400,
+                        easing: 'easeInOutExpo',
+                        queue: false
+                    });
+                });
+            }
+        });
+
         // Custom Selects
         var customSelects = $('select').selectik({
             width: 0,
@@ -67,19 +85,26 @@
 
         /*--- news function ---*/
         (function initServices(){
-            var change_speed = 500; //in ms
+            var change_speed = 400; //in ms
 
             var box_hold = $('#tiles');
             var box_inner = $('#tiles >.inner');
             var loadAmount = $('body.home').length ? 2 : 3 ;
             var _btn = $('#expander');
+            var _btnTextCache = _btn.html();
             var anim_f = true;
+            var response;
+            var empty;
+            var data = {};
+            var tiles;
 
             if(_btn.length){
 
-                _btn.click(function(){
-                    loadPosts(loadAmount);
-                    return false;
+                _btn.on('click', function(){
+                    if(!empty){
+                        loadPosts(loadAmount);
+                        return false;
+                    }
                 });
 
             }
@@ -89,7 +114,6 @@
                     anim_f = false;
                     box_hold.addClass('loading');
 
-                    var data = {};
                     data['offset'] = box_inner.find('.tile').length;
                     data['load'] = _ind;
 
@@ -99,62 +123,125 @@
                         data: data,
                         dataType: 'json',
                         success: function(_html){
-                            var response;
-                            var empty;
 
-                            $.each(_html, function(index, element) {
-                                if(index == 'html'){
-                                    response = element;
-                                }
-                                if(index == 'empty'){
-                                    empty = element;
-                                }
-                            });
+                            ajaxCallback(_html);
 
-                            if(response){
-                                var holderHeight = box_hold.height();
-                                var offset = box_hold.offset().top + holderHeight - $('#header').outerHeight();
-                                var tiles = $(response).find('.tile');
+                        }
+                    });
+                }
+            }
+
+            function ajaxCallback(_html){
+                $.each(_html, function(index, element) {
+                    if(index == 'html'){
+                        response = element;
+                    }
+                    if(index == 'empty'){
+                        empty = element;
+                    }
+                });
+
+                if(response){
+                    var holderHeight = box_hold.height();
+                    var offset = box_hold.offset().top + holderHeight - $('#header').outerHeight();
+                    tiles = tiles ? $(tiles).add($(response).find('.tile')) : $(response).find('.tile');
+
+                    $('body,html').animate({
+                        scrollTop: offset
+                    }, {
+                        duration: change_speed,
+                        queue: false
+                    });
+
+                    tiles.css({
+                        opacity : 0
+                    });
+
+                    box_hold.css({
+                        height : holderHeight
+                    });
+
+                    box_inner.append(tiles);
+
+                    box_hold.stop().animate({height: box_inner.height() }, change_speed, 'easeOutExpo', function(){
+                        box_hold.css({ height: 'auto' }).removeClass('loading');
+
+                        tiles.each(function(i){
+                            var self = $(this);
+                            setTimeout(function(){
+                                self.animate({opacity: 1}, 200, 'easeInExpo', function(){});
+                            }, i*200);
+                        });
+                    });
+
+                    if(empty){
+
+                        var _btnTextCache = _btn.html();
+                        var toggleList;
+
+                        _btn.html('Collapse <span class="icon-arrow-up6"></span>');
+
+                        _btn.on('click', function(){
+
+                            if(!toggleList){
 
                                 $('body,html').animate({
-                                    scrollTop: offset
+                                    scrollTop: box_hold.offset().top
                                 }, {
                                     duration: change_speed,
                                     queue: false
                                 });
 
-                                tiles.each(function(){
-                                    $(this).css({
-                                        opacity : 0
-                                    });
+                                box_hold.css({ height: box_hold.height() });
+
+                                tiles.css('opacity', '0').hide();
+
+                                box_hold.stop().animate({height: holderHeight }, change_speed, 'easeOutExpo', function(){
+                                    box_hold.css({ height: 'auto' });
+                                    _btn.html('View Full List of services <span class="icon-arrow-down6"></span>');
                                 });
 
-                                box_hold.css({
-                                    height : holderHeight
+                                toggleList = true;
+
+                            }else{
+
+                                $('body,html').animate({
+                                    scrollTop: _btn.offset().top - $('#header').outerHeight() - 10
+                                }, {
+                                    duration: change_speed,
+                                    queue: false
                                 });
 
-                                box_inner.append(tiles);
+                                box_hold.css({ height: box_hold.height() });
 
-                                box_hold.stop().animate({height: box_inner.height() }, 400, 'easeOutExpo', function(){
-                                    box_hold.css({ height: 'auto' }).removeClass('loading');
+                                tiles.show();
+
+                                box_hold.stop().animate({height: box_inner.height() }, change_speed, 'easeOutExpo', function(){
 
                                     tiles.each(function(i){
                                         var self = $(this);
                                         setTimeout(function(){
-                                            self.animate({opacity: 1}, 400, 'easeInExpo', function(){});
+                                            self.animate({opacity: 1}, 200, 'easeInExpo', function(){});
                                         }, i*200);
                                     });
+
+                                    box_hold.css({ height: 'auto' });
+
+                                    _btn.html('Collapse services <span class="icon-arrow-up6"></span>');
+
                                 });
 
-                                if(empty){
-                                    _btn.hide();
-                                }
-                                anim_f = true;
+                                toggleList = false;
                             }
-                        }
-                    });
+
+                            return false;
+                        });
+                    }
+
+                    anim_f = true;
                 }
             }
+
         })();
 
         // Slider Image soft edges
@@ -169,6 +256,7 @@
                     leftSide = $('<div/>').addClass('leftSide'),
                     rightSide = $('<div/>').addClass('rightSide'),
                     img = self.children('img').eq(0),
+                    src = img.attr('src'),
                     offset;
 
                 if(img.length){
@@ -176,7 +264,10 @@
                         opacity : 0
                     });
 
-                    img.on('load', function(){
+                    imgNew = new Image();
+                    imgNew.src = src;
+
+                    $(imgNew).on('load', function(){
                         self.append(leftSide, rightSide);
                         img.animate({opacity: 1}, 300);
 

@@ -261,7 +261,7 @@
 				</div>
 
 				<?php if(count(get_field('services')) > $posts_per_page): ?>
-					<a href="#full" id="expander" class="<?php echo $parent->post_name; ?>">For a full list of our services click here <span class="icon-arrow-down6"></span></a>
+					<a href="#full" id="expander" class="<?php echo $parent->post_name; ?>">View <?php echo $posts_per_page; ?> items more <span class="icon-arrow-down6"></span></a>
 				<?php endif; ?>
 
 			</div>

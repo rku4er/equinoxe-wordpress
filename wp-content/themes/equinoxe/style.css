@@ -380,7 +380,7 @@ a:hover {
 /* Tables */
 .content table {
     width: 100%;
-    margin: 1.4em 0;
+    margin: 2.4em 0;
 }
 .content table img {
     margin: 0.5em
@@ -413,10 +413,17 @@ a:hover {
     border-bottom: 1px solid #dbdbdb;
 }
 .content table tr:hover td{
-	background-color: #fff;
+	background-color: transparent;
 }
 .content table span[class^="icon-"]:before{
 	color:#7c6792;
+}
+.content table h2{
+    font-size: 1.8em;
+    padding-bottom: 0;
+}
+.content table h2:before{
+    display: none;
 }
 
 /* Forms */
@@ -1553,6 +1560,9 @@ body:not(.home) .tile.full-width .tile .front p{
 .board ul{
 	font-size:1.2em;
 	margin:0.5em 0;
+}
+.board ul li:before{
+    background-color: #fff !important;
 }
 .board p:first-of-type{
 	border-top:0 none;
