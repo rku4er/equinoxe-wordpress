@@ -149,6 +149,8 @@
 
 	<?php endif; ?>
 
+	<div class="heightContainer">
+
 		<section id="article" class="<?php echo $parent->post_name; ?>">
 
 			<div class="midwrapper content headings-2">
@@ -265,6 +267,8 @@
 			</div>
 
 		<?php endif; ?>
+
+	</div>
 
 	<?php get_footer(); ?>
 

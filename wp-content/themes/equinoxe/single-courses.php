@@ -52,7 +52,7 @@
 
 				</aside>
 
-				<section id="content" class="content group">
+				<section id="content" class="content heightContainer group">
 
 					<!-- article -->
 					<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>

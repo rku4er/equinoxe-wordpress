@@ -41,7 +41,7 @@
 
 	<?php endif; ?>
 
-	<section id="blog">
+	<section id="blog" class="heightContainer">
 
 	<?php
 	$postsPerPage = get_field('courses_to_display') ? get_field('courses_to_display') : 6;

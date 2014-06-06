@@ -149,7 +149,7 @@
 
 
 
-		<section class="midwrapper group">
+		<section class="midwrapper heightContainer group">
 
 			<?php if (have_posts()): while (have_posts()) : the_post(); ?>
 

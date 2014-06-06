@@ -1079,7 +1079,7 @@ html.touch .tile.hover .back {
 .tile .front .inner{
     position:absolute;
     left:0;
-    bottom:3em;
+    top:75%;
     right:0;
     font-size:1em;
 }
@@ -1981,6 +1981,39 @@ ol.commentlist{
 .hentry .post-author{
 
 }
+/* Revolution Slider Arrows */
+.tparrows.default {
+    background: #545454 !important;
+
+    width: 40px !important;
+    height: 40px !important;
+
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+
+    -webkit-transition: all .2s ease;
+    -moz-transition: all .2s ease;
+    transition: all .2s ease;
+}
+.tparrows.default:hover{
+    background: #F37222 !important;
+}
+
+.tparrows.default:after{
+    color: #fff;
+    font-size: 25px;
+    position: absolute;
+    z-index: 10;
+    width:40px;
+    line-height:40px;
+    text-align:center;
+    font-weight: 300;
+    top:0px; left:0px;
+    font-family: 'icomoon';
+}
+
+.tp-leftarrow.tparrows.default:after { content: '\e6cd'; }
+.tp-rightarrow.tparrows.default:after { content: '\e6d0'; }
 
 /* Touch fix */
 .hover {
@@ -3282,7 +3315,7 @@ html.touch #divisions .technology-based-care .title a.hover span{
 	left:0;
 	z-index:-1;
 
-    opacity: 0.75;
+    opacity: 0.6;
 
 	background-color:#F37122;
 }
@@ -4232,7 +4265,7 @@ html.touch #listing li.hover{
 		max-width: 580px;
 	}
 	#tooltip .title{
-		margin:2em 0 1em;
+		margin:1em 0;
 	}
 	#tooltip .title,
 	#tooltip .position{

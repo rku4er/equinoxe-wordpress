@@ -26,17 +26,59 @@
 
         });
 
-        // Check hash
-        var hash = window.location.hash;
+        /* Revolution Slider Tweak */
+        var revSlider = $('#revolution-slider');
+        var timeBuffer = 1000;
+        var timeout = 100;
 
-        if($(hash).length) {
-            $('body,html').animate({
-                scrollTop: $(hash).offset().top - $('#header').outerHeight() - 20
-            }, {
-                duration: 400,
-                easing: 'easeInOutExpo',
-                queue: false
-            });
+        if(revSlider.length){
+
+            if(revSlider.height() > 0){
+                scrollToHash();
+            }else{
+                watchRevSlider();
+            }
+
+        }else{
+            scrollToHash();
+        }
+
+        function watchRevSlider(){
+            setTimeout(function(){
+               if(timeBuffer > 0){
+                    if(revSlider.height() > 0){
+                        scrollToHash();
+                    }else{
+                        timeBuffer = timeBuffer - timeout;
+                        watchRevSlider();
+                    }
+
+               }else{
+                    scrollToHash();
+               }
+
+            }, timeout);
+        }
+
+        // Scroll To Hash
+        function scrollToHash(hash){
+            if(!hash){
+                var hash = window.location.hash;
+            }
+
+            if($(hash).length) {
+
+                var offset = Math.floor($(hash).offset().top) - $('#header').outerHeight() - parseInt($(hash).css('margin-top')) - parseInt($(hash).css('padding-top'));
+
+                $('body,html').animate({
+                    scrollTop: offset
+                }, {
+                    duration: 400,
+                    easing: 'easeInOutExpo',
+                    queue: false
+                });
+
+            }
         }
 
         // Anchored links
@@ -45,15 +87,13 @@
             var hash = self.attr('href');
 
             if($(hash).length){
+
                 self.on('click', function(){
-                    $('body,html').animate({
-                        scrollTop: $(hash).offset().top - $('#header').outerHeight() - 20
-                    }, {
-                        duration: 400,
-                        easing: 'easeInOutExpo',
-                        queue: false
-                    });
+
+                    scrollToHash(hash);
+
                 });
+
             }
         });
 
@@ -82,6 +122,35 @@
                 $(this).toggleClass('hover');
             });
         }
+
+        //tiles
+        var tiles = $('.tile');
+
+        tiles.each(function(){
+            var self = $(this);
+            var backface = self.find('.face.back');
+            var linkmore = self.find('.face.back .more');
+
+            if(linkmore.length){
+                linkmore.on('click', function(e){
+                    var href = $(this).attr("href");
+
+                    history.pushState({}, '', href);
+                    window.location.href = href;
+                    window.location.reload();
+                    return false;
+                });
+            }
+
+            if(backface.length){
+                backface.on('click', function(event){
+                    if(event.target.nodeName !== 'A'){
+                        linkmore.trigger('click');
+                    }
+
+                });
+            }
+        });
 
         /*--- news function ---*/
         (function initServices(){
@@ -292,11 +361,17 @@
         // Content Height Adjust
         $(window).on('resize', function() {
             if($('#page').height() < Math.max(document.documentElement.clientHeight, window.innerHeight || 0)){
-                setTimeout(function(){
-                    var offsetTop = Math.max(document.documentElement.clientHeight, window.innerHeight || 0) - $('#content').offset().top - $('#footer .bottom-row').outerHeight() - parseInt($('#content-holder').css('padding-bottom'));
 
-                    $('#content').css('min-height', offsetTop);
-                }, 10);
+                var container = $('.heightContainer');
+
+                if(container.length){
+                    setTimeout(function(){
+                        var offsetTop = Math.max(document.documentElement.clientHeight, window.innerHeight || 0) - container.offset().top - $('#footer .bottom-row').outerHeight() - parseInt($('#content-holder').css('padding-bottom'));
+
+                        container.css('min-height', offsetTop);
+                    }, 10);
+                }
+
             }
 
         }).trigger('resize');
@@ -363,7 +438,7 @@
             }
 
             tooltip.css({
-                'position' : 'fixed',
+                'position' : 'absolute',
                 'top' : 0,
                 'left' : 0,
                 'display' : 'none',
@@ -393,10 +468,21 @@
             });
 
             function setPosition(obj){
+                var sH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+                var sW = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+                var tH = $(obj).outerHeight();
+                var tW = $(obj).outerWidth();
+                var hH = $('#header').outerHeight();
+                var sT = $(document).scrollTop();
+
+                console.log([sT]);
+
+                var top = (sH - hH > tH) ? (((sH - tH + hH) / 2) + sT) : sT + hH + 20;
+                var left = (sW > tW) ? ((sW - tW) / 2) : 0;
 
                 $(obj).css({
-                    'top' :  (Math.max(document.documentElement.clientHeight, window.innerHeight || 0) - tooltip.outerHeight()) / 2,
-                    'left' :  (Math.max(document.documentElement.clientWidth, window.innerWidth || 0) - tooltip.outerWidth()) / 2
+                    'top' : top,
+                    'left' : left
                 });
 
             }
@@ -432,7 +518,7 @@
 
             }
 
-            $(window).on('resize scroll', function() {
+            $(window).on('resize', function() {
                 setTimeout(function(){
                     setPosition(tooltip);
                 }, 50);

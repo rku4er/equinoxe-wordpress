@@ -41,7 +41,7 @@
 
 	<?php endif; ?>
 
-	<section id="contact">
+	<section id="contact" class="heightContainer">
 
 		<div class="midwrapper">
 

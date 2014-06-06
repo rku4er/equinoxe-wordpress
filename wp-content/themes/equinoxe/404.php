@@ -8,7 +8,7 @@
 
 			<?php get_sidebar(); ?>
 
-			<section id="content" class="content group">
+			<section id="content" class="content heightContainer group">
 
 				<!-- article -->
 				<article id="post-404">

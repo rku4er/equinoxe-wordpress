@@ -8,7 +8,7 @@
 
             <?php get_sidebar(); ?>
 
-            <section id="content" class="content group">
+            <section id="content" class="content heightContainer group">
 
     			<?php get_template_part('loop'); ?>
 
