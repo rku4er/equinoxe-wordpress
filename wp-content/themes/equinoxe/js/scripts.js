@@ -89,7 +89,7 @@
 
             var box_hold = $('#tiles');
             var box_inner = $('#tiles >.inner');
-            var loadAmount = $('body.home').length ? 2 : 3 ;
+            var loadAmount = $('body.home').length ? 2 : 3;
             var _btn = $('#expander');
             var _btnTextCache = _btn.html();
             var anim_f = true;

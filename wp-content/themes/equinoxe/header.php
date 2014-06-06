@@ -75,7 +75,7 @@
 
                     </nav>
 
-                    <div id="call-mess">REACH US ANYTIME <span style="color:#F37123">1-800-890-4200</span></div>
+                    <div id="call-mess">REACH US ANYTIME <span style="color:#F37123"><?php echo get_field('phone_number', 'options'); ?></span></div>
 
                 </div>
 

@@ -41,8 +41,6 @@
 						$output .= '">';
 					}
 
-					$output .= '<div class="scene">';
-
 					$title = get_field('tile_title', $post->ID) ? get_field('tile_title', $post->ID) : get_the_title();
 
 					if(get_field('tile_excerpt_back', $post->ID)){
@@ -52,17 +50,19 @@
 					}
 
 					$size = get_sub_field('full_width') ? 'tile_full_width' : 'tile_regular';
-					$thumb = get_the_post_thumbnail(get_the_ID(), $size, array(
-						'title' => get_the_title(),
-						'class' => 'bg'
-					));
-					$seats = get_field('seats');
-					$firstSlide = $seats[0];
 
-					if(!$thumb && $firstSlide['image']){
-						$src = wp_get_attachment_image_src($firstSlide['image'], $size, false);
-						$thumb = '<img src="'.$src[0].'" alt="" class="bg" />';
+					if(has_post_thumbnail()){
+						$thumbID = get_post_thumbnail_id(get_the_ID());
+					}else{
+						$seats = get_field('seats');
+						$firstSlide = $seats[0];
+
+						$thumbID = $firstSlide['image'];
 					}
+
+					$src = wp_get_attachment_image_src($thumbID, $size, false);
+
+					$output .= '<div class="scene" style="background-image: url('.$src[0].')">';
 
 					$output .= '<div class="face front">';
 						$output .= '<div class="inner">';
@@ -77,8 +77,6 @@
 							if(get_sub_field('hash')) $output .= '#'.get_sub_field('hash');
 						$output .= '" class="more">View More</a>';
 					$output .= '</div>';
-
-					$output .= $thumb;
 
 					$output .= '</div>';
 					$output .= '</div>';
@@ -240,31 +238,31 @@
 							<?php setup_postdata($post); ?>
 
 							<div class="tile <?php if(get_sub_field('full_width')) echo 'full-width' ?>">
-								<div class="scene">
 
-									<?php
-										$title = get_field('tile_title', $post->ID) ? get_field('tile_title', $post->ID) : get_the_title();
+								<?php
+									$title = get_field('tile_title', $post->ID) ? get_field('tile_title', $post->ID) : get_the_title();
 
-										if(get_field('tile_excerpt_back', $post->ID)){
-											$content_back = '<p>'.get_field('tile_excerpt_back', $post->ID).'</p>';
-										}else{
-											$content_back = html5wp_excerpt('html5wp_tile_back');
-										}
+									if(get_field('tile_excerpt_back', $post->ID)){
+										$content_back = '<p>'.get_field('tile_excerpt_back', $post->ID).'</p>';
+									}else{
+										$content_back = html5wp_excerpt('html5wp_tile_back');
+									}
 
-										$size = get_sub_field('full_width') ? 'tile_full_width' : 'tile_regular';
-										$thumb = get_the_post_thumbnail(get_the_ID(), $size, array(
-											'title' => get_the_title(),
-											'class' => 'bg'
-										));
+									$size = get_sub_field('full_width') ? 'tile_full_width' : 'tile_regular';
+
+									if(has_post_thumbnail()){
+										$thumbID = get_post_thumbnail_id(get_the_ID());
+									}else{
 										$seats = get_field('seats');
 										$firstSlide = $seats[0];
 
-										if(!$thumb && $firstSlide['image']){
-											$src = wp_get_attachment_image_src($firstSlide['image'], $size, false);
-											$thumb = '<img src="'.$src[0].'" alt="" class="bg" />';
-										}
+										$thumbID = $firstSlide['image'];
+									}
 
-									?>
+									$src = wp_get_attachment_image_src($thumbID, $size, false);
+								?>
+
+								<div class="scene" style="background-image: url(<?php echo $src[0]; ?>)">
 
 									<div class="face front">
 										<div class="inner">
@@ -277,8 +275,6 @@
 										<?php echo $content_back; ?>
 										<a href="<?php echo get_permalink(); if(get_sub_field('hash')) echo '#'.get_sub_field('hash'); ?>" class="more">View More</a>
 									</div>
-
-									<?php echo $thumb; ?>
 
 								</div>
 							</div>
@@ -355,7 +351,7 @@
 
 				<div class="group">
 					<h3 class="title"><?php the_field('about_title'); ?></h3>
-					<a href="#readmission" class="read"><?php the_field('about_link_text'); ?></a>
+					<a href="<?php the_field('about_link_url'); ?>" class="read"><?php the_field('about_link_text'); ?></a>
 				</div>
 				<div class="content">
 					<?php

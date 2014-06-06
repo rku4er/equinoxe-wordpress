@@ -79,7 +79,21 @@
 
 					<div id="heading" class="home">
 
-						<div class="inner">
+						<!-- post thumbnail -->
+						<?php
+							if(has_post_thumbnail()){
+								$thumbID = get_post_thumbnail_id(get_the_ID());
+							}else{
+								$seats = get_field('seats');
+								$firstSlide = $seats[0];
+
+								$thumbID = $firstSlide['image'];
+							}
+
+							$src = wp_get_attachment_image_src($thumbID, 'heading', false);
+						?>
+
+						<div class="inner" style="background-image: url(<?php echo $src[0]; ?>)">
 
 							<div class="row">
 
@@ -94,11 +108,6 @@
 								</div>
 
 							</div>
-
-							<!-- post thumbnail -->
-							<?php if ( has_post_thumbnail()) :?>
-								<?php the_post_thumbnail('heading'); ?>
-							<?php endif; ?>
 
 						</div>
 

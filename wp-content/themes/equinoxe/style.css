@@ -1035,13 +1035,12 @@ a.more {
 	margin:0.5em 1em;
 	overflow:hidden;
     background-color: #fff;
+    background-repeat: no-repeat;
+
+    -webkit-background-size: cover;
+    background-size: cover;
 }
 
-.tile .scene .bg{
-    width:100%;
-    height:100%;
-    position:absolute;
-}
 .tile .face {
     height: 100%;
     position: absolute;
@@ -1147,12 +1146,6 @@ body.home .tile .front .title{
 }
 .tile .back .more:before{
 	background-color:#fff;
-}
-.tile.full-width .scene .bg{
-	width:auto;
-	right:0;
-	max-width: none;
-	min-width:100%;
 }
 body:not(.home) .tile.full-width .tile .front p{
     max-width: 50%;
@@ -3203,6 +3196,10 @@ html.touch #divisions .technology-based-care .title a.hover span{
 	bottom:0;
 	left:0;
 	overflow:hidden;
+    background-repeat: no-repeat;
+
+    -webkit-background-size: cover;
+    background-size: cover;
 }
 #heading .row{
     position: absolute;
@@ -3284,6 +3281,8 @@ html.touch #divisions .technology-based-care .title a.hover span{
 	bottom:0;
 	left:0;
 	z-index:-1;
+
+    opacity: 0.75;
 
 	background-color:#F37122;
 }
@@ -3512,6 +3511,9 @@ html.touch #listing li.hover{
 }
 #contact-form .gfield{
 	font-size:1em;
+}
+#contact-form .gfield:before{
+    display: none;
 }
 #contact-form .gform_footer{
     margin-top: 0.5em;
