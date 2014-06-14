@@ -85,10 +85,19 @@
 
 				<section id="contact-form">
 
-					<?php
-	                    $form = get_field('contact_form', 'options');
+				<?php $url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+										if (false !== strpos($url,'/fr/')) {
+										gravity_form(3, $display_title=true, $display_description=true, $display_inactive=false, $field_values=null, $ajax=true, $tabindex);
+										} else {
+										$form = get_field('contact_form', 'options');
 	                    gravity_form($form->id, true, true, false, '', true, 1);
-	                ?>
+										}
+										?>
+				
+				
+				
+				
+				
 
 				</section>
 

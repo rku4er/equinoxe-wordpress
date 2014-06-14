@@ -1056,6 +1056,10 @@ a.more {
     -moz-transition: opacity 0.3s ease-in;
     transition: opacity 0.3s ease-in;
 }
+.tile .scene  .face {
+	cursor: pointer;
+    cursor: hand;
+}
 
 .tile .front {
     opacity: 1;
@@ -1079,7 +1083,7 @@ html.touch .tile.hover .back {
 .tile .front .inner{
     position:absolute;
     left:0;
-    top:75%;
+    top:70%;
     right:0;
     font-size:1em;
 }
@@ -1094,7 +1098,7 @@ html.touch .tile.hover .back {
     margin:0;
 }
 .tile .front .title{
-    max-width: 80%;
+    max-width: 75%;
     background-color:#f37122;
 }
 .home-care .tile .front .title{background-color: #f37122;}
@@ -1246,7 +1250,7 @@ body:not(.home) .tile.full-width .tile .front p{
     text-decoration: underline;
 }
 /* contact_button */
-.content a[href="/contact/"]{
+.content a[href="/contact/"], .content a[href="/fr/contact/"]{
     display:block;
     background-color:#F37122;
     color:#fff;
@@ -1267,34 +1271,29 @@ body:not(.home) .tile.full-width .tile .front p{
        -moz-border-radius: 3px;
             border-radius: 3px;
 }
-.home-care .content a[href="/contact/"]{
+.home-care .content a[href="/contact/"], .home-care .content a[href="/fr/contact/"]{
     background-color: #F37122;
     color: #fff;
 }
-.organizational-health .content a[href="/contact/"]{
+.organizational-health .content a[href="/contact/"], .organizational-health .content a[href="/fr/contact/"]{
     background-color: #0099B5;
     color: #fff;
 }
-.technology-based-care .content a[href="/contact/"]{
+.technology-based-care .content a[href="/contact/"], .technology-based-care .content a[href="/fr/contact/"]{
     background-color: #FF0054;
     color: #fff;
 }
-.content a[href="/contact/"]:hover{
+.content a[href="/contact/"]:hover, .content a[href="/fr/contact/"]:hover{
     text-decoration: none;
 }
-.content a[href="/contact/"]:before{
+.content a[href="/contact/"]:before, .content a[href="/fr/contact/"]:before{
     display: none;
 }
 /* headings */
 .headings{
 	color:#696969;
 }
-.headings h1,
-.headings h2,
-.headings h3,
-.headings h4,
-.headings h5,
-.headings h6{
+.headings h1{
 	color:#f37122;
 	padding-bottom:1em;
 	position:relative;
@@ -1302,12 +1301,7 @@ body:not(.home) .tile.full-width .tile .front p{
 	text-transform:uppercase;
 	font-size:1.5em;
 }
-.headings h1:before,
-.headings h2:before,
-.headings h3:before,
-.headings h4:before,
-.headings h5:before,
-.headings h6:before{
+.headings h1:before{
 	content:"";
 	position:absolute;
 	bottom:0;
@@ -1319,99 +1313,46 @@ body:not(.home) .tile.full-width .tile .front p{
 	overflow:hidden;
 	background-color:#f37122;
 }
-.home-care .headings h1,
-.home-care .headings h2,
-.home-care .headings h3,
-.home-care .headings h4,
-.home-care .headings h5,
-.home-care .headings h6{
+.home-care .headings h1{
     color:#f37122;
 }
-.home-care .headings h1:before,
-.home-care .headings h2:before,
-.home-care .headings h3:before,
-.home-care .headings h4:before,
-.home-care .headings h5:before,
-.home-care .headings h6:before{
+.home-care .headings h1:before{
     background-color:#f37122;
 }
-.organizational-health .headings h1,
-.organizational-health .headings h2,
-.organizational-health .headings h3,
-.organizational-health .headings h4,
-.organizational-health .headings h5,
-.organizational-health .headings h6{
+.organizational-health .headings h1{
     color:#0099B5;
 }
-.organizational-health .headings h1:before,
-.organizational-health .headings h2:before,
-.organizational-health .headings h3:before,
-.organizational-health .headings h4:before,
-.organizational-health .headings h5:before,
-.organizational-health .headings h6:before{
+.organizational-health .headings h1:before{
     background-color:#0099B5;
 }
-.technology-based-care .headings h1,
-.technology-based-care .headings h2,
-.technology-based-care .headings h3,
-.technology-based-care .headings h4,
-.technology-based-care .headings h5,
-.technology-based-care .headings h6{
+.technology-based-care .headings h1{
     color:#FF0054;
 }
-.technology-based-care .headings h1:before,
-.technology-based-care .headings h2:before,
-.technology-based-care .headings h3:before,
-.technology-based-care .headings h4:before,
-.technology-based-care .headings h5:before,
-.technology-based-care .headings h6:before{
+.technology-based-care .headings h1:before{
     background-color:#FF0054;
 }
-/* headings */
-.headings-2{
-    color:#696969;
-}
-.headings-2 h1,
-.headings-2 h2,
-.headings-2 h3,
-.headings-2 h4,
-.headings-2 h5,
-.headings-2 h6{
+.headings h2{
     color:#f37122;
     position:relative;
     text-transform:none;
     font-size:1.4em;
 }
-.organizational-health .headings-2 h1,
-.organizational-health .headings-2 h2,
-.organizational-health .headings-2 h3,
-.organizational-health .headings-2 h4,
-.organizational-health .headings-2 h5,
-.organizational-health .headings-2 h6{
+.home-care .headings h2{
+    color:#f37122;
+}
+.home-care .headings h2:before{
+    background-color:#f37122;
+}
+.organizational-health .headings h2{
     color:#0099B5;
 }
-.organizational-health .headings-2 h1:before,
-.organizational-health .headings-2 h2:before,
-.organizational-health .headings-2 h3:before,
-.organizational-health .headings-2 h4:before,
-.organizational-health .headings-2 h5:before,
-.organizational-health .headings-2 h6:before{
+.organizational-health .headings h2:before{
     background-color:#0099B5;
 }
-.technology-based-care .headings-2 h1,
-.technology-based-care .headings-2 h2,
-.technology-based-care .headings-2 h3,
-.technology-based-care .headings-2 h4,
-.technology-based-care .headings-2 h5,
-.technology-based-care .headings-2 h6{
+.technology-based-care .headings h2{
     color:#FF0054;
 }
-.technology-based-care .headings-2 h1:before,
-.technology-based-care .headings-2 h2:before,
-.technology-based-care .headings-2 h3:before,
-.technology-based-care .headings-2 h4:before,
-.technology-based-care .headings-2 h5:before,
-.technology-based-care .headings-2 h6:before{
+.technology-based-care .headings h2:before{
     background-color:#FF0054;
 }
 /* sidehat */
@@ -1442,7 +1383,7 @@ body:not(.home) .tile.full-width .tile .front p{
 	height:0;
 	padding-bottom:30%;
 	vertical-align:middle;
-	margin-left:1em;
+	margin-left:2.7em;
 }
 .sidehat figure:before{
 	content:"";
@@ -1471,7 +1412,7 @@ body:not(.home) .tile.full-width .tile .front p{
 	font-size:2em;
 	display:inline-block;
 	padding-left:1em;
-	margin-left:-1em;
+	margin-left:-1.5em;
 	vertical-align:middle;
 	width:70%;
 	position:relative;
@@ -2180,6 +2121,7 @@ body,
 	margin-bottom:0.5em;
     height: auto;
 }
+
 #lang_sel_click a.lang_sel_sel{
     background-color: transparent;
     border: 0 none;
@@ -2438,7 +2380,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
 #divisions li.home-care{ background-color:#f37122; }
 #divisions li.organizational-health{ background-color:#0099b5; }
 #divisions li.technology-based-care{ background-color:#ff0054; }
-#divisions li:hover{
+
+html.no-touch #divisions li:hover{
     background-color: #fff;
 }
 #divisions a{
@@ -2518,8 +2461,7 @@ html.touch #divisions .title a.hover figure:before{
 	   -moz-transition: all .5s ease;
 	        transition: all .5s ease;
 }
-html.no-touch #divisions .title a:hover figure img,
-html.touch #divisions .title a.hover figure img{
+html.no-touch #divisions .title a:hover figure img{
 	-webkit-transform: scale(1.2);
        -moz-transform: scale(1.2);
 	        transform: scale(1.2);
@@ -2527,13 +2469,13 @@ html.touch #divisions .title a.hover figure img{
 #divisions .title a span{
 	display:inline-block;
 	margin-bottom:1.5em;
+    max-width: 80%;
 
 	-webkit-transition: all .5s ease;
 	   -moz-transition: all .5s ease;
 	        transition: all .5s ease;
 }
-html.no-touch #divisions .title a:hover span,
-html.touch #divisions .title a.hover span{
+html.no-touch #divisions .title a:hover span{
 	-webkit-transform: translateY(-15px) scale(1.2);
 	   -moz-transform: translateY(-15px) scale(1.2);
 	        transform: translateY(-15px) scale(1.2);
@@ -3731,29 +3673,14 @@ html.touch #listing li.hover{
     .content ol ol{
         font-size: 1em;
     }
-	.headings h1,
-	.headings h2,
-	.headings h3,
-	.headings h4,
-	.headings h5,
-	.headings h6{
+	.headings h1{
 		padding-bottom:1em;
 		font-size:2.8em;
 	}
-	.headings h1:before,
-	.headings h2:before,
-	.headings h3:before,
-	.headings h4:before,
-	.headings h5:before,
-	.headings h6:before{
+	.headings h1:before{
 		height:5px;
 	}
-    .headings-2 h1,
-    .headings-2 h2,
-    .headings-2 h3,
-    .headings-2 h4,
-    .headings-2 h5,
-    .headings-2 h6{
+    .headings h2{
         font-size:1.8em;
     }
 	/* sidehat */
@@ -3915,7 +3842,7 @@ html.touch #listing li.hover{
 		margin:0 0 1em;
 	}
 	#logo img{
-		max-height:none;
+		max-height:4.5em;
 	}
 	/* mainnav */
 	#mainnav{
@@ -4707,3 +4634,47 @@ a.post-edit-link{
         max-width: 100% !important
     }
 }
+
+/* =============================================================================
+   Efrain - Changes start
+   ========================================================================== */
+
+
+body.home .tile{
+		padding-bottom:45%;
+	}
+
+/*
+.content a[href="/fr/contact/"]{
+    display:block;
+    background-color:#FF0054;
+    color:#fff;
+    font-family: OpenSansLight, Arial, sans-serif;
+    font-size:1.6em;
+    padding:0.7em;
+    text-align:center;
+    width:100%;
+    clear:both;
+    margin:1em 0;
+    text-decoration:none;
+
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+
+    -webkit-border-radius: 3px;
+       -moz-border-radius: 3px;
+            border-radius: 3px;
+}
+*/
+
+#post-459 .board.color-3 .header:after {
+    bottom: 0.1em;
+    right: 0em;
+}
+
+
+
+/* =============================================================================
+   Efrain - Changes end
+   ========================================================================== */

@@ -80,7 +80,7 @@
 
 			<div class="midwrapper headings">
 
-				<h3>Who we are</h3>
+				<h3><?php _e('Who we are') ?></h3>
 
 				<?php if(have_rows('staff')): ?>
 
@@ -124,7 +124,13 @@
 
 		<section id="manage" class="midwrapper content headings group">
 
-			<h4>How we manage care at equinoxe</h4>
+			<h4><?php $url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+										if (false !== strpos($url,'/fr/')) {
+										echo 'La Gestion Des Soins À Équinoxe';
+										} else {
+										echo 'How we manage care at equinoxe';
+										}
+										?></h4>
 
 			<p><img src="<?php echo get_bloginfo('template_url') ?>/img/manage-care.png" alt="manage care" class="aligncenter"/></p>
 

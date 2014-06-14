@@ -81,7 +81,9 @@
 
 						<!-- post thumbnail -->
 						<?php
-							if(has_post_thumbnail()){
+							if(get_field('header_image')){
+								$thumbID = get_field('header_image');
+							}else if(has_post_thumbnail()){
 								$thumbID = get_post_thumbnail_id(get_the_ID());
 							}else{
 								$seats = get_field('seats');
@@ -116,7 +118,7 @@
 					<?php if (have_posts()): while (have_posts()) : the_post(); ?>
 
 						<!-- article -->
-						<article id="post-<?php the_ID(); ?>" <?php post_class('headings-2'); ?>>
+						<article id="post-<?php the_ID(); ?>" <?php post_class('headings'); ?>>
 
 							<?php the_content(); ?>
 

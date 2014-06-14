@@ -75,7 +75,7 @@
 						$output .= $content_back;
 						$output .= '<a href="'.get_permalink();
 							if(get_sub_field('hash')) $output .= '#'.get_sub_field('hash');
-						$output .= '" class="more">View More</a>';
+						$output .= '" class="more">View Mored</a>';
 					$output .= '</div>';
 
 					$output .= '</div>';
@@ -185,7 +185,7 @@
 
 			<section id="divisions">
 
-				<h3 class="heading">Our Divisions</h3>
+				<h3 class="heading"><?php _e('Our Divisions') ?></h3>
 
 				<ul>
 
@@ -273,10 +273,9 @@
 									<div class="face back">
 										<h3 class="title"><?php echo $title; ?></h3>
 										<?php echo $content_back; ?>
-										<a href="<?php echo get_permalink(); if(get_sub_field('hash')) echo '#'.get_sub_field('hash'); ?>" class="more">View More</a>
+										<a href="<?php echo get_permalink(); if(get_sub_field('hash')) echo '#'.get_sub_field('hash'); ?>" class="more"><?php _e('View More') ?></a>
 									</div>
-
-								</div>
+							</div>
 							</div>
 
 						<?php endforeach; ?>
@@ -291,7 +290,7 @@
 			</section>
 
 			<?php if(count(get_field('services')) > $posts_per_page): ?>
-				<a href="#full" id="expander">View <?php echo $posts_per_page; ?> items more <span class="icon-arrow-down6"></span></a>
+				<a href="#full" id="expander"><?php _e('View') ?> <?php echo $posts_per_page; ?> <?php _e('items more') ?> <span class="icon-arrow-down6"></span></a>
 				<!-- For a full list of our services click here <span class="icon-arrow-down6"></span> -->
 			<?php endif; ?>
 

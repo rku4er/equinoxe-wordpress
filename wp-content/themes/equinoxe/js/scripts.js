@@ -112,7 +112,7 @@
         });
 
         // See if this is a touch device
-        if ('ontouchstart' in window){
+        if('ontouchstart' in window){
             var scope = $('#divisions .title a, .tile, #mainnav >ul.menu >li, #listing li');
 
             scope.on('click', function(){
@@ -130,14 +130,11 @@
             var self = $(this);
             var backface = self.find('.face.back');
             var linkmore = self.find('.face.back .more');
+            var no_touch = $('body.no-touch').length;
 
             if(linkmore.length){
                 linkmore.on('click', function(e){
-                    var href = $(this).attr("href");
-
-                    history.pushState({}, '', href);
-                    window.location.href = href;
-                    window.location.reload();
+                    window.location = $(this).attr("href");
                     return false;
                 });
             }

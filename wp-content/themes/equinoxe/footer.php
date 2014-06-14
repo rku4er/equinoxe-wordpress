@@ -30,7 +30,9 @@
 									<?php foreach( $posts as $post): ?>
 									<?php setup_postdata($post);?>
 
-									<li><a href="<?php echo get_permalink(); if(get_sub_field('hash')) echo '#'.get_sub_field('hash'); ?>"><?php echo get_the_title(); ?></a></li>
+									<?php $title = get_field('tile_title', $post->ID) ? get_field('tile_title', $post->ID) : get_the_title(); ?>
+									
+									<li><a href="<?php echo get_permalink(); if(get_sub_field('hash')) echo '#'.get_sub_field('hash'); ?>"><?php echo $title; ?></a></li>
 
 									<?php endforeach; ?>
 									<?php wp_reset_postdata();?>
@@ -74,7 +76,7 @@
 					<div class="midwrapper">
 
 						<section id="copyright">
-							<p>Copyright &copy; <?php echo date('Y'); ?> - <br /> <?php bloginfo('name'); ?> - All rights Reserved.</p>
+							<p>Copyright &copy; <?php echo date('Y'); ?> - <br /><?php _e(bloginfo('name')) ?> - <?php _e('All rights Reserved') ?>.</p>
 						</section>
 
 

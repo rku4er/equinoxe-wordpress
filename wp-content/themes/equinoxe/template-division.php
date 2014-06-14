@@ -153,7 +153,7 @@
 
 		<section id="article" class="<?php echo $parent->post_name; ?>">
 
-			<div class="midwrapper content headings-2">
+			<div class="midwrapper content headings">
 
 				<?php if (have_posts()): while (have_posts()) : the_post(); ?>
 
@@ -243,7 +243,7 @@
 									<div class="face back">
 										<h3 class="title"><?php echo $title; ?></h3>
 										<?php echo $content_back; ?>
-										<a href="<?php echo get_permalink(); if(get_sub_field('hash')) echo '#'.get_sub_field('hash'); ?>" class="more">View More</a>
+										<a href="<?php echo get_permalink(); if(get_sub_field('hash')) echo '#'.get_sub_field('hash'); ?>" class="more"><?php _e('View More') ?></a>
 									</div>
 
 								</div>
@@ -261,7 +261,7 @@
 				</div>
 
 				<?php if(count(get_field('services')) > $posts_per_page): ?>
-					<a href="#full" id="expander" class="<?php echo $parent->post_name; ?>">View <?php echo $posts_per_page; ?> items more <span class="icon-arrow-down6"></span></a>
+					<a href="#full" id="expander" class="<?php echo $parent->post_name; ?>"><?php _e('View') ?> <?php echo $posts_per_page; ?> <?php _e('items more') ?><span class="icon-arrow-down6"></span></a>
 				<?php endif; ?>
 
 			</div>

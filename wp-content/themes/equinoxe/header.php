@@ -22,6 +22,20 @@
         });
         </script>
 
+
+		<?php
+		//Fench site ONLY CSS: this tests to see if "/fr/"is in the URL
+		$url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+		if (true == strpos($url,'/fr/')): ?>
+
+		<style type="text/css">
+            /* Special CSS Applied to French Site Only*/
+    		#mainnav{ font-size: 92%; margin-top:25px;}
+    		#lang_sel_click{margin-left: 13em;}
+    		#mainnav >ul.menu >li.about >a{ margin-left: 18em;}
+		</style>
+
+		<?php endif; ?>
 	</head>
 	<body <?php body_class(); ?> data-marker="<?php echo get_field('marker_icon', get_ID_by_slug('contact')); ?>" data-latitude="<?php echo get_field('latitude', get_ID_by_slug('contact')); ?>" data-longitude="<?php echo get_field('longitude', get_ID_by_slug('contact')); ?>">
 
@@ -51,12 +65,12 @@
                     <!-- logo -->
                     <?php if(is_front_page()): ?>
                         <h1 id="logo">
-                            <a href="<?php echo home_url(); ?>"><img src="<?php echo get_template_directory_uri(); ?>/img/equinoxe-life-care.png" alt="Equinoxe LifeCare Homepage" />
+                            <a href="<?php echo home_url(); ?>"><img src="<?php echo get_template_directory_uri(); ?>/img/equinoxe-life-care.svg" alt="Equinoxe LifeCare Homepage" />
                             </a>
                         </h1>
                     <?php else: ?>
                         <strong id="logo">
-                            <a href="<?php echo home_url(); ?>"><img src="<?php echo get_template_directory_uri(); ?>/img/equinoxe-life-care.png" alt="Equinoxe LifeCare Homepage" />
+                            <a href="<?php echo home_url(); ?>"><img src="<?php echo get_template_directory_uri(); ?>/img/equinoxe-life-care.svg" alt="Equinoxe LifeCare Homepage" />
                             </a>
                         </strong>
                     <?php endif; ?>
@@ -75,7 +89,7 @@
 
                     </nav>
 
-                    <div id="call-mess">REACH US ANYTIME <span style="color:#F37123"><?php echo get_field('phone_number', 'options'); ?></span></div>
+                    <div id="call-mess"><?php _e('REACH US ANYTIME') ?> <span style="color:#F37123"><?php echo get_field('phone_number', 'options'); ?></span></div>
 
                 </div>
 
