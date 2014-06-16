@@ -472,8 +472,6 @@
                 var hH = $('#header').outerHeight();
                 var sT = $(document).scrollTop();
 
-                console.log([sT]);
-
                 var top = (sH - hH > tH) ? (((sH - tH + hH) / 2) + sT) : sT + hH + 20;
                 var left = (sW > tW) ? ((sW - tW) / 2) : 0;
 

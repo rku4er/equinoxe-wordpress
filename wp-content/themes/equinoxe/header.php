@@ -32,14 +32,18 @@
             /* Special CSS Applied to French Site Only*/
     		#mainnav{ font-size: 92%; margin-top:25px;}
     		#lang_sel_click{margin-left: 13em;}
-    		#mainnav >ul.menu >li.about >a{ margin-left: 18em;}
+            #mainnav >ul.menu >li.about >a{ margin-left: 18em; margin-bottom: 0.1em;}
+    		#mainnav >ul.menu >li.contact >a{ margin-bottom: 0.1em;}
+            .sidebar-widget input[type="search"]{ max-width: 155px; }
 		</style>
 
 		<?php endif; ?>
-	</head>
-	<body <?php body_class(); ?> data-marker="<?php echo get_field('marker_icon', get_ID_by_slug('contact')); ?>" data-latitude="<?php echo get_field('latitude', get_ID_by_slug('contact')); ?>" data-longitude="<?php echo get_field('longitude', get_ID_by_slug('contact')); ?>">
 
         <style type="text/css">
+            /* Live Chat style correction */
+            #habla_window_div .habla_offline_submit_input{
+                float: none !important;
+            }
             #habla_window_div{
                 border-style: solid;
                 border-color: #fff;
@@ -52,7 +56,15 @@
                 -moz-box-sizing: border-box;
                 box-sizing: border-box;
             }
+            /* Slider Revolution Arrows style correction */
+            .tp-leftarrow.tparrows.default,
+            .tp-rightarrow.tparrows.default{
+                top: 50% !important;
+            }
         </style>
+
+	</head>
+	<body <?php body_class(); ?> data-marker="<?php echo get_field('marker_icon', get_ID_by_slug('contact')); ?>" data-latitude="<?php echo get_field('latitude', get_ID_by_slug('contact')); ?>" data-longitude="<?php echo get_field('longitude', get_ID_by_slug('contact')); ?>">
 
         <!-- page -->
         <div id="page">

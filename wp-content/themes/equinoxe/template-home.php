@@ -185,7 +185,7 @@
 
 			<section id="divisions">
 
-				<h3 class="heading"><?php _e('Our Divisions') ?></h3>
+				<h3 class="heading"><?php echo get_field('divisions_title'); ?></h3>
 
 				<ul>
 
@@ -220,8 +220,8 @@
 
 
 			<?php
-				$posts_per_page =  2;
-				$offset =  0;
+				/*$posts_per_page =  2;
+				$offset =  0;*/
 			?>
 
 			<?php if(have_rows('services')): ?>
@@ -232,7 +232,7 @@
 
 					<?php $i = 0;  while(have_rows('services')): the_row();?>
 
-						<?php if($offset-1 < $i && $i - $offset < $posts_per_page):?>
+						<?php //if($offset-1 < $i && $i - $offset < $posts_per_page): ?>
 
 							<?php foreach( get_sub_field('page') as $post): ?>
 							<?php setup_postdata($post); ?>
@@ -281,7 +281,7 @@
 						<?php endforeach; ?>
 						<?php wp_reset_postdata();?>
 
-					<?php endif; ?>
+					<?php // endif; ?>
 
 					<?php $i++; endwhile; ?>
 
@@ -289,10 +289,9 @@
 
 			</section>
 
-			<?php if(count(get_field('services')) > $posts_per_page): ?>
-				<a href="#full" id="expander"><?php _e('View') ?> <?php echo $posts_per_page; ?> <?php _e('items more') ?> <span class="icon-arrow-down6"></span></a>
-				<!-- For a full list of our services click here <span class="icon-arrow-down6"></span> -->
-			<?php endif; ?>
+			<?php //if(count(get_field('services')) > $posts_per_page): ?>
+				<!-- <a href="#full" id="expander"><?php _e('View') ?> <?php echo $posts_per_page; ?> <?php _e('items more') ?> <span class="icon-arrow-down6"></span></a> -->
+			<?php //endif; ?>
 
 			<?php endif; ?>
 
@@ -395,7 +394,9 @@
 
 			<div class="midwrapper">
 
-				<h5 class="title"><?php echo get_field('sponsors_title', 'options'); ?></h5>
+				<div class="content headings">
+					<h5 class="heading"><?php echo get_field('sponsors_title', 'options'); ?></h5>
+				</div>
 
 				<?php if(have_rows('sponsors', 'options')): ?>
 

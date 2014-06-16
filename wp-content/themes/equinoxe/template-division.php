@@ -188,8 +188,8 @@
 		</section>
 
 		<?php
-			$posts_per_page =  3;
-			$offset =  0;
+			/*$posts_per_page =  3;
+			$offset =  0;*/
 		?>
 
 		<?php if(have_rows('services')): ?>
@@ -202,7 +202,7 @@
 
 						<?php $i = 0;  while(have_rows('services')): the_row();?>
 
-						<?php if($offset-1 < $i && $i - $offset < $posts_per_page):?>
+						<?php //if($offset-1 < $i && $i - $offset < $posts_per_page): ?>
 
 							<?php foreach( get_sub_field('page') as $post): ?>
 							<?php setup_postdata($post); ?>
@@ -252,7 +252,7 @@
 							<?php endforeach; ?>
 							<?php wp_reset_postdata();?>
 
-						<?php endif; ?>
+						<?php //endif; ?>
 
 						<?php $i++; endwhile; ?>
 
@@ -260,9 +260,9 @@
 
 				</div>
 
-				<?php if(count(get_field('services')) > $posts_per_page): ?>
-					<a href="#full" id="expander" class="<?php echo $parent->post_name; ?>"><?php _e('View') ?> <?php echo $posts_per_page; ?> <?php _e('items more') ?><span class="icon-arrow-down6"></span></a>
-				<?php endif; ?>
+				<?php //if(count(get_field('services')) > $posts_per_page): ?>
+					<!-- <a href="#full" id="expander" class="<?php echo $parent->post_name; ?>"><?php _e('View') ?> <?php echo $posts_per_page; ?> <?php _e('items more') ?><span class="icon-arrow-down6"></span></a> -->
+				<?php //endif; ?>
 
 			</div>
 
