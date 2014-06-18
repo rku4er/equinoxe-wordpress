@@ -2116,7 +2116,7 @@ body,
     left:0;
 }
 #logo img{
-    max-height: 3em;
+    width: 128px;
 }
 /* lang_sel_click */
 #lang_sel_click{
@@ -3825,7 +3825,7 @@ html.touch #listing li.hover{
         margin:0 0 1em;
     }
     #logo img{
-        max-height:4.5em;
+        width: 191px;
     }
     /* mainnav */
     #mainnav{

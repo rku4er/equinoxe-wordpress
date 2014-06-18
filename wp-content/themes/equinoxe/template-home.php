@@ -307,7 +307,9 @@
 
 				<div class="group">
 					<h3 class="title"><?php the_field('mission_title'); ?></h3>
+					<?php if(get_field('mission_link_url') && get_field('mission_link_text')): ?>
 					<a href="<?php the_field('mission_link_url'); ?>" class="read"><?php the_field('mission_link_text'); ?></a>
+					<?php endif; ?>
 				</div>
 
 				<?php if(have_rows('mission_seats')): ?>

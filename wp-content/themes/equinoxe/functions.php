@@ -1,7 +1,7 @@
 <?php
 /*
  *  Author: Todd Motto | @toddmotto
- *  URL: html5blank.com | @html5blank
+ *  URL: equinoxe.com | @equinoxe
  *  Custom functions, support, custom post types and more.
  */
 
@@ -61,7 +61,7 @@ if (function_exists('add_theme_support'))
     add_theme_support('automatic-feed-links');
 
     // Localisation Support
-    load_theme_textdomain('html5blank', get_template_directory() . '/languages');
+    load_theme_textdomain('equinoxe', get_template_directory() . '/languages');
 }
 
 /*------------------------------------*\
@@ -70,7 +70,7 @@ if (function_exists('add_theme_support'))
 
 // HTML5 Blank navigation
 
-function html5blank_nav()
+function header_nav()
 {
 	wp_nav_menu(
 	array(
@@ -93,9 +93,55 @@ function html5blank_nav()
 		)
 	);
 }
+function services_nav()
+{
+    wp_nav_menu(
+    array(
+        'theme_location'  => 'footer-services-menu',
+        'menu'            => '',
+        'container'       => false,
+        'container_class' => '',
+        'container_id'    => '',
+        'menu_class'      => 'menu',
+        'menu_id'         => '',
+        'echo'            => true,
+        'fallback_cb'     => 'wp_bootstrap_navwalker::fallback',
+        'before'          => '',
+        'after'           => '',
+        'link_before'     => '',
+        'link_after'      => '',
+        'items_wrap'      => '<ul class="%2$s">%3$s</ul>',
+        'depth'           => 0,
+        'walker'          => new magomra_walker_nav_menu()
+        )
+    );
+}
+function connect_nav()
+{
+    wp_nav_menu(
+    array(
+        'theme_location'  => 'footer-connect-menu',
+        'menu'            => '',
+        'container'       => false,
+        'container_class' => '',
+        'container_id'    => '',
+        'menu_class'      => 'menu',
+        'menu_id'         => '',
+        'echo'            => true,
+        'fallback_cb'     => 'wp_bootstrap_navwalker::fallback',
+        'before'          => '',
+        'after'           => '',
+        'link_before'     => '',
+        'link_after'      => '',
+        'items_wrap'      => '<ul class="%2$s">%3$s</ul>',
+        'depth'           => 0,
+        'walker'          => new magomra_walker_nav_menu()
+        )
+    );
+}
 
 // Load HTML5 Blank scripts (header.php)
-function html5blank_header_scripts()
+function equinoxe_header_scripts()
 {
     if ($GLOBALS['pagenow'] != 'wp-login.php' && !is_admin()) {
 
@@ -114,7 +160,7 @@ function html5blank_header_scripts()
 }
 
 // Load HTML5 Blank conditional scripts
-function html5blank_conditional_scripts()
+function equinoxe_conditional_scripts()
 {
     if (is_page('pagenamehere')) {
         wp_register_script('scriptname', get_template_directory_uri() . '/js/scriptname.js', array('jquery'), '1.0.0'); // Conditional script(s)
@@ -123,19 +169,19 @@ function html5blank_conditional_scripts()
 }
 
 // Load HTML5 Blank styles
-function html5blank_styles()
+function equinoxe_styles()
 {
-    wp_register_style('html5blank', get_template_directory_uri() . '/style.css', array(), '1.0', 'all');
-    wp_enqueue_style('html5blank'); // Enqueue it!
+    wp_register_style('equinoxe', get_template_directory_uri() . '/style.css', array(), '1.0', 'all');
+    wp_enqueue_style('equinoxe'); // Enqueue it!
 }
 
 // Register HTML5 Blank Navigation
 function register_html5_menu()
 {
     register_nav_menus(array( // Using array to specify more menus if needed
-        'header-menu' => __('Header Menu', 'html5blank'), // Main Navigation
-        'sidebar-menu' => __('Sidebar Menu', 'html5blank'), // Sidebar Navigation
-        'extra-menu' => __('Extra Menu', 'html5blank') // Extra Navigation if needed (duplicate as many as you need!)
+        'header-menu' => __('Header Menu', 'equinoxe'), // Main Navigation
+        'footer-services-menu' => __('Footer Services', 'equinoxe'), // Footer Services
+        'footer-connect-menu' => __('Footer Connect', 'equinoxe') // Footer Connect
     ));
 }
 
@@ -181,8 +227,8 @@ if (function_exists('register_sidebar'))
 {
     // Define Sidebar Widget Area 1
     register_sidebar(array(
-        'name' => __('Widget Area 1', 'html5blank'),
-        'description' => __('Description for this widget-area...', 'html5blank'),
+        'name' => __('Widget Area 1', 'equinoxe'),
+        'description' => __('Description for this widget-area...', 'equinoxe'),
         'id' => 'widget-area-1',
         'before_widget' => '<div id="%1$s" class="%2$s">',
         'after_widget' => '</div>',
@@ -192,8 +238,8 @@ if (function_exists('register_sidebar'))
 
     // Define Sidebar Widget Area 2
     register_sidebar(array(
-        'name' => __('Widget Area 2', 'html5blank'),
-        'description' => __('Description for this widget-area...', 'html5blank'),
+        'name' => __('Widget Area 2', 'equinoxe'),
+        'description' => __('Description for this widget-area...', 'equinoxe'),
         'id' => 'widget-area-2',
         'before_widget' => '<div id="%1$s" class="%2$s">',
         'after_widget' => '</div>',
@@ -266,7 +312,7 @@ function html5wp_excerpt($length_callback = '', $more_callback = '')
 function html5_blank_view_article($more)
 {
     global $post;
-    return '... <a class="view-article" href="' . get_permalink($post->ID) . '">' . __('View Article', 'html5blank') . '</a>';
+    return '... <a class="view-article" href="' . get_permalink($post->ID) . '">' . __('View Article', 'equinoxe') . '</a>';
 }
 
 // Remove Admin bar
@@ -289,7 +335,7 @@ function remove_thumbnail_dimensions( $html )
 }
 
 // Custom Gravatar in Settings > Discussion
-function html5blankgravatar ($avatar_defaults)
+function equinoxegravatar ($avatar_defaults)
 {
     $myavatar = get_template_directory_uri() . '/img/gravatar.jpg';
     $avatar_defaults[$myavatar] = "Custom Gravatar";
@@ -307,7 +353,7 @@ function enable_threaded_comments()
 }
 
 // Custom Comments Callback
-function html5blankcomments($comment, $args, $depth)
+function equinoxecomments($comment, $args, $depth)
 {
 	$GLOBALS['comment'] = $comment;
 	extract($args, EXTR_SKIP);
@@ -364,10 +410,10 @@ add_action( 'init', 'my_add_excerpts_to_pages' );
 function my_add_excerpts_to_pages() {
      add_post_type_support( 'page', 'excerpt' );
 }
-add_action('init', 'html5blank_header_scripts'); // Add Custom Scripts to wp_head
-add_action('wp_print_scripts', 'html5blank_conditional_scripts'); // Add Conditional Page Scripts
+add_action('init', 'equinoxe_header_scripts'); // Add Custom Scripts to wp_head
+add_action('wp_print_scripts', 'equinoxe_conditional_scripts'); // Add Conditional Page Scripts
 add_action('get_header', 'enable_threaded_comments'); // Enable Threaded Comments
-add_action('wp_enqueue_scripts', 'html5blank_styles'); // Add Theme Stylesheet
+add_action('wp_enqueue_scripts', 'equinoxe_styles'); // Add Theme Stylesheet
 add_action('init', 'register_html5_menu'); // Add HTML5 Blank Menu
 add_action('init', 'create_post_type_html5'); // Add our HTML5 Blank Custom Post Type
 add_action('widgets_init', 'my_remove_recent_comments_style'); // Remove inline Recent Comment Styles from wp_head()
@@ -388,7 +434,7 @@ remove_action('wp_head', 'rel_canonical');
 remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
 
 // Add Filters
-add_filter('avatar_defaults', 'html5blankgravatar'); // Custom Gravatar in Settings > Discussion
+add_filter('avatar_defaults', 'equinoxegravatar'); // Custom Gravatar in Settings > Discussion
 add_filter('body_class', 'add_slug_to_body_class'); // Add slug to body class (Starkers build)
 add_filter('widget_text', 'do_shortcode'); // Allow shortcodes in Dynamic Sidebar
 add_filter('widget_text', 'shortcode_unautop'); // Remove <p> tags in Dynamic Sidebars (better!)
@@ -427,18 +473,18 @@ function create_post_type_html5()
     register_post_type('courses', // Register Custom Post Type
         array(
         'labels' => array(
-            'name' => __('Courses', 'html5blank'), // Rename these to suit
-            'singular_name' => __('Course', 'html5blank'),
-            'add_new' => __('Add New', 'html5blank'),
-            'add_new_item' => __('Add New Course', 'html5blank'),
-            'edit' => __('Edit', 'html5blank'),
-            'edit_item' => __('Edit Course', 'html5blank'),
-            'new_item' => __('New Course', 'html5blank'),
-            'view' => __('View Course', 'html5blank'),
-            'view_item' => __('View Course', 'html5blank'),
-            'search_items' => __('Search Courses', 'html5blank'),
-            'not_found' => __('No Courses found', 'html5blank'),
-            'not_found_in_trash' => __('No Courses found in Trash', 'html5blank')
+            'name' => __('Courses', 'equinoxe'), // Rename these to suit
+            'singular_name' => __('Course', 'equinoxe'),
+            'add_new' => __('Add New', 'equinoxe'),
+            'add_new_item' => __('Add New Course', 'equinoxe'),
+            'edit' => __('Edit', 'equinoxe'),
+            'edit_item' => __('Edit Course', 'equinoxe'),
+            'new_item' => __('New Course', 'equinoxe'),
+            'view' => __('View Course', 'equinoxe'),
+            'view_item' => __('View Course', 'equinoxe'),
+            'search_items' => __('Search Courses', 'equinoxe'),
+            'not_found' => __('No Courses found', 'equinoxe'),
+            'not_found_in_trash' => __('No Courses found in Trash', 'equinoxe')
         ),
 
         'public' => true,

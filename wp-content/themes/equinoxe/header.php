@@ -13,6 +13,7 @@
 		<meta name="description" content="<?php bloginfo('description'); ?>">
 
 		<?php wp_head(); ?>
+
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJ1zeXL0klf-9NPfdZPIlPsYko6Q7k090&sensor=true" type="text/javascript"></script>
 		<script>
         // configure environment tests
@@ -22,12 +23,10 @@
         });
         </script>
 
-
 		<?php
 		//Fench site ONLY CSS: this tests to see if "/fr/"is in the URL
 		$url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
 		if (true == strpos($url,'/fr/')): ?>
-
 		<style type="text/css">
             /* Special CSS Applied to French Site Only*/
     		#mainnav{ font-size: 92%; margin-top:25px;}
@@ -35,8 +34,8 @@
             #mainnav >ul.menu >li.about >a{ margin-left: 18em; margin-bottom: 0.1em;}
     		#mainnav >ul.menu >li.contact >a{ margin-bottom: 0.1em;}
             .sidebar-widget input[type="search"]{ max-width: 155px; }
+            #newsletter input[type="text"]:focus, #newsletter input[type="email"]:focus{ width: 250px; }
 		</style>
-
 		<?php endif; ?>
 
         <style type="text/css">
@@ -44,7 +43,7 @@
             #habla_window_div .habla_offline_submit_input{
                 float: none !important;
             }
-            #habla_window_div{
+            #habla_window_div #habla_panel_div{
                 border-style: solid;
                 border-color: #fff;
                 border-width: 1px 1px 0;
@@ -97,7 +96,7 @@
                             <span class="hideText">menu <span class="icon-menu"></span></span>
                         </label>
 
-                        <?php html5blank_nav(); ?>
+                        <?php header_nav(); ?>
 
                     </nav>
 
