@@ -26,7 +26,7 @@
 
         });
 
-        /* Revolution Slider Tweak */
+        /* Revolution Slider Tweak for scrollToHash() */
         var revSlider = $('#revolution-slider');
         var timeBuffer = 1000;
         var timeout = 100;
@@ -374,7 +374,7 @@
         }).trigger('resize');
 
         // Sticky Footer
-        function EasyPeasyParallax() {
+        function EasyParallax() {
             scrollPos = $(this).scrollTop();
             windowH = $(this).height();
             pageH = $(document).height();
@@ -388,22 +388,28 @@
                 if (mq.matches) {
                     if( scrollPos + windowH + 380 < pageH){
                         $('#footer').addClass('sticky');
+                        $('#habla_window_div').addClass('sticky');
                     }else{
                         $('#footer').removeClass('sticky');
+                        $('#habla_window_div').removeClass('sticky');
                     }
                 }
                 else {
                     if( scrollPos + windowH < pageH){
                         $('#footer').addClass('sticky');
+                        $('#habla_window_div').addClass('sticky');
                     }else{
                         $('#footer').removeClass('sticky');
+                        $('#habla_window_div').removeClass('sticky');
                     }
                 }
 
             }
         }
-        $(window).scroll(function() {
-            EasyPeasyParallax();
+        $(window).on('scroll resize', function(){
+            setTimeout(function(){
+                EasyParallax();
+            }, 50);
         });
 
 

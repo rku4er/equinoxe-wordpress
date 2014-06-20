@@ -1710,6 +1710,7 @@ body:not(.home) .tile.full-width .tile .front p{
 .sidebar-widget input[type="search"]{
     border-color: #ccc;
 }
+html[lang="fr-FR"] .sidebar-widget input[type="search"]{ max-width: 155px; }
 .sidebar-widget input[type="search"]:focus{
     border-color: #F37122;
 }
@@ -2118,46 +2119,20 @@ body,
 #logo img{
     width: 128px;
 }
-/* lang_sel_click */
-#lang_sel_click{
+/* simple lang switch link */
+#langSwitch{
     position:absolute;
-    right:8em;
+    right:6em;
     bottom:100%;
-    margin-bottom:0.5em;
+    padding: 0.5em;
     height: auto;
-}
-
-#lang_sel_click a.lang_sel_sel{
-    background-color: transparent;
-    border: 0 none;
     font-size: 1.4em;
     text-transform: uppercase;
+    color: #202020;
+    text-decoration: none;
 }
-#lang_sel_click a.lang_sel_sel,
-#lang_sel_click a.lang_sel_sel:hover{
-    color: #424242;
-}
-#lang_sel_click ul ul,
-#lang_sel_click ul li{
-    width: auto;
-    min-width: 100px;
-    float: none;
-}
-#lang_sel_click ul ul{
-    border: 0 none;
-    height: auto;
-    background-color: #fff;
-}
-#lang_sel_click ul ul a,
-#lang_sel_click ul ul a:visited{
-    border-width: 1px 0 0;
-    background-color: transparent;
-    color: #424242;
-}
-#lang_sel_click ul ul a:hover,
-#lang_sel_click ul ul a:visited:hover{
-    color: #fff;
-    background-color: #424242;
+html[lang="fr-FR"] #langSwitch{
+    right: 6em;
 }
 
 /* mainnav */
@@ -2720,6 +2695,7 @@ html.touch #divisions .technology-based-care .title a.hover span{
     display:table-cell;
     vertical-align:top;
     text-align:left;
+    padding-right: 2em;
 
     font-family: OpenSansSemibold, Arial, sans-serif;
     color:#fff;
@@ -2730,25 +2706,13 @@ html.touch #divisions .technology-based-care .title a.hover span{
     font-size:1.4em;
     position:relative;
     display:inline-block;
-    text-decoration:none;
+    border-bottom: 1px solid transparent;
+
+    -webkit-transition: all .2s ease;
+    -o-transition: all .2s ease;
+    transition: all .2s ease;
 }
-#links a:before{
-    content: "";
-    overflow: hidden;
-    height: 1px;
-    width: 0;
-    position: absolute;
-    bottom: -1px;
-    left: 50%;
-    background-color: #fff;
-    -webkit-transition: all 0.2s ease;
-    -moz-transition: all 0.2s ease;
-    transition: all 0.2s ease;
-}
-#links a:hover:before{
-    width:100%;
-    left:0;
-}
+
 #links ul{
     list-style:none;
     margin:0;
@@ -2882,6 +2846,10 @@ html.touch #divisions .technology-based-care .title a.hover span{
     font-size:1.2em;
     font-family: OpenSans, Arial, sans-serif;
     font-weight:normal;
+}
+html[lang="fr-FR"] #newsletter input[type="text"]:focus,
+html[lang="fr-FR"] #newsletter input[type="email"]:focus{
+    width: 250px;
 }
 /* copyright */
 #copyright{
@@ -3756,26 +3724,31 @@ html.touch #listing li.hover{
     .single-listing .line-2{
         display:block;
     }
-    /* lang_sel_click */
-    #lang_sel_click{
-        right:16em;
-    }
-    /* lang */
-    #lang_sel_click a.lang_sel_sel,
-    #lang_sel_click a.lang_sel_sel:hover{
+    /* Simple lang switch link */
+    #langSwitch{
+        right:11em;
         color: #fff;
     }
-    #lang_sel_click ul ul{
-        background-color: #424242;
+    #langSwitch:before{
+        content: "";
+        overflow: hidden;
+        height: 1px;
+        width: 0;
+        position: absolute;
+        bottom: 0.5em;
+        left: 50%;
+        background-color: #fff;
+
+        -webkit-transition: all 0.2s ease;
+           -moz-transition: all 0.2s ease;
+                transition: all 0.2s ease;
     }
-    #lang_sel_click ul ul a,
-    #lang_sel_click ul ul a:visited{
-        color: #fff
+    #langSwitch:hover:before{
+        left: 10%;
+        width: 80%;
     }
-    #lang_sel_click ul ul a:hover,
-    #lang_sel_click ul ul a:visited:hover{
-        color: #424242;
-        background-color: #eee;
+    html[lang="fr-FR"] #langSwitch{
+        right: 21em;
     }
     /* page */
     #page{
@@ -4025,6 +3998,13 @@ html.touch #listing li.hover{
 
     #mainnav .sub-menu a{
         font-size: 1.4em;
+    }
+    html[lang="fr-FR"] #mainnav > ul.menu > li:not(.about):not(.contact) > a,
+    html[lang="fr-FR"] #mainnav > ul.menu > li:not(.about):not(.contact) > a{
+        font-size: 1.4em;
+    }
+    html[lang="fr-FR"] #mainnav >ul.menu >li.about >a{
+        right: 10em;
     }
     /* slider */
     #slider .title{
@@ -4327,11 +4307,15 @@ html.touch #listing li.hover{
     #footer .bottom-row .midwrapper{
         max-width: 960px;
     }
-    /* lang_sel_click */
-    #lang_sel_click{
+    /* Simple lang switch link */
+    #langSwitch{
         left:50%;
         right: auto;
-        margin-left: 22.5em;
+        margin-left: 18em;
+    }
+    html[lang="fr-FR"] #langSwitch{
+        right: auto;
+        margin-left: 12.5em;
     }
     /* sidenav */
     #sidenav{
@@ -4351,6 +4335,7 @@ html.touch #listing li.hover{
     #mainnav{
         float:right;
     }
+    html[lang="fr-FR"] #mainnav{ margin-top:3em;}
     #mainnav >ul.menu >li:not(.about):not(.contact) >a{
         left: 0.7em;
         margin-top: 0.9em;
@@ -4370,6 +4355,14 @@ html.touch #listing li.hover{
     }
     #mainnav .sub-menu a{
         font-size: 1.6em;
+    }
+    html[lang="fr-FR"] #mainnav > ul.menu > li:not(.about):not(.contact) > a,
+    html[lang="fr-FR"] #mainnav > ul.menu > li:not(.about):not(.contact) > a{
+        font-size: 1.8em;
+    }
+    html[lang="fr-FR"] #mainnav >ul.menu >li.about >a{
+        right: auto;
+        margin-left: 18em;
     }
     /* slider */
     body:not(.home) #slider{

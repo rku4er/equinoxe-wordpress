@@ -94,6 +94,8 @@
 
 				<?php endif; ?>
 
+				<?php edit_post_link(); ?>
+
 			</div>
 
 		</div>

@@ -49,11 +49,8 @@
 
 						<?php
 						$url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
-						if (true == strpos($url,'/fr/')){
-							$form = get_field('newsletter_form_french', 'options');
-						}else{
-							$form = get_field('newsletter_form', 'options');
-						}
+						$form = (true == strpos($url,'/fr/')) ? get_field('newsletter_form_french', 'options') : get_field('newsletter_form', 'options');
+						$copyright = (true == strpos($url,'/fr/')) ? get_field('copyright_french', 'options') : get_field('copyright', 'options');
 
 						if($form): ?>
 
@@ -73,7 +70,8 @@
 					<div class="midwrapper">
 
 						<section id="copyright">
-							<p>Copyright &copy; <?php echo date('Y'); ?> - <br /><?php _e(bloginfo('name')) ?> - <?php _e('All rights Reserved') ?>.</p>
+
+							<p>Copyright &copy; <?php echo date('Y'); ?> - <br /><?php echo $copyright ?></p>
 						</section>
 
 
@@ -85,7 +83,7 @@
 
 								<?php while(have_rows('socials', 'options')): the_row();?>
 								<li>
-									<a href="<?php echo get_sub_field('url'); ?>" class="icon-<?php echo get_sub_field('slug'); ?>"></a>
+									<a href="<?php echo get_sub_field('url'); ?>" class="icon-<?php echo get_sub_field('slug'); ?>" target="_blank"></a>
 								</li>
 								<?php endwhile; ?>
 

@@ -141,7 +141,7 @@
             <div class="midwrapper">
 
                 <div class="content headings">
-                    <h5 class="heading"><?php echo get_field('sponsors_title', 'options'); ?></h5>
+                    <h5 class="heading"><?php echo get_field('sponsors_title'); ?></h5>
                 </div>
 
                 <?php if(have_rows('sponsors', 'options')): ?>

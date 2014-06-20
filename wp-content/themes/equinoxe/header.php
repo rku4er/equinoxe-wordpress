@@ -23,23 +23,14 @@
         });
         </script>
 
-		<?php
-		//Fench site ONLY CSS: this tests to see if "/fr/"is in the URL
-		$url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
-		if (true == strpos($url,'/fr/')): ?>
-		<style type="text/css">
-            /* Special CSS Applied to French Site Only*/
-    		#mainnav{ font-size: 92%; margin-top:25px;}
-    		#lang_sel_click{margin-left: 13em;}
-            #mainnav >ul.menu >li.about >a{ margin-left: 18em; margin-bottom: 0.1em;}
-    		#mainnav >ul.menu >li.contact >a{ margin-bottom: 0.1em;}
-            .sidebar-widget input[type="search"]{ max-width: 155px; }
-            #newsletter input[type="text"]:focus, #newsletter input[type="email"]:focus{ width: 250px; }
-		</style>
-		<?php endif; ?>
-
         <style type="text/css">
             /* Live Chat style correction */
+            #habla_window_div{
+                margin: 0 0 45px !important;
+            }
+            #habla_window_div.sticky{
+                margin-bottom: 0 !important;
+            }
             #habla_window_div .habla_offline_submit_input{
                 float: none !important;
             }
@@ -48,9 +39,9 @@
                 border-color: #fff;
                 border-width: 1px 1px 0;
                 background: #fff;
-                -webkit-border-radius: 5px;
-                -moz-border-radius: 5px;
-                border-radius: 5px;
+                -webkit-border-radius: 5px 5px 0 0;
+                -moz-border-radius: 5px 5px 0 0;
+                border-radius: 5px 5px 0 0;
                 -webkit-box-sizing: border-box;
                 -moz-box-sizing: border-box;
                 box-sizing: border-box;
@@ -70,6 +61,23 @@
 
             <!-- header -->
             <header id="header">
+
+                <?php
+                $url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+
+                if( function_exists('icl_get_languages') ){
+                    $lang = icl_get_languages('skip_missing=1&orderby=id&order=asc&link_empty_to={%lang}');
+
+                    $langAvail = (true == strpos($url,'/fr/')) ? $lang['en'] : $lang['fr'];
+
+                    $call_us_message = (true == strpos($url,'/fr/')) ? get_field('call_us_message_french', 'options') : get_field('call_us_message', 'options');
+
+                    $phone_number = (true == strpos($url,'/fr/')) ? get_field('phone_number_french', 'options') : get_field('phone_number', 'options');
+
+                    $link = '<a id="langSwitch" href="'.$langAvail['url'].'">'.$langAvail['native_name'].'</a>';
+                }
+
+                ?>
 
                 <div class="midwrapper group">
 
@@ -100,12 +108,13 @@
 
                     </nav>
 
-                    <div id="call-mess"><?php _e('REACH US ANYTIME') ?> <span style="color:#F37123"><?php echo get_field('phone_number', 'options'); ?></span></div>
+                    <div id="call-mess"><?php echo $call_us_message; ?> <span style="color:#F37123"><?php echo $phone_number; ?></span></div>
 
                 </div>
 
-                <!-- Lang Switch  -->
-                <?php do_action('icl_language_selector'); ?>
+                <?php if($link) echo $link; ?>
+
+                <?php //do_action('icl_language_selector'); ?>
 
             </header>
             <!-- /header -->
