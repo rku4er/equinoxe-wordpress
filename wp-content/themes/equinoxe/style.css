@@ -2696,6 +2696,7 @@ html.touch #divisions .technology-based-care .title a.hover span{
     vertical-align:top;
     text-align:left;
     padding-right: 2em;
+    width: 50%;
 
     font-family: OpenSansSemibold, Arial, sans-serif;
     color:#fff;
@@ -2719,7 +2720,7 @@ html.touch #divisions .technology-based-care .title a.hover span{
     padding:0;
 }
 #links li{
-    margin-top:2em;
+    margin-top:1.6em;
 }
 #links li:first-child{
     margin-top:0;
@@ -2727,7 +2728,7 @@ html.touch #divisions .technology-based-care .title a.hover span{
 #links .title{
     text-transform:uppercase;
     font-size:1.4em;
-    margin:0 0 2.5em;
+    margin:0 0 2em;
 }
 /* newsletter */
 #newsletter{
@@ -3505,7 +3506,7 @@ html.touch #listing li.hover{
     color:#f37122;
 }
 #quote-slider .slide-holder{
-    min-height:64px;
+    min-height:96px;
     position:relative;
 }
 /* map_holder */
@@ -3754,6 +3755,9 @@ html.touch #listing li.hover{
     #page{
         padding-top: 14.4em;
         padding-bottom:425px;
+    }
+    html[lang="fr-FR"] #page{
+        padding-top: 13.2em;
     }
     /* header */
     #header{
@@ -4295,6 +4299,9 @@ html.touch #listing li.hover{
     #page{
         padding-top: 10.5em;
     }
+    html[lang="fr-FR"] #page{
+        padding-top: 13.3em;
+    }
     /* slider */
     #slider .text span{
         font-size:1.6em;
@@ -4335,6 +4342,7 @@ html.touch #listing li.hover{
     #mainnav{
         float:right;
     }
+    /* mainnav position fix */
     html[lang="fr-FR"] #mainnav{ margin-top:3em;}
     #mainnav >ul.menu >li:not(.about):not(.contact) >a{
         left: 0.7em;

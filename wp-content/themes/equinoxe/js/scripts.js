@@ -2,6 +2,25 @@
 
 	$(function () {
 
+        $.fn.waitUntilExists    = function (handler, shouldRunHandlerOnce, isChild) {
+            var found       = 'found';
+            var $this       = $(this.selector);
+            var $elements   = $this.not(function () { return $(this).data(found); }).each(handler).data(found, true);
+
+            if (!isChild)
+            {
+                (window.waitUntilExists_Intervals = window.waitUntilExists_Intervals || {})[this.selector] =
+                    window.setInterval(function () { $this.waitUntilExists(handler, shouldRunHandlerOnce, true); }, 500)
+                ;
+            }
+            else if (shouldRunHandlerOnce && $elements.length)
+            {
+                window.clearInterval(window.waitUntilExists_Intervals[this.selector]);
+            }
+
+            return $this;
+        }
+
 		/*'use strict';*/
 
         // Use svg logo
@@ -134,8 +153,17 @@
 
             if(linkmore.length){
                 linkmore.on('click', function(e){
-                    window.location = $(this).attr("href");
-                    return false;
+                    var href = $(this).attr('href');
+                    var hash = href.replace(/^.*?(#|$)/,'');
+                    var noRedirect = (window.location.href == href.replace(/#.*?$/, '')) ? true : false;
+
+                    console.log(noRedirect);
+
+                    if(noRedirect && hash){
+                        scrollToHash('#'+hash);
+                    }else{
+                        window.location = href;
+                    }
                 });
             }
 
@@ -406,6 +434,11 @@
 
             }
         }
+
+        $('#habla_window_div').waitUntilExists(function(){
+            EasyParallax();
+        });
+
         $(window).on('scroll resize', function(){
             setTimeout(function(){
                 EasyParallax();
@@ -631,7 +664,7 @@
                 href = self.find('.title a').eq(0).attr('href');
 
             self.on('click', function(event){
-                document.location.href = href;
+                window.location = href;
 
                 if (event.stopPropagation) event.stopPropagation();
                 else event.cancelBubble = true;

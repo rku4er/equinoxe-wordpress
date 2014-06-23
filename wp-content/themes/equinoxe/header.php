@@ -27,6 +27,10 @@
             /* Live Chat style correction */
             #habla_window_div{
                 margin: 0 0 45px !important;
+
+                -webkit-transition: all .2s ease;
+                -o-transition: all .2s ease;
+                transition: all .2s ease;
             }
             #habla_window_div.sticky{
                 margin-bottom: 0 !important;

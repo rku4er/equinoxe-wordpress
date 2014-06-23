@@ -61,6 +61,8 @@
 					}
 
 					$src = wp_get_attachment_image_src($thumbID, $size, false);
+					$url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+					$view_more = (true == strpos($url,'/fr/')) ? 'Voir Plus D’info' : 'View More';
 
 					$output .= '<div class="scene" style="background-image: url('.$src[0].')">';
 
@@ -75,7 +77,7 @@
 						$output .= $content_back;
 						$output .= '<a href="'.get_permalink();
 							if(get_sub_field('hash')) $output .= '#'.get_sub_field('hash');
-						$output .= '" class="more">View Mored</a>';
+						$output .= '" class="more">'.$view_more.'</a>';
 					$output .= '</div>';
 
 					$output .= '</div>';
@@ -172,7 +174,7 @@
 				<!-- article -->
 				<article>
 
-					<h2><?php _e( 'Sorry, nothing to display.', 'html5blank' ); ?></h2>
+					<h2><?php _e( 'Sorry, nothing to display.', 'equinoxe' ); ?></h2>
 
 				</article>
 				<!-- /article -->
@@ -260,6 +262,9 @@
 									}
 
 									$src = wp_get_attachment_image_src($thumbID, $size, false);
+
+									$url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+									$view_more = (true == strpos($url,'/fr/')) ? 'Voir Plus D’info' : 'View More';
 								?>
 
 								<div class="scene" style="background-image: url(<?php echo $src[0]; ?>)">
@@ -273,7 +278,7 @@
 									<div class="face back">
 										<h3 class="title"><?php echo $title; ?></h3>
 										<?php echo $content_back; ?>
-										<a href="<?php echo get_permalink(); if(get_sub_field('hash')) echo '#'.get_sub_field('hash'); ?>" class="more"><?php _e('View More') ?></a>
+										<a href="<?php echo get_permalink(); if(get_sub_field('hash')) echo '#'.get_sub_field('hash'); ?>" class="more"><?php echo $view_more ?></a>
 									</div>
 							</div>
 							</div>

@@ -41,10 +41,47 @@
 
 	<?php endif; ?>
 
+
 	<section id="blog" class="heightContainer">
 
+		<div class="midwrapper group">
+
+			<section id="content" class="content heightContainer group headings-2">
+
+				<?php if (have_posts()): while (have_posts()) : the_post(); ?>
+
+					<!-- article -->
+					<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+
+						<?php the_content(); ?>
+
+						<br class="clear">
+
+						<?php edit_post_link(); ?>
+
+					</article>
+					<!-- /article -->
+
+				<?php endwhile; ?>
+
+				<?php else: ?>
+
+					<!-- article -->
+					<article>
+
+						<h2><?php _e( 'Sorry, nothing to display.', 'equinoxe' ); ?></h2>
+
+					</article>
+					<!-- /article -->
+
+				<?php endif; ?>
+
+			</section>
+
+		</div>
+
 	<?php
-	$postsPerPage = get_field('courses_to_display') ? get_field('courses_to_display') : 6;
+	/*$postsPerPage = get_field('courses_to_display') ? get_field('courses_to_display') : 6;
 
 	$args = array(
 		'post_type' => 'courses',
@@ -53,7 +90,9 @@
 		'paged' => get_query_var('page'),
 		'posts_per_page' => $postsPerPage
 	);
-	$posts = get_posts( $args );
+	$posts = get_posts( $args );*/
+
+	$posts = get_field('courses_list');
 
 	if( $posts ): ?>
 

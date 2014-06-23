@@ -8,6 +8,8 @@
 
 					<div class="midwrapper">
 
+						<?php $url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']; ?>
+
 						<?php if(get_field('footer_services_title', 'options') || get_field('footer_connect_title', 'options')): ?>
 
 						<div id="links">
@@ -15,7 +17,6 @@
 							<div class="cell">
 
 								<?php
-								$url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
 								if (true == strpos($url,'/fr/')):
 								?>
 								<h5 class="title"><?php echo get_field('footer_services_title_french', 'options'); ?></h5>
@@ -30,7 +31,6 @@
 							<div class="cell">
 
 								<?php
-								$url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
 								if (true == strpos($url,'/fr/')):
 								?>
 								<h5 class="title"><?php echo get_field('footer_connect_title_french', 'options'); ?></h5>
@@ -48,7 +48,6 @@
 
 
 						<?php
-						$url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
 						$form = (true == strpos($url,'/fr/')) ? get_field('newsletter_form_french', 'options') : get_field('newsletter_form', 'options');
 						$copyright = (true == strpos($url,'/fr/')) ? get_field('copyright_french', 'options') : get_field('copyright', 'options');
 

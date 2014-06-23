@@ -36,8 +36,13 @@
 						</div>
 					</section>
 
+					<?php
+					$url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+					$attend_email = (true == strpos($url,'/fr/')) ? get_field('attend_email_french', 'options') : get_field('attend_email', 'options');
+					?>
+
 					<section class="box content">
-						<a href="mailto:<?php echo get_field('attend_email', 'options');?>" class="btn">Attend</a>
+						<a href="mailto:<?php echo $attend_email;?>" class="btn">Attend</a>
 					</section>
 
 
