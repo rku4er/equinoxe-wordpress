@@ -1521,8 +1521,7 @@ body:not(.home) .tile.full-width .tile .front p{
     color:#202020;
 }
 .single-listing .thumb{
-    margin-top:-310px;
-    margin-bottom:6em;
+    margin:6em 0;
     text-align:center;
 
     display:none;
@@ -3249,9 +3248,9 @@ html[lang="fr-FR"] #newsletter input[type="email"]:focus{
     color:#f87515;
     font-family:MontserratBold, Arial, sans-serif;
     font-size:6em;
-    clear:both;
     text-transform:uppercase;
-    margin-right:400px;
+    width: 550px;
+    display: inline-block;
 }
 /* listings */
 #listing{
