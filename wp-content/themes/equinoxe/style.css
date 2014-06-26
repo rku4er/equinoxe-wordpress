@@ -3752,11 +3752,8 @@ html.touch #listing li.hover{
     }
     /* page */
     #page{
-        padding-top: 14.4em;
+        padding-top: 14.1em;
         padding-bottom:425px;
-    }
-    html[lang="fr-FR"] #page{
-        padding-top: 13.2em;
     }
     /* header */
     #header{
@@ -4004,7 +4001,7 @@ html.touch #listing li.hover{
     }
     html[lang="fr-FR"] #mainnav > ul.menu > li:not(.about):not(.contact) > a,
     html[lang="fr-FR"] #mainnav > ul.menu > li:not(.about):not(.contact) > a{
-        font-size: 1.4em;
+        font-size: 1.8em;
     }
     html[lang="fr-FR"] #mainnav >ul.menu >li.about >a{
         right: 10em;
@@ -4299,7 +4296,7 @@ html.touch #listing li.hover{
         padding-top: 10.5em;
     }
     html[lang="fr-FR"] #page{
-        padding-top: 13.3em;
+        padding-top: 10.3em;
     }
     /* slider */
     #slider .text span{
@@ -4321,7 +4318,7 @@ html.touch #listing li.hover{
     }
     html[lang="fr-FR"] #langSwitch{
         right: auto;
-        margin-left: 12.5em;
+        margin-left: 8.5em;
     }
     /* sidenav */
     #sidenav{
@@ -4342,7 +4339,6 @@ html.touch #listing li.hover{
         float:right;
     }
     /* mainnav position fix */
-    html[lang="fr-FR"] #mainnav{ margin-top:3em;}
     #mainnav >ul.menu >li:not(.about):not(.contact) >a{
         left: 0.7em;
         margin-top: 0.9em;
@@ -4357,8 +4353,14 @@ html.touch #listing li.hover{
     #mainnav >ul.menu >li.about >a{
         margin-left: 24em;
     }
+    html[lang="fr-FR"] #mainnav >ul.menu >li.about >a{
+        margin-left: 14em;
+    }
     #mainnav >ul.menu >li.contact >a{
         margin-left: 28.5em;
+    }
+    html[lang="fr-FR"] #mainnav >ul.menu >li.contact >a{
+        margin-left: 24.8em;
     }
     #mainnav .sub-menu a{
         font-size: 1.6em;
@@ -4369,7 +4371,7 @@ html.touch #listing li.hover{
     }
     html[lang="fr-FR"] #mainnav >ul.menu >li.about >a{
         right: auto;
-        margin-left: 18em;
+        margin-left: 14em;
     }
     /* slider */
     body:not(.home) #slider{

@@ -24,11 +24,11 @@
 		/*'use strict';*/
 
         // Use svg logo
-        /*if(!Modernizr.svg) {
+        if(!Modernizr.svg) {
             $('img[src*="svg"]').attr('src', function() {
                 return $(this).attr('src').replace('.svg', '.png');
             });
-        }*/
+        }
 
 		// HTML5 Placeholder
         $('input, textarea').placeholder();
@@ -596,7 +596,7 @@
 
         /* quote-slider */
         $('#quote-slider .slide-holder').cycle({
-            fx:"fade",
+            fx:"scrollHorz",
             timeout:"5000",
             slides:"> blockquote",
             prev:"#quote-slider .prev",
