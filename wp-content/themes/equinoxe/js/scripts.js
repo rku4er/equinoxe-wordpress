@@ -647,15 +647,15 @@
 
             /* google.maps.event.addDomListener(window, 'load', initialize); */
 
-            /*$('#map img').on('click', function(){
+            $('#map img').on('click', function(){
                 initialize();
-            });*/
+            });
 
-            $('#map').waypoint(function() {
+            /*$('#map').waypoint(function() {
                 if($('#map >img').length){
                     initialize();
                 }
-            }, { offset: '50%' });
+            }, { offset: '50%' });*/
         }
 
         // Listings

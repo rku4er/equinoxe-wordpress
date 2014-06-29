@@ -3015,6 +3015,7 @@ html[lang="fr-FR"] #newsletter input[type="email"]:focus{
 /* manage */
 #manage img{
     max-width: 80%;
+    height: auto;
 }
 /* tooltip */
 #tooltip{
