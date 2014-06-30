@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-	<div id="blog" class="single-listing">
+	<div id="blog" class="heightContainer single-listing">
 
 		<div class="midwrapper group">
 
@@ -57,7 +57,7 @@
 
 				</aside>
 
-				<section id="content" class="content heightContainer group">
+				<section id="content" class="content group">
 
 					<!-- article -->
 					<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>

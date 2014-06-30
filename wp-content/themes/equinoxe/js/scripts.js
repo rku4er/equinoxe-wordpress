@@ -81,6 +81,10 @@
 
         // Scroll To Hash
         function scrollToHash(hash){
+            // Hook for .heightContainer
+            $(window).trigger('resize');
+
+            // Hash management
             if(!hash){
                 var hash = window.location.hash;
             }
@@ -387,13 +391,16 @@
         $(window).on('resize', function() {
             if($('#page').height() < Math.max(document.documentElement.clientHeight, window.innerHeight || 0)){
 
-                var container = $('.heightContainer');
+                var container = $('.heightContainer'),
+                    footer = $('#footer .top-row'),
+                    footerHeight = (footer.css('display') == 'none') ? footer.outerHeight() : 0;
 
                 if(container.length){
                     setTimeout(function(){
-                        var offsetTop = Math.max(document.documentElement.clientHeight, window.innerHeight || 0) - container.offset().top - $('#footer .bottom-row').outerHeight() - parseInt($('#content-holder').css('padding-bottom'));
+                        var minHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0) - container.offset().top - $('#footer .bottom-row').outerHeight() - parseInt(container.css('padding-top')) - parseInt(container.css('padding-bottom'));
 
-                        container.css('min-height', offsetTop);
+                        container.css('min-height', minHeight);
+                        console.log(minHeight);
                     }, 10);
                 }
 
