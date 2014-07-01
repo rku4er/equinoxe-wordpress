@@ -3456,6 +3456,15 @@ html.touch #listing li.hover{
     font-size: 2.5em;
     font-family: OpenSansLight;
     text-align: center;
+    padding: 1em;
+    background-color: #ffefdf;
+
+    -webkit-transition: all .2s;
+    -o-transition: all .2s;
+    transition: all .2s;
+}
+#contact-form .gform_confirmation_message.transparent{
+    background-color: transparent;
 }
 #contact-form input[type="text"],
 #contact-form input[type="email"],

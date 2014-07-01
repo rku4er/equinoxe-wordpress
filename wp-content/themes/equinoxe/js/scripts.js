@@ -43,6 +43,16 @@
                 }
             });
 
+        }).bind('gform_confirmation_loaded', function(){
+
+            var confMess = $('.gform_confirmation_message');
+            if(confMess.text()){
+                scrollToHash('#' + confMess.attr('id'));
+                setTimeout(function(){
+                    confMess.addClass('transparent');
+                }, 400);
+            }
+
         });
 
         /* Revolution Slider Tweak for scrollToHash() */
