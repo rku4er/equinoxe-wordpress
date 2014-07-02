@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-    <div id="content-holder">
+    <div id="content-holder" class="heightContainer">
 
         <div class="midwrapper group">
 
@@ -8,7 +8,7 @@
 
             <?php get_sidebar(); ?>
 
-            <section id="content" class="content heightContainer group">
+            <section id="content" class="content group">
 
     			<?php get_template_part('loop'); ?>
 

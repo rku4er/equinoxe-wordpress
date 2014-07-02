@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-	<div id="blog" class="single-listing">
+	<div id="blog" class="heightContainer single-listing">
 
 		<div class="midwrapper group">
 
@@ -8,7 +8,7 @@
 
 			<?php get_sidebar(); ?>
 
-			<section id="content" class="content heightContainer group">
+			<section id="content" class="content group">
 
 			<?php if (have_posts()): while (have_posts()) : the_post(); ?>
 

@@ -43,7 +43,7 @@
 
 	<?php endif; ?>
 
-	<div id="content-holder">
+	<div id="content-holder" class="heightContainer">
 
 		<div class="midwrapper group">
 
@@ -73,7 +73,7 @@
 
 			</aside>
 
-			<section id="content" class="group heightContainer <?php echo $parent->post_name; ?>">
+			<section id="content" class="group <?php echo $parent->post_name; ?>">
 
 				<div class="content">
 

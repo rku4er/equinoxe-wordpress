@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-    <div id="content-holder" class="single-listing">
+    <div id="content-holder" class="heightContainer single-listing">
 
         <div class="midwrapper group">
 
@@ -8,7 +8,7 @@
 
             <?php get_sidebar(); ?>
 
-            <section id="content" class="content heightContainer group">
+            <section id="content" class="content group">
 
     			<h1><?php echo sprintf( __( '%s Search Results for ', 'html5blank' ), $wp_query->found_posts ); echo get_search_query(); ?></h1>
 

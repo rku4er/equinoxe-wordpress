@@ -41,11 +41,11 @@
 
 	<?php endif; ?>
 
-	<div id="content-holder" class="single-listing">
+	<div id="content-holder" class="heightContainer single-listing">
 
 		<div class="midwrapper group">
 
-			<section id="content" class="content heightContainer group headings-2">
+			<section id="content" class="content group headings-2">
 
 				<?php if (have_posts()): while (have_posts()) : the_post(); ?>
 

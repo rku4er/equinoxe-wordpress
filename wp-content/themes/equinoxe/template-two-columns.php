@@ -41,7 +41,7 @@
 
 	<?php endif; ?>
 
-	<div id="content-holder" class="single-listing">
+	<div id="content-holder" class="heightContainer single-listing">
 
 		<div class="midwrapper group">
 
@@ -49,7 +49,7 @@
 
 			<?php get_sidebar(); ?>
 
-			<section id="content" class="content heightContainer group">
+			<section id="content" class="content group">
 
 				<?php if (have_posts()): while (have_posts()) : the_post(); ?>
 
