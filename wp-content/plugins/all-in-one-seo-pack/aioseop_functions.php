@@ -579,15 +579,9 @@ if ( !function_exists( 'aioseop_filter_callback' ) ) {
 
 if ( !function_exists( 'aioseop_add_contactmethods' ) ) {
 	function aioseop_add_contactmethods( $contactmethods ) {
-		global $aioseop_options, $aioseop_modules;
+		global $aioseop_options;
 		if ( empty( $aioseop_options['aiosp_google_disable_profile'] ) )
 			$contactmethods['googleplus'] = __( 'Google+', 'all_in_one_seo_pack' );
-		if ( !empty( $aioseop_modules ) && is_object( $aioseop_modules ) ) {
-			$m = $aioseop_modules->return_module( 'All_in_One_SEO_Pack_Opengraph' );
-			if ( ( $m !== false ) && is_object( $m ) && $m->option_isset( 'twitter_creator' ) ) {
-				$contactmethods['twitter'] = __( 'Twitter', 'all_in_one_seo_pack' );
-			}
-		}
 		return $contactmethods;
 	}
 }
